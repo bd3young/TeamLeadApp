@@ -8,14 +8,14 @@ namespace TeamLeadApp.Models
 	public class Officer
 	{
 		[PrimaryKey, AutoIncrement]
-		public int OfficerId { get; set; }	
-		public String OfficerFirstName { get; set; }
-		public String OfficerLastName { get; set; }
-		public String OfficerRdo { get; set; }
-		public int OfficerShiftBegin { get; set; }
-		public int OfficerShiftEnd { get; set; }
-		public string OfficerGender { get; set; }
-		public string OfficerRank { get; set; }
-
+		public int Id { get; set; }	
+		public String FirstName { get; set; }
+		public String LastName { get; set; }
+		public String Rdo { get; set; }
+		public int ShiftBegin { get; set; }
+		public int ShiftEnd { get; set; }
+		public string Gender { get; set; }
+		public string Rank { get; set; }
+		public string Shift { get; set; }
 	}
 }

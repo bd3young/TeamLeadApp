@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
+             xmlns:model="clr-namespace:TeamLeadApp.Models"
+             x:Class="TeamLeadApp.Views.OfficerPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" x:DataType="local:OfficerViewModel" Command="{Binding AddOfficerCommand}"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <RefreshView x:DataType="local:OfficerViewModel"
+                         Command="{Binding LoadOfficerCommand}"
+                         >
+                <CollectionView
+                    ItemsSource="{Binding Officers}"
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout x:DataType="model:Officer">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Label Grid.Column="1" Text="(Binding FirstName+LastName)" VerticalOptions="Center"></Label>
+                                        <Label Grid.Column="1" Text="(Binding FirstName+LastName)" VerticalOptions="Center"></Label>
+                                        <Label Grid.Column="1" Text="(Binding Shift)" VerticalOptions="Center"></Label>
+                                        <Label Grid.Column="1" Text="(Binding Rank)" VerticalOptions="Center"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -15,24 +15,35 @@ namespace TeamLeadApp.Services
 			_database = new SQLiteAsyncConnection(dbPath);
 			_database.CreateTableAsync<Officer>().Wait();
 		}
-		public Task<bool> AddProductAsync(Officer officer)
+
+		//Insert & Update
+		public async Task<bool> AddProductAsync(Officer officer)
 		{
-			throw new NotImplementedException();
+			if (officer.Id > 0) 
+			{
+				await _database.UpdateAsync(officer);
+			}
+			else
+			{
+				await _database.InsertAsync(officer);
+			}
+			return await Task.FromResult(true);
 		}
 
-		public Task<bool> DeleteProductAsync(int id)
+		public async Task<bool> DeleteProductAsync(int id)
 		{
-			throw new NotImplementedException();
+			await _database.DeleteAsync<Officer>(id);
+			return await Task.FromResult(true);
 		}
 
-		public Task<Officer> GetProductAsync(int id)
+		public async Task<Officer> GetProductAsync(int id)
 		{
-			throw new NotImplementedException();
+			return await _database.Table<Officer>().Where(p => p.Id == id).FirstOrDefaultAsync();
 		}
 
-		public Task<IEnumerable<Officer>> GetProductsAsync()
+		public async Task<IEnumerable<Officer>> GetProductsAsync()
 		{
-			throw new NotImplementedException();
+			return await Task.FromResult(await _database.Table<Officer>().ToListAsync());
 		}
 
 		public Task<bool> UpdateProductAsync(Officer officer)

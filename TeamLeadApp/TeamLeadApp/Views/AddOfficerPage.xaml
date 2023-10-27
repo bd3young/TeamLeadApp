@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamLeadApp.Views.AddOfficerPage"
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels">
+    <ContentPage.BindingContext>
+        <local:AddOfficerViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Spacing="5" Padding="15">
+            <Label Text="First Name" FontSize="Medium"/>
+            <Entry Text="{Binding Officer.FirstName, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Last Name" FontSize="Medium"/>
+            <Entry Text="{Binding Officer.LastName, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="RDO" FontSize="Medium"/>
+            <Entry Text="{Binding Officer.Rdo, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Shift Begins" FontSize="Medium"/>
+            <Entry Text="{Binding Officer.ShiftBegin, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Shift Ends" FontSize="Medium"/>
+            <Entry Text="{Binding Officer.ShiftEnd, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Gender" FontSize="Medium"/>
+            <Entry Text="{Binding Officer.Gender, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Rank" FontSize="Medium"/>
+            <Entry Text="{Binding Officer.Rank, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Shift" FontSize="Medium"/>
+            <Entry Text="{Binding Officer.Shift, Mode=TwoWay}" FontSize="Medium"/>
+
+            <StackLayout>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
