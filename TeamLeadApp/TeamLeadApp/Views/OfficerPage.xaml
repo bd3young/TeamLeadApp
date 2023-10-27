@@ -13,21 +13,38 @@
         <StackLayout>
             <RefreshView x:DataType="local:OfficerViewModel"
                          Command="{Binding LoadOfficerCommand}"
-                         >
+                         IsRefreshing="{Binding IsBusy,Mode=OneWay}">
                 <CollectionView
                     ItemsSource="{Binding Officers}"
                     SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout x:DataType="model:Officer">
-                                <StackLayout Orientation="Horizontal">
-                                    <StackLayout>
-                                        <Label Grid.Column="1" Text="(Binding FirstName+LastName)" VerticalOptions="Center"></Label>
-                                        <Label Grid.Column="1" Text="(Binding FirstName+LastName)" VerticalOptions="Center"></Label>
-                                        <Label Grid.Column="1" Text="(Binding Shift)" VerticalOptions="Center"></Label>
-                                        <Label Grid.Column="1" Text="(Binding Rank)" VerticalOptions="Center"></Label>
-                                    </StackLayout>
-                                </StackLayout>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfficerViewModel}},
+                                                Path=DeleteOfficerCommand}" CommandParameter="{Binding .}"/>
+                                            <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid Padding="5">
+                                    <Frame CornerRadius="10" HasShadow="True">
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="Officer" FontAttributes="Bold"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Grid.Column="1" Text="{Binding FirstName}" VerticalOptions="Center"></Label>
+                                                <Label Grid.Column="1" Text="{Binding LastName}" VerticalOptions="Center"></Label>
+                                                <Label Grid.Column="1" Text="{Binding Shift}" VerticalOptions="Center"></Label>
+                                                <Label Grid.Column="1" Text="{Binding Rank}" VerticalOptions="Center"></Label>
+                                                <Button Text="Edit" HorizontalOptions="EndAndExpand" 
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfficerViewModel}},
+                                                    Path=EditOfficerCommand}" CommandParameter="{Binding .}"></Button>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                                </SwipeView>
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

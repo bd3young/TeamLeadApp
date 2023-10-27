@@ -14,13 +14,32 @@ namespace TeamLeadApp.ViewModels
 		public Command LoadOfficerCommand { get; }
 		public ObservableCollection<Officer> Officers { get; }
 		public Command AddOfficerCommand { get; }
-		public OfficerViewModel() 
+		public Command EditOfficerCommand { get; }
+		public Command DeleteOfficerCommand { get; }
+		public OfficerViewModel(INavigation _navigation) 
 		{
 			LoadOfficerCommand = new Command(async()=> await ExecuteLoadOfficerCommand());
 			Officers = new ObservableCollection<Officer>();
 			AddOfficerCommand = new Command(OnAddOfficer);
+			EditOfficerCommand = new Command<Officer>(OnEditOfficer);
+			DeleteOfficerCommand = new Command<Officer>(OnDeleteOfficer);
+			Navigation = _navigation;
 		}
 
+		private async void OnDeleteOfficer(Officer officer)
+		{
+			if (officer == null)
+			{
+				return;
+			}
+
+			await App.OfficerService.DeleteProductAsync(officer.Id);
+			await ExecuteLoadOfficerCommand();
+		}
+		private async void OnEditOfficer(Officer officer)
+		{
+			await Navigation.PushAsync(new AddOfficerPage(officer));
+		}
 		private async void OnAddOfficer(object obj)
 		{
 			await Shell.Current.GoToAsync(nameof(AddOfficerPage));

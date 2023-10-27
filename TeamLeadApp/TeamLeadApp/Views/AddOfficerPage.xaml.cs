@@ -19,5 +19,16 @@ namespace TeamLeadApp.Views
 			InitializeComponent();
 			BindingContext = new AddOfficerViewModel();
 		}
+
+		public AddOfficerPage(Officer officer)
+		{
+			InitializeComponent();
+			BindingContext = new AddOfficerViewModel();
+
+			if (officer != null)
+			{
+				((AddOfficerViewModel)BindingContext).Officer = officer;
+			}
+		}
 	}
 }

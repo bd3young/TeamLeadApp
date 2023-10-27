@@ -16,7 +16,7 @@ namespace TeamLeadApp.Views
 		public OfficerPage()
 		{
 			InitializeComponent();
-			BindingContext = officerViewModel = new OfficerViewModel();
+			BindingContext = officerViewModel = new OfficerViewModel(Navigation);
 		}
 			protected override void OnAppearing()
 		{

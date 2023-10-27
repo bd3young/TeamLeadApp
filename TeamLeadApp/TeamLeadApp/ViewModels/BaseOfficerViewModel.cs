@@ -4,12 +4,15 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using TeamLeadApp.Models;
+using Xamarin.Forms;
 
 namespace TeamLeadApp.ViewModels
 {
 	public class BaseOfficerViewModel:INotifyPropertyChanged
 	{
 		private Officer _officer;
+
+		public INavigation Navigation { get; set; }
 
 		public Officer Officer 
 		{ 

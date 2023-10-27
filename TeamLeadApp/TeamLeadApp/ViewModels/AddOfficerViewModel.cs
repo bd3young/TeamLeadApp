@@ -14,6 +14,10 @@ namespace TeamLeadApp.ViewModels
 		{
 			SaveCommand = new Command(OnSave);
 			CancelCommand = new Command(OnCancel);
+
+			this.PropertyChanged += 
+				(_, __) => SaveCommand.ChangeCanExecute();
+
 			Officer = new Officer();
 		}
 
