@@ -11,9 +11,11 @@
     
     <ContentPage.Content>
         <StackLayout>
+            <SearchBar Placeholder="Search Officer" TextChanged="SearchBar_TextChanged"/>
             <RefreshView x:DataType="local:OfficerViewModel"
                          Command="{Binding LoadOfficerCommand}"
                          IsRefreshing="{Binding IsBusy,Mode=OneWay}">
+                             
                 <CollectionView
                     ItemsSource="{Binding Officers}"
                     SelectionMode="None">
@@ -25,24 +27,50 @@
                                         <SwipeItems>
                                             <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfficerViewModel}},
                                                 Path=DeleteOfficerCommand}" CommandParameter="{Binding .}"/>
+                                            <SwipeItem Text="Edit" BackgroundColor="Blue" Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfficerViewModel}},
+                                                Path=EditOfficerCommand}" CommandParameter="{Binding .}"/>
                                             <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
                                         </SwipeItems>
                                     </SwipeView.RightItems>
                                     <Grid Padding="5">
                                     <Frame CornerRadius="10" HasShadow="True">
-                                        <StackLayout Orientation="Vertical">
-                                            <Label Text="Officer" FontAttributes="Bold"/>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Grid.Column="1" Text="{Binding FirstName}" VerticalOptions="Center"></Label>
-                                                <Label Grid.Column="1" Text="{Binding LastName}" VerticalOptions="Center"></Label>
-                                                <Label Grid.Column="1" Text="{Binding Shift}" VerticalOptions="Center"></Label>
-                                                <Label Grid.Column="1" Text="{Binding Rank}" VerticalOptions="Center"></Label>
-                                                <Button Text="Edit" HorizontalOptions="EndAndExpand" 
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfficerViewModel}},
-                                                    Path=EditOfficerCommand}" CommandParameter="{Binding .}"></Button>
+                                        
+                                            <StackLayout Orientation="Vertical">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                        <Label Text="Officer" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                        <Label Grid.Column="1" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label Grid.Column="1" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                        <Label Text="Rank" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                        <Label Grid.Column="1" Text="{Binding Rank}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                        <Label Text="Shift" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                        <Label Grid.Column="1" Text="{Binding Shift}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                        <Label Text="Work" FontAttributes="Bold"/>
+                                                        <Label Grid.Column="1" Text="{Binding ShiftBegin}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label Grid.Column="1" Text="{Binding ShiftEnd}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                        <Label Text="RDO" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                        <Label Grid.Column="1" Text="{Binding Rdo}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    </StackLayout>
+
+                                                </StackLayout>
                                             </StackLayout>
-                                        </StackLayout>
-                                    </Frame>
+                                            <Frame.Triggers>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding Gender}"  Value="M">
+                                                    <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding Gender}"  Value="F">
+                                                    <Setter Property="BackgroundColor" Value="LightPink"/>
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+                                        </Frame>
                                 </Grid>
                                 </SwipeView>
                             </StackLayout>

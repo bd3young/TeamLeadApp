@@ -28,6 +28,7 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnDeleteOfficer(Officer officer)
 		{
+			
 			if (officer == null)
 			{
 				return;
