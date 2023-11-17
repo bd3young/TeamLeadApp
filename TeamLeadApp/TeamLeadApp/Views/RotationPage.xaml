@@ -1,12 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
+             xmlns:model="clr-namespace:TeamLeadApp.Models" 
+             x:DataType="local:RotationViewModel"
              x:Class="TeamLeadApp.Views.RotationPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <CollectionView
+            ItemsSource="{Binding Officers}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout x:DataType="model:Officer">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Grid Padding="5">
+                                <Frame CornerRadius="10" HasShadow="True">
+
+                                    <StackLayout Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                <Label Text="Officer" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                <Label Grid.Column="1" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                <Label Grid.Column="1" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                <Label Text="Break" FontAttributes="Bold"/>
+                                                <RadioButton></RadioButton>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                <Label Text="Lunch" FontAttributes="Bold"/>
+                                                <RadioButton></RadioButton>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                <Label Text="Break" FontAttributes="Bold"/>
+                                                <RadioButton></RadioButton>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <Frame.Triggers>
+                                        <DataTrigger TargetType="Frame" Binding="{Binding Gender}"  Value="M">
+                                            <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Frame" Binding="{Binding Gender}"  Value="F">
+                                            <Setter Property="BackgroundColor" Value="LightPink"/>
+                                        </DataTrigger>
+                                    </Frame.Triggers>
+                                </Frame>
+                            </Grid>
+                        </SwipeView>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+
+        </CollectionView>
     </ContentPage.Content>
 </ContentPage>

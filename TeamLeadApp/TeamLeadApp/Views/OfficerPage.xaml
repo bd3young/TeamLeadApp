@@ -11,7 +11,7 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar Placeholder="Search Officer" TextChanged="SearchBar_TextChanged"/>
+            <!--<SearchBar Placeholder="Search Officer" TextChanged="SearchBar_TextChanged"/>-->
             <RefreshView x:DataType="local:OfficerViewModel"
                          Command="{Binding LoadOfficerCommand}"
                          IsRefreshing="{Binding IsBusy,Mode=OneWay}">
