@@ -11,11 +11,16 @@ namespace TeamLeadApp.Models
 		public int Id { get; set; }	
 		public String FirstName { get; set; }
 		public String LastName { get; set; }
-		public String Rdo { get; set; }
+		public String RdoOne { get; set; }
+		public String RdoTwo { get; set; }
 		public int ShiftBegin { get; set; }
 		public int ShiftEnd { get; set; }
 		public string Gender { get; set; }
 		public string Rank { get; set; }
 		public string Shift { get; set; }
+		public bool FullTime { get; set; }
+		public bool BreakOne { get; set; } = false;
+		public bool BreakTwo { get; set; } = false;
+		public bool Lunch { get; set; } = false;
 	}
 }

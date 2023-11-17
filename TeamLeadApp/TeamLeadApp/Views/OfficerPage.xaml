@@ -57,7 +57,8 @@
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0">
                                                         <Label Text="RDO" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                                                        <Label Grid.Column="1" Text="{Binding Rdo}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label Grid.Column="1" Text="{Binding RdoOne}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label Grid.Column="1" Text="{Binding RdoTwo}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
 
                                                 </StackLayout>

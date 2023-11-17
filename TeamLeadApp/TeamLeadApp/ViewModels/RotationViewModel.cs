@@ -33,7 +33,7 @@ namespace TeamLeadApp.ViewModels
 				var officerList = await App.OfficerService.GetProductsAsync();
 				foreach (var officer in officerList)
 				{
-					if (officer.ShiftBegin < Convert.ToInt16(DateTime.Now.ToShortTimeString()) && officer.ShiftEnd > Convert.ToInt16(DateTime.Now.ToShortTimeString()) && officer.Rdo.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper())
+					if (officer.RdoOne.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper())
 					{
 						Officers.Add(officer);
 					}
