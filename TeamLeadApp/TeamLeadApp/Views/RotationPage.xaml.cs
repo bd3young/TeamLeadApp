@@ -23,5 +23,6 @@ namespace TeamLeadApp.Views
 			base.OnAppearing();
 			rotationViewModel.OnAppearing();
 		}
+
 	}
 }

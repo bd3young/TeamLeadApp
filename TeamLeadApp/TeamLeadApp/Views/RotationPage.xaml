@@ -6,58 +6,64 @@
              x:DataType="local:RotationViewModel"
              x:Class="TeamLeadApp.Views.RotationPage">
     <ContentPage.Content>
-        <CollectionView
+        <StackLayout>
+            <RefreshView x:DataType="local:RotationViewModel"
+             Command="{Binding LoadRotationCommand}"
+             IsRefreshing="{Binding IsBusy,Mode=OneWay}">
+            <CollectionView
             ItemsSource="{Binding Officers}"
             SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout x:DataType="model:Officer">
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems>
-                                    <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <Grid Padding="5">
-                                <Frame CornerRadius="10" HasShadow="True">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout x:DataType="model:Officer">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid Padding="5">
+                                    <Frame CornerRadius="10" HasShadow="True">
 
-                                    <StackLayout Orientation="Vertical">
-                                        <StackLayout Orientation="Horizontal">
-                                            <StackLayout Orientation="Vertical" Margin="0,0,5,0">
-                                                <Label Text="Officer" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                                                <Label Grid.Column="1" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                                <Label Grid.Column="1" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                            </StackLayout>
-                                            <StackLayout Orientation="Vertical" Margin="0,0,5,0">
-                                                <Label Text="Break" FontAttributes="Bold"/>
-                                                <RadioButton></RadioButton>
-                                            </StackLayout>
-                                            <StackLayout Orientation="Vertical" Margin="0,0,5,0">
-                                                <Label Text="Lunch" FontAttributes="Bold"/>
-                                                <RadioButton></RadioButton>
-                                            </StackLayout>
-                                            <StackLayout Orientation="Vertical" Margin="0,0,5,0">
-                                                <Label Text="Break" FontAttributes="Bold"/>
-                                                <RadioButton></RadioButton>
+                                        <StackLayout Orientation="Vertical">
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <Label Text="Officer" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                    <Label Grid.Column="1" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    <Label Grid.Column="1" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <Label Text="Break" FontAttributes="Bold"/>
+                                                    <RadioButton IsChecked="{Binding BreakOne}"></RadioButton>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <Label Text="Lunch" FontAttributes="Bold"/>
+                                                    <RadioButton IsChecked="{Binding Lunch}"></RadioButton>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <Label Text="Break" FontAttributes="Bold"/>
+                                                    <RadioButton IsChecked="{Binding BreakTwo}"></RadioButton>
+                                                </StackLayout>
                                             </StackLayout>
                                         </StackLayout>
-                                    </StackLayout>
-                                    <Frame.Triggers>
-                                        <DataTrigger TargetType="Frame" Binding="{Binding Gender}"  Value="M">
-                                            <Setter Property="BackgroundColor" Value="LightBlue"/>
-                                        </DataTrigger>
-                                        <DataTrigger TargetType="Frame" Binding="{Binding Gender}"  Value="F">
-                                            <Setter Property="BackgroundColor" Value="LightPink"/>
-                                        </DataTrigger>
-                                    </Frame.Triggers>
-                                </Frame>
-                            </Grid>
-                        </SwipeView>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+                                        <Frame.Triggers>
+                                            <DataTrigger TargetType="Frame" Binding="{Binding Gender}"  Value="M">
+                                                <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Frame" Binding="{Binding Gender}"  Value="F">
+                                                <Setter Property="BackgroundColor" Value="LightPink"/>
+                                            </DataTrigger>
+                                        </Frame.Triggers>
+                                    </Frame>
+                                </Grid>
+                            </SwipeView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
 
 
-        </CollectionView>
+            </CollectionView>
+            </RefreshView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
