@@ -37,6 +37,9 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnUpdateBreakOne(Officer officer)
 		{
+			if (officer != null) 
+			{
+			
 			var offList = await App.OfficerService.GetProductsAsync();
 			foreach (var product in offList) 
 			{
@@ -45,12 +48,23 @@ namespace TeamLeadApp.ViewModels
 					await App.OfficerService.AddProductAsync(officer);
 				}
 			}
-
+			}
 			
 		}
 		private async void OnUpdateBreakTwo(Officer officer)
 		{
-			await App.OfficerService.AddProductAsync(officer);
+			if (officer != null)
+			{
+
+				var offList = await App.OfficerService.GetProductsAsync();
+				foreach (var product in offList)
+				{
+					if (product.Id == officer.Id && product.BreakTwo != officer.BreakTwo)
+					{
+						await App.OfficerService.AddProductAsync(officer);
+					}
+				}
+			}
 		}
 		private async void OnUpdateNotes(Officer officer)
 		{
@@ -60,7 +74,18 @@ namespace TeamLeadApp.ViewModels
 		private async void OnUpdateLunch(Officer officer)
 		{
 
-			await App.OfficerService.AddProductAsync(officer);
+			if (officer != null)
+			{
+
+				var offList = await App.OfficerService.GetProductsAsync();
+				foreach (var product in offList)
+				{
+					if (product.Id == officer.Id && product.Lunch != officer.Lunch)
+					{
+						await App.OfficerService.AddProductAsync(officer);
+					}
+				}
+			}
 		}
 		private async void OnUpdateLv(Officer officer)
 		{

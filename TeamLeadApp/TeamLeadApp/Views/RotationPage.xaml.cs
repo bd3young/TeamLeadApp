@@ -30,7 +30,7 @@ namespace TeamLeadApp.Views
 			var cb = (CheckBox)sender;
 
 			var viewModel = (RotationViewModel)BindingContext;
-			if (viewModel.UpdateBreakOneCommand.CanExecute(null))
+			if (viewModel.UpdateBreakOneCommand.CanExecute(cb.BindingContext))
 			{
 				viewModel.UpdateBreakOneCommand.Execute(cb.BindingContext);
 			}
@@ -54,6 +54,5 @@ namespace TeamLeadApp.Views
 				viewModel.UpdateLunchCommand.Execute(cb.BindingContext);
 			}
 		}
-
 	}
 }

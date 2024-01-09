@@ -36,15 +36,15 @@
                                                 </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                     <Label Text="Break" FontAttributes="Bold"/>
-                                                    <CheckBox IsChecked="{Binding BreakOne}" Color="Black" PropertyChanged="BreakOne_CheckedChanged" ></CheckBox>
+                                                    <CheckBox IsChecked="{Binding BreakOne}" Color="Black" PropertyChanged="BreakOne_CheckedChanged"></CheckBox>
                                                 </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                     <Label Text="Lunch" FontAttributes="Bold"/>
-                                                    <CheckBox IsChecked="{Binding Lunch}" Color="Black" PropertyChanged="Lunch_CheckedChanged" ></CheckBox>
+                                                        <CheckBox IsChecked="{Binding Lunch}" Color="Black" PropertyChanged="Lunch_CheckedChanged"></CheckBox>
                                                 </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                     <Label Text="Break" FontAttributes="Bold"/>
-                                                    <CheckBox IsChecked="{Binding BreakTwo}" Color="Black" PropertyChanged="BreakTwo_CheckedChanged" ></CheckBox>
+                                                        <CheckBox IsChecked="{Binding BreakTwo}" Color="Black" PropertyChanged="BreakTwo_CheckedChanged" ></CheckBox>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                     <Label Text="Notes" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="30,0,30,0"/>
