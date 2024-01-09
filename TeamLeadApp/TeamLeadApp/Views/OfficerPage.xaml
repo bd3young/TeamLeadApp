@@ -6,6 +6,8 @@
              x:Class="TeamLeadApp.Views.OfficerPage">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New Day" x:DataType="local:OfficerViewModel" Command="{Binding ResetOfficersCommand}"/>
+        <ToolbarItem Text="|"/>
         <ToolbarItem Text="Add" x:DataType="local:OfficerViewModel" Command="{Binding AddOfficerCommand}"/>
     </ContentPage.ToolbarItems>
     
@@ -37,25 +39,25 @@
                                         
                                             <StackLayout Orientation="Vertical">
                                                 <StackLayout Orientation="Horizontal">
-                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                         <Label Text="Officer" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                                         <Label Grid.Column="1" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                         <Label Grid.Column="1" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
-                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                         <Label Text="Rank" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                                         <Label Grid.Column="1" Text="{Binding Rank}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
-                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                         <Label Text="Shift" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                                         <Label Grid.Column="1" Text="{Binding Shift}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
-                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                         <Label Text="Work" FontAttributes="Bold"/>
                                                         <Label Grid.Column="1" Text="{Binding ShiftBegin}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                         <Label Grid.Column="1" Text="{Binding ShiftEnd}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
-                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                         <Label Text="RDO" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                                         <Label Grid.Column="1" Text="{Binding RdoOne}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                         <Label Grid.Column="1" Text="{Binding RdoTwo}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>

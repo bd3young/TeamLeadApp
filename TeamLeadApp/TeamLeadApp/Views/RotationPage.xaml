@@ -18,36 +18,38 @@
                         <StackLayout x:DataType="model:Officer">
                             <SwipeView>
                                 <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
-                                        <SwipeItem Text="LV" BackgroundColor="Red"/>
-                                    </SwipeItems>
+                                        <SwipeItems>
+                                            <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
+                                            <SwipeItem Text="LV" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}},
+                                            Path=UpdateLvCommand}" CommandParameter="{Binding .}"/>
+                                        </SwipeItems>
                                 </SwipeView.RightItems>
                                 <Grid Padding="5">
                                     <Frame CornerRadius="10" HasShadow="True">
 
                                         <StackLayout Orientation="Vertical">
                                             <StackLayout Orientation="Horizontal">
-                                                <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                     <Label Text="Officer" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                                     <Label Grid.Column="1" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     <Label Grid.Column="1" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                     <Label Text="Break" FontAttributes="Bold"/>
-                                                    <RadioButton IsChecked="{Binding BreakOne}"></RadioButton>
+                                                    <CheckBox IsChecked="{Binding BreakOne}" Color="Black" PropertyChanged="BreakOne_CheckedChanged" ></CheckBox>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                     <Label Text="Lunch" FontAttributes="Bold"/>
-                                                    <RadioButton IsChecked="{Binding Lunch}"></RadioButton>
+                                                    <CheckBox IsChecked="{Binding Lunch}" Color="Black" PropertyChanged="Lunch_CheckedChanged" ></CheckBox>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Vertical" Margin="0,0,5,0">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                     <Label Text="Break" FontAttributes="Bold"/>
-                                                    <RadioButton IsChecked="{Binding BreakTwo}"></RadioButton>
-                                                </StackLayout>
-                                                <StackLayout Orientation="Vertical" Margin="0,0,5,0">
-                                                    <Label Text="Notes" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="45,0,45,0"/>
-                                                    <Entry Text="{Binding Notes}" VerticalOptions="CenterAndExpand"></Entry>
+                                                    <CheckBox IsChecked="{Binding BreakTwo}" Color="Black" PropertyChanged="BreakTwo_CheckedChanged" ></CheckBox>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
+                                                    <Label Text="Notes" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="30,0,30,0"/>
+                                                    <Entry FontSize="Micro" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}},
+                                                    Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Notes}" VerticalOptions="CenterAndExpand"></Entry>
                                                 </StackLayout>
                                                 </StackLayout>
                                         </StackLayout>

@@ -16,6 +16,7 @@ namespace TeamLeadApp.ViewModels
 		public Command AddOfficerCommand { get; }
 		public Command EditOfficerCommand { get; }
 		public Command DeleteOfficerCommand { get; }
+		public Command ResetOfficersCommand { get; }
 		public OfficerViewModel(INavigation _navigation) 
 		{
 			LoadOfficerCommand = new Command(async()=> await ExecuteLoadOfficerCommand());
@@ -23,6 +24,7 @@ namespace TeamLeadApp.ViewModels
 			AddOfficerCommand = new Command(OnAddOfficer);
 			EditOfficerCommand = new Command<Officer>(OnEditOfficer);
 			DeleteOfficerCommand = new Command<Officer>(OnDeleteOfficer);
+			ResetOfficersCommand = new Command(ResetOfficers);
 			Navigation = _navigation;
 		}
 
@@ -44,6 +46,21 @@ namespace TeamLeadApp.ViewModels
 		private async void OnAddOfficer(object obj)
 		{
 			await Shell.Current.GoToAsync(nameof(AddOfficerPage));
+		}
+
+		async void ResetOfficers(object obj)
+		{
+			var officerList = await App.OfficerService.GetProductsAsync();
+			foreach (var officer in officerList)
+			{
+				officer.BreakOne = false; 
+				officer.BreakTwo = false;
+				officer.Lunch = false;
+				officer.Notes = "";
+				officer.Lv = false;
+
+				await App.OfficerService.AddProductAsync(officer);
+			}
 		}
 
 		public void OnAppearing() 

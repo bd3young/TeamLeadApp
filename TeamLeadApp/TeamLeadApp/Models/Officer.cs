@@ -23,5 +23,6 @@ namespace TeamLeadApp.Models
 		public bool BreakTwo { get; set; } = false;
 		public bool Lunch { get; set; } = false;
 		public string Notes { get; set; } = "";
+		public bool Lv { get; set; } = false;
 	}
 }

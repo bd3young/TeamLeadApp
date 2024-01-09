@@ -30,10 +30,9 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-        <ShellContent Title="Browse" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
-        <ShellContent Title="Rotation" Icon="icon_sheet.png" Route="RotationPage" ContentTemplate="{DataTemplate local:RotationPage}" />
-        <ShellContent Title="Officer" Icon="icon_officer.png" Route="OfficerPage" ContentTemplate="{DataTemplate local:OfficerPage}" />
+        <ShellContent Title="AM Rotation" Icon="icon_sheet.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Title="PM Rotation" Icon="icon_sheet.png" Route="RotationPage" ContentTemplate="{DataTemplate local:RotationPage}" />
+        <ShellContent Title="Officers" Icon="icon_officer.png" Route="OfficerPage" ContentTemplate="{DataTemplate local:OfficerPage}" />
     </TabBar>
 
     <!--
