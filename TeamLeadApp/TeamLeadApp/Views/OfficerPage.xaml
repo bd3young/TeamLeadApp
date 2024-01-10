@@ -10,6 +10,8 @@
         <ToolbarItem Text="New Day" x:DataType="local:OfficerViewModel" Command="{Binding ResetOfficersCommand}"/>
         <ToolbarItem Text="|"/>
         <ToolbarItem Text="Add" x:DataType="local:OfficerViewModel" Command="{Binding AddOfficerCommand}"/>
+        <ToolbarItem Text="|"/>
+        <ToolbarItem Text="{Binding Officers.Count}"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
