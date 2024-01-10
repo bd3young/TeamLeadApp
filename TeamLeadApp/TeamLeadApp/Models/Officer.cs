@@ -18,7 +18,7 @@ namespace TeamLeadApp.Models
 		public string Gender { get; set; }
 		public string Rank { get; set; }
 		public string Shift { get; set; }
-		public bool FullTime { get; set; }
+		public bool FullTime { get; set; } = true;
 		public bool BreakOne { get; set; } = false;
 		public bool BreakTwo { get; set; } = false;
 		public bool Lunch { get; set; } = false;

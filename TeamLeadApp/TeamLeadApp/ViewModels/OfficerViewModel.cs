@@ -76,9 +76,79 @@ namespace TeamLeadApp.ViewModels
 			{
 				Officers.Clear();
 				var officerList = await App.OfficerService.GetProductsAsync();
-				foreach (var officer in officerList)
+				foreach (var stsofficer in officerList)
 				{
-					Officers.Add(officer);
+					if (stsofficer.Rank == "STSO")
+					{
+						Officers.Add(stsofficer);
+					}
+					else 
+					{
+						continue;
+					}
+					
+				}
+
+				foreach (var ltsofficer in officerList)
+				{
+					if (ltsofficer.Rank == "LTSO")
+					{
+						Officers.Add(ltsofficer);
+					}
+					else
+					{
+						continue;
+					}
+
+				}
+
+				foreach (var ftpmofficer in officerList)
+				{
+					if (ftpmofficer.Rank == "TSO" && ftpmofficer.FullTime == true && ftpmofficer.Shift == "PM" )
+					{
+						Officers.Add(ftpmofficer);
+					}
+					else
+					{
+						continue;
+					}
+
+				}
+				foreach (var ftamofficer in officerList)
+				{
+					if (ftamofficer.Rank == "TSO" && ftamofficer.FullTime == true && ftamofficer.Shift == "AM")
+					{
+						Officers.Add(ftamofficer);
+					}
+					else
+					{
+						continue;
+					}
+
+				}
+				foreach (var ptpmofficer in officerList)
+				{
+					if (ptpmofficer.Rank == "TSO" && ptpmofficer.FullTime == false && ptpmofficer.Shift == "PM")
+					{
+						Officers.Add(ptpmofficer);
+					}
+					else
+					{
+						continue;
+					}
+
+				}
+				foreach (var ptamofficer in officerList)
+				{
+					if (ptamofficer.Rank == "TSO" && ptamofficer.FullTime == false && ptamofficer.Shift == "AM")
+					{
+						Officers.Add(ptamofficer);
+					}
+					else
+					{
+						continue;
+					}
+
 				}
 			}
 			catch (Exception)
