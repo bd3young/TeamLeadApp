@@ -96,6 +96,7 @@ namespace TeamLeadApp.ViewModels
 			officer.Lv = true;
 			
 			await App.OfficerService.AddProductAsync(officer);
+
 		}
 		private async Task ExecuteLoadPmRotationCommand()
 		{
@@ -189,7 +190,9 @@ namespace TeamLeadApp.ViewModels
 							|| ptofficer.RdoOne.ToUpper().Trim() == "TUESDAY" && ptofficer.RdoTwo.ToUpper().Trim() == "THURSDAY" && Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() == "WEDNESDAY"
 							|| ptofficer.RdoOne.ToUpper().Trim() == "WEDNESDAY" && ptofficer.RdoTwo.ToUpper().Trim() == "FRIDAY" && Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() == "THURSDAY"
 							|| ptofficer.RdoOne.ToUpper().Trim() == "THURSDAY" && ptofficer.RdoTwo.ToUpper().Trim() == "SATURDAY" && Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() == "FRIDAY"
-							|| ptofficer.RdoOne.ToUpper().Trim() == "SUNDAY" && ptofficer.RdoTwo.ToUpper().Trim() == "TUESDAY" && Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() == "MONDAY")
+							|| ptofficer.RdoOne.ToUpper().Trim() == "SUNDAY" && ptofficer.RdoTwo.ToUpper().Trim() == "TUESDAY" && Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() == "MONDAY"
+							|| ptofficer.RdoOne.ToUpper().Trim() == "SATURDAY" && ptofficer.RdoTwo.ToUpper().Trim() == "WEDNESDAY" && Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() == "MONDAY"
+							|| ptofficer.RdoOne.ToUpper().Trim() == "SATURDAY" && ptofficer.RdoTwo.ToUpper().Trim() == "WEDNESDAY" && Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() == "TUESDAY")
 						{
 							continue;
 						}
@@ -219,6 +222,8 @@ namespace TeamLeadApp.ViewModels
 		private async Task ExecuteLoadAmRotationCommand()
 		{
 			IsBusy = true;
+
+
 
 			try
 			{

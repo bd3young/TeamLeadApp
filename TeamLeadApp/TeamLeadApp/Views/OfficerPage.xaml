@@ -30,13 +30,13 @@
                                 <SwipeView>
                                     <SwipeView.RightItems>
                                         <SwipeItems>
-                                            <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfficerViewModel}},
-                                                Path=DeleteOfficerCommand}" CommandParameter="{Binding .}"/>
-                                            <SwipeItem Text="Edit" BackgroundColor="Blue" Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfficerViewModel}},
-                                                Path=EditOfficerCommand}" CommandParameter="{Binding .}"/>
+                                            <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
                                             <SwipeItem Text="EHS" BackgroundColor="MediumPurple" Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfficerViewModel}},
                                                 Path=UpdateEhsCommand}" CommandParameter="{Binding .}"/>
-                                            <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
+                                            <SwipeItem Text="Edit" BackgroundColor="Blue" Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfficerViewModel}},
+                                                Path=EditOfficerCommand}" CommandParameter="{Binding .}"/>
+                                            <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:OfficerViewModel}},
+                                                Path=DeleteOfficerCommand}" CommandParameter="{Binding .}"/>
                                         </SwipeItems>
                                     </SwipeView.RightItems>
                                     <Grid Padding="5" BackgroundColor="White">

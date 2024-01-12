@@ -10,10 +10,51 @@ namespace TeamLeadApp.Services
 	public class OfficerService : IOfficerRepository
 	{
 		public SQLiteAsyncConnection _database;
+		List<Officer> initOfficers;
 		public OfficerService(string dbPath) 
 		{
+
 			_database = new SQLiteAsyncConnection(dbPath);
 			_database.CreateTableAsync<Officer>().Wait();
+
+			//AddInitOfficers();
+
+		}
+
+		public async void AddInitOfficers()
+		{
+			int initOfficerCount = 0;
+
+			var officerList = await App.OfficerService.GetProductsAsync();
+
+			initOfficers = new List<Officer>()
+			{
+
+			};
+
+			foreach (var initOfficer in initOfficers)
+			{
+
+				foreach (var exOfficer in officerList)
+				{
+					if (initOfficer.LastName == exOfficer.LastName )
+					{
+						initOfficerCount++;
+					}
+					
+				}
+
+				if (initOfficerCount == 0) 
+				{
+					await _database.InsertAsync(initOfficer);
+					initOfficerCount = 0;
+				}
+				else
+				{
+					continue;
+				}
+			}
+
 		}
 
 		//Insert & Update

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeamLeadApp.ViewModels;
+using TeamLeadApp.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +16,10 @@ namespace TeamLeadApp.Views
 		OfficerViewModel officerViewModel;
 		public OfficerPage()
 		{
+
+			App.OfficerService.AddInitOfficers();
+
+			
 			InitializeComponent();
 			BindingContext = officerViewModel = new OfficerViewModel(Navigation);
 		}
