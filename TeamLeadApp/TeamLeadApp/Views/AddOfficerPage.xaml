@@ -11,52 +11,52 @@
         <StackLayout Spacing="5" Padding="15">
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label TextColor="Black" Text="First Name" FontSize="Medium"/>
-                    <Entry PlaceholderColor="LightGray" Placeholder="Enter First Name" TextColor="Black" Text="{Binding Officer.FirstName, Mode=TwoWay}" FontSize="Medium"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="First Name" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter First Name" TextColor="Black" Text="{Binding Officer.FirstName, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label TextColor="Black" Text="Last Name" FontSize="Medium"/>
-                    <Entry TextColor="Black" PlaceholderColor="LightGray" Placeholder="Enter Last Name" Text="{Binding Officer.LastName, Mode=TwoWay}" FontSize="Medium"/>
-                </StackLayout>
-            </StackLayout>
-            <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label TextColor="Black" Text="First RDO" FontSize="Medium"/>
-                    <Entry PlaceholderColor="LightGray" Placeholder="Enter RDO" TextColor="Black" Text="{Binding Officer.RdoOne, Mode=TwoWay}" FontSize="Medium"/>
-                </StackLayout>
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label TextColor="Black" Text="Second RDO" FontSize="Medium"/>
-                    <Entry PlaceholderColor="LightGray" Placeholder="Enter RDO" TextColor="Black" Text="{Binding Officer.RdoTwo, Mode=TwoWay}" FontSize="Medium"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Last Name" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" TextColor="Black" PlaceholderColor="LightGray" Placeholder="Enter Last Name" Text="{Binding Officer.LastName, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label TextColor="Black" Text="Shift Begins" FontSize="Medium"/>
-                    <Entry PlaceholderColor="LightGray" Placeholder="Enter Time" TextColor="Black" Text="{Binding Officer.ShiftBegin, Mode=TwoWay}" FontSize="Medium"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="First RDO" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter RDO" TextColor="Black" Text="{Binding Officer.RdoOne, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label TextColor="Black" Text="Shift Ends" FontSize="Medium"/>
-                    <Entry PlaceholderColor="LightGray" Placeholder="Enter Time" TextColor="Black" Text="{Binding Officer.ShiftEnd, Mode=TwoWay}" FontSize="Medium"/>
-                </StackLayout>
-            </StackLayout>
-            <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label TextColor="Black" Text="Gender" FontSize="Medium"/>
-                    <Entry PlaceholderColor="LightGray" Placeholder="Enter Gender" TextColor="Black" Text="{Binding Officer.Gender, Mode=TwoWay}" FontSize="Medium"/>
-                </StackLayout>
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label TextColor="Black" Text="Rank" FontSize="Medium"/>
-                    <Entry PlaceholderColor="LightGray" Placeholder="Enter Rank" TextColor="Black" Text="{Binding Officer.Rank, Mode=TwoWay}" FontSize="Medium"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Second RDO" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter RDO" TextColor="Black" Text="{Binding Officer.RdoTwo, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label TextColor="Black" Text="Shift" FontSize="Medium"/>
-                    <Entry PlaceholderColor="LightGray" Placeholder="Enter AM or PM" TextColor="Black" Text="{Binding Officer.Shift, Mode=TwoWay}" FontSize="Medium"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Begins" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter Time" TextColor="Black" Text="{Binding Officer.ShiftBegin, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label TextColor="Black" Text="Fulltime" FontSize="Medium"/>
-                    <Entry PlaceholderColor="LightGray" Placeholder="Enter True or False" TextColor="Black" Text="{Binding Officer.FullTime, Mode=TwoWay}" FontSize="Medium"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Ends" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter Time" TextColor="Black" Text="{Binding Officer.ShiftEnd, Mode=TwoWay}" FontSize="Medium"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Gender" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter Gender" TextColor="Black" Text="{Binding Officer.Gender, Mode=TwoWay}" FontSize="Medium"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Rank" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter Rank" TextColor="Black" Text="{Binding Officer.Rank, Mode=TwoWay}" FontSize="Medium"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Shift" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter AM or PM" TextColor="Black" Text="{Binding Officer.Shift, Mode=TwoWay}" FontSize="Medium"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Fulltime" FontSize="Medium"/>
+                    <CheckBox Color="Black" HorizontalOptions="CenterAndExpand" IsChecked="{Binding Officer.FullTime, Mode=TwoWay}"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
