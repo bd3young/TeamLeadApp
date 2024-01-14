@@ -37,9 +37,17 @@ namespace TeamLeadApp.ViewModels
 			{
 				return;
 			}
-
-			await App.OfficerService.DeleteProductAsync(officer.Id);
-			await ExecuteLoadOfficerCommand();
+			bool answer = await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Employee", "Yes", "No");
+			if (answer == true)
+			{
+				await App.OfficerService.DeleteProductAsync(officer.Id);
+				await ExecuteLoadOfficerCommand();
+			}
+			else 
+			{
+				return;
+			}
+			
 		}
 		private async void OnEditOfficer(Officer officer)
 		{
@@ -52,6 +60,7 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnUpdateEhs(Officer officer)
 		{
+			officer.Lv = false;
 			officer.Ehs = true;
 
 			await App.OfficerService.AddProductAsync(officer);

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TeamLeadApp.Views.AddOfficerPage"
-             xmlns:local="clr-namespace:TeamLeadApp.ViewModels">
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
+             Title="Employee">
     <ContentPage.BindingContext>
         <local:AddOfficerViewModel/>
     </ContentPage.BindingContext>
@@ -12,47 +13,181 @@
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="First Name" FontSize="Medium"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter First Name" TextColor="Black" Text="{Binding Officer.FirstName, Mode=TwoWay}" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="Fill" PlaceholderColor="LightGray" Placeholder="Enter First Name" TextColor="Black" Text="{Binding Officer.FirstName, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Last Name" FontSize="Medium"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" TextColor="Black" PlaceholderColor="LightGray" Placeholder="Enter Last Name" Text="{Binding Officer.LastName, Mode=TwoWay}" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="Fill" TextColor="Black" PlaceholderColor="LightGray" Placeholder="Enter Last Name" Text="{Binding Officer.LastName, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="First RDO" FontSize="Medium"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter RDO" TextColor="Black" Text="{Binding Officer.RdoOne, Mode=TwoWay}" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoOne, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
+                        <Picker.Items>
+                            <x:String>None</x:String>
+                            <x:String>Sunday</x:String>
+                            <x:String>Monday</x:String>
+                            <x:String>Tuesday</x:String>
+                            <x:String>Wednesday</x:String>
+                            <x:String>Thursday</x:String>
+                            <x:String>Friday</x:String>
+                            <x:String>Staturday</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Second RDO" FontSize="Medium"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter RDO" TextColor="Black" Text="{Binding Officer.RdoTwo, Mode=TwoWay}" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoTwo, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
+                        <Picker.Items>
+                            <x:String>None</x:String>
+                            <x:String>Sunday</x:String>
+                            <x:String>Monday</x:String>
+                            <x:String>Tuesday</x:String>
+                            <x:String>Wednesday</x:String>
+                            <x:String>Thursday</x:String>
+                            <x:String>Friday</x:String>
+                            <x:String>Staturday</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Begins" FontSize="Medium"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter Time" TextColor="Black" Text="{Binding Officer.ShiftBegin, Mode=TwoWay}" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.ShiftBegin, Mode=TwoWay}" Title="Enter Time" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
+                        <Picker.Items>
+                            <x:String>0100</x:String>
+                            <x:String>0130</x:String>
+                            <x:String>0230</x:String>
+                            <x:String>0300</x:String>
+                            <x:String>0330</x:String>
+                            <x:String>0400</x:String>
+                            <x:String>0430</x:String>
+                            <x:String>0530</x:String>
+                            <x:String>0600</x:String>
+                            <x:String>0630</x:String>
+                            <x:String>0700</x:String>
+                            <x:String>0730</x:String>
+                            <x:String>0800</x:String>
+                            <x:String>0830</x:String>
+                            <x:String>0900</x:String>
+                            <x:String>0930</x:String>
+                            <x:String>1000</x:String>
+                            <x:String>1030</x:String>
+                            <x:String>1100</x:String>
+                            <x:String>1130</x:String>
+                            <x:String>1200</x:String>
+                            <x:String>1230</x:String>
+                            <x:String>1300</x:String>
+                            <x:String>1330</x:String>
+                            <x:String>1400</x:String>
+                            <x:String>1430</x:String>
+                            <x:String>1500</x:String>
+                            <x:String>1530</x:String>
+                            <x:String>1600</x:String>
+                            <x:String>1630</x:String>
+                            <x:String>1700</x:String>
+                            <x:String>1730</x:String>
+                            <x:String>1800</x:String>
+                            <x:String>1830</x:String>
+                            <x:String>1900</x:String>
+                            <x:String>1930</x:String>
+                            <x:String>2000</x:String>
+                            <x:String>2030</x:String>
+                            <x:String>2100</x:String>
+                            <x:String>2130</x:String>
+                            <x:String>2200</x:String>
+                            <x:String>2230</x:String>
+                            <x:String>2300</x:String>
+                            <x:String>2330</x:String>
+                            <x:String>2400</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Ends" FontSize="Medium"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter Time" TextColor="Black" Text="{Binding Officer.ShiftEnd, Mode=TwoWay}" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.ShiftEnd, Mode=TwoWay}" Title="Enter Time" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
+                        <Picker.Items>
+                            <x:String>0100</x:String>
+                            <x:String>0130</x:String>
+                            <x:String>0230</x:String>
+                            <x:String>0300</x:String>
+                            <x:String>0330</x:String>
+                            <x:String>0400</x:String>
+                            <x:String>0430</x:String>
+                            <x:String>0530</x:String>
+                            <x:String>0600</x:String>
+                            <x:String>0630</x:String>
+                            <x:String>0700</x:String>
+                            <x:String>0730</x:String>
+                            <x:String>0800</x:String>
+                            <x:String>0830</x:String>
+                            <x:String>0900</x:String>
+                            <x:String>0930</x:String>
+                            <x:String>1000</x:String>
+                            <x:String>1030</x:String>
+                            <x:String>1100</x:String>
+                            <x:String>1130</x:String>
+                            <x:String>1200</x:String>
+                            <x:String>1230</x:String>
+                            <x:String>1300</x:String>
+                            <x:String>1330</x:String>
+                            <x:String>1400</x:String>
+                            <x:String>1430</x:String>
+                            <x:String>1500</x:String>
+                            <x:String>1530</x:String>
+                            <x:String>1600</x:String>
+                            <x:String>1630</x:String>
+                            <x:String>1700</x:String>
+                            <x:String>1730</x:String>
+                            <x:String>1800</x:String>
+                            <x:String>1830</x:String>
+                            <x:String>1900</x:String>
+                            <x:String>1930</x:String>
+                            <x:String>2000</x:String>
+                            <x:String>2030</x:String>
+                            <x:String>2100</x:String>
+                            <x:String>2130</x:String>
+                            <x:String>2200</x:String>
+                            <x:String>2230</x:String>
+                            <x:String>2300</x:String>
+                            <x:String>2330</x:String>
+                            <x:String>2400</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Gender" FontSize="Medium"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter Gender" TextColor="Black" Text="{Binding Officer.Gender, Mode=TwoWay}" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.Gender, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
+                        <Picker.Items>
+                            <x:String>M</x:String>
+                            <x:String>F</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Rank" FontSize="Medium"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter Rank" TextColor="Black" Text="{Binding Officer.Rank, Mode=TwoWay}" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.Rank, Mode=TwoWay}" Title="Enter Rank" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
+                        <Picker.Items>
+                            <x:String>STSO</x:String>
+                            <x:String>LTSO</x:String>
+                            <x:String>TSO</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Shift" FontSize="Medium"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" PlaceholderColor="LightGray" Placeholder="Enter AM or PM" TextColor="Black" Text="{Binding Officer.Shift, Mode=TwoWay}" FontSize="Medium"/>
+                    <Picker TextColor="Black" Title="Enter Shift" TitleColor="LightGray" SelectedItem="{Binding Officer.Shift, Mode=TwoWay}"   HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
+                        <Picker.Items>
+                            <x:String>AM</x:String>
+                            <x:String>PM</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Fulltime" FontSize="Medium"/>

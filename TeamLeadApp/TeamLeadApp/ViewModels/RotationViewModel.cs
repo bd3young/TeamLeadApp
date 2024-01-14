@@ -96,6 +96,8 @@ namespace TeamLeadApp.ViewModels
 			officer.Lv = true;
 			
 			await App.OfficerService.AddProductAsync(officer);
+			await ExecuteLoadAmRotationCommand();
+			await ExecuteLoadPmRotationCommand();
 
 		}
 		private async Task ExecuteLoadPmRotationCommand()
