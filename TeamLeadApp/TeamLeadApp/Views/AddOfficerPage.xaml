@@ -32,7 +32,7 @@
                             <x:String>Wednesday</x:String>
                             <x:String>Thursday</x:String>
                             <x:String>Friday</x:String>
-                            <x:String>Staturday</x:String>
+                            <x:String>Saturday</x:String>
                         </Picker.Items>
                     </Picker>
                 </StackLayout>
@@ -47,7 +47,7 @@
                             <x:String>Wednesday</x:String>
                             <x:String>Thursday</x:String>
                             <x:String>Friday</x:String>
-                            <x:String>Staturday</x:String>
+                            <x:String>Saturday</x:String>
                         </Picker.Items>
                     </Picker>
                 </StackLayout>
