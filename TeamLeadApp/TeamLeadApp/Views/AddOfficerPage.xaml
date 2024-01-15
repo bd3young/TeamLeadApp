@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TeamLeadApp.Views.AddOfficerPage"
              xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
-             Title="Employee">
+             Title="Officer">
     <ContentPage.BindingContext>
         <local:AddOfficerViewModel/>
     </ContentPage.BindingContext>
@@ -172,9 +172,9 @@
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Rank" FontSize="Medium"/>
                     <Picker TextColor="Black" SelectedItem="{Binding Officer.Rank, Mode=TwoWay}" Title="Enter Rank" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
-                            <x:String>STSO</x:String>
-                            <x:String>LTSO</x:String>
-                            <x:String>TSO</x:String>
+                            <x:String>SUP</x:String>
+                            <x:String>LEAD</x:String>
+                            <x:String>OFFICER</x:String>
                         </Picker.Items>
                     </Picker>
                 </StackLayout>

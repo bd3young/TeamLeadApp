@@ -18,6 +18,7 @@ namespace TeamLeadApp.ViewModels
 		public Command DeleteOfficerCommand { get; }
 		public Command ResetOfficersCommand { get; }
 		public Command UpdateEhsCommand { get; }
+		public Command SearchCommand { get; }
 		public OfficerViewModel(INavigation _navigation) 
 		{
 			LoadOfficerCommand = new Command(async()=> await ExecuteLoadOfficerCommand());
@@ -27,7 +28,29 @@ namespace TeamLeadApp.ViewModels
 			DeleteOfficerCommand = new Command<Officer>(OnDeleteOfficer);
 			ResetOfficersCommand = new Command(ResetOfficers);
 			UpdateEhsCommand = new Command<Officer>(OnUpdateEhs);
+			SearchCommand = new Command(Search);
 			Navigation = _navigation;
+		}
+
+		private async void Search(Object obj)
+		{
+			if (obj.ToString() == "")
+			{
+				await ExecuteLoadOfficerCommand();
+			}
+			else 
+			{
+				var offList = await App.OfficerService.GetProductsAsync();
+				Officers.Clear();
+				foreach (var officer in offList)
+				{
+					if (officer.LastName.ToUpper().Contains(obj.ToString().ToUpper()) || officer.FirstName.ToUpper().Contains(obj.ToString().ToUpper()))
+					{
+						
+						Officers.Add(officer);
+					}
+				}
+			}
 		}
 
 		private async void OnDeleteOfficer(Officer officer)
@@ -38,7 +61,7 @@ namespace TeamLeadApp.ViewModels
 				return;
 			}
 
-			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Employee", "Yes", "No"))
+			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Officer", "Yes", "No"))
 			{
 				await App.OfficerService.DeleteProductAsync(officer.Id);
 				await ExecuteLoadOfficerCommand();
@@ -68,17 +91,25 @@ namespace TeamLeadApp.ViewModels
 
 		async void ResetOfficers(object obj)
 		{
-			var officerList = await App.OfficerService.GetProductsAsync();
-			foreach (var officer in officerList)
-			{
-				officer.BreakOne = false; 
-				officer.BreakTwo = false;
-				officer.Lunch = false;
-				officer.Notes = "";
-				officer.Lv = false;
-				officer.Ehs = false;
 
-				await App.OfficerService.AddProductAsync(officer);
+			if (await App.Current.MainPage.DisplayAlert("New Day", "Are you sure you would like to start a New Day", "Yes", "No"))
+			{
+				var officerList = await App.OfficerService.GetProductsAsync();
+				foreach (var officer in officerList)
+				{
+					officer.BreakOne = false;
+					officer.BreakTwo = false;
+					officer.Lunch = false;
+					officer.Notes = "";
+					officer.Lv = false;
+					officer.Ehs = false;
+
+					await App.OfficerService.AddProductAsync(officer);
+				}
+			}
+			else
+			{
+				return;
 			}
 		}
 
@@ -90,11 +121,11 @@ namespace TeamLeadApp.ViewModels
 		async Task ExecuteLoadOfficerCommand() 
 		{
 			IsBusy = true;
-
+			var officerList = await App.OfficerService.GetProductsAsync();
 			try
 			{
 				Officers.Clear();
-				var officerList = await App.OfficerService.GetProductsAsync();
+				
 				//foreach (var officer in officerList) 
 				//{
 
@@ -102,11 +133,11 @@ namespace TeamLeadApp.ViewModels
 
 				//}
 
-				foreach (var stsofficer in officerList)
+				foreach (var sofficer in officerList)
 				{
-					if (stsofficer.Rank.ToUpper().Trim() == "STSO")
+					if (sofficer.Rank.ToUpper().Trim() == "SUP")
 					{
-						Officers.Add(stsofficer);
+						Officers.Add(sofficer);
 					}
 					else
 					{
@@ -115,11 +146,11 @@ namespace TeamLeadApp.ViewModels
 
 				}
 
-				foreach (var ltsofficer in officerList)
+				foreach (var lofficer in officerList)
 				{
-					if (ltsofficer.Rank.ToUpper().Trim() == "LTSO")
+					if (lofficer.Rank.ToUpper().Trim() == "LEAD")
 					{
-						Officers.Add(ltsofficer);
+						Officers.Add(lofficer);
 					}
 					else
 					{
@@ -130,7 +161,7 @@ namespace TeamLeadApp.ViewModels
 
 				foreach (var ftpmofficer in officerList)
 				{
-					if (ftpmofficer.Rank.ToUpper().Trim() == "TSO" && ftpmofficer.FullTime == true && ftpmofficer.Shift == "PM")
+					if (ftpmofficer.Rank.ToUpper().Trim() == "OFFICER" && ftpmofficer.FullTime == true && ftpmofficer.Shift == "PM")
 					{
 						Officers.Add(ftpmofficer);
 					}
@@ -142,7 +173,7 @@ namespace TeamLeadApp.ViewModels
 				}
 				foreach (var ftamofficer in officerList)
 				{
-					if (ftamofficer.Rank.ToUpper().Trim() == "TSO" && ftamofficer.FullTime == true && ftamofficer.Shift == "AM")
+					if (ftamofficer.Rank.ToUpper().Trim() == "OFFICER" && ftamofficer.FullTime == true && ftamofficer.Shift == "AM")
 					{
 						Officers.Add(ftamofficer);
 					}
@@ -154,7 +185,7 @@ namespace TeamLeadApp.ViewModels
 				}
 				foreach (var ptpmofficer in officerList)
 				{
-					if (ptpmofficer.Rank.ToUpper().Trim() == "TSO" && ptpmofficer.FullTime == false && ptpmofficer.Shift == "PM")
+					if (ptpmofficer.Rank.ToUpper().Trim() == "OFFICER" && ptpmofficer.FullTime == false && ptpmofficer.Shift == "PM")
 					{
 						Officers.Add(ptpmofficer);
 					}
@@ -166,7 +197,7 @@ namespace TeamLeadApp.ViewModels
 				}
 				foreach (var ptamofficer in officerList)
 				{
-					if (ptamofficer.Rank.ToUpper().Trim() == "TSO" && ptamofficer.FullTime == false && ptamofficer.Shift == "AM")
+					if (ptamofficer.Rank.ToUpper().Trim() == "OFFICER" && ptamofficer.FullTime == false && ptamofficer.Shift == "AM")
 					{
 						Officers.Add(ptamofficer);
 					}

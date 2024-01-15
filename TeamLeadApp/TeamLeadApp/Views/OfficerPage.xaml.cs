@@ -28,5 +28,15 @@ namespace TeamLeadApp.Views
 			base.OnAppearing();
 			officerViewModel.OnAppearing();
 		}
+
+		private void SearchBar_TextChanged(object sender, TextChangedEventArgs e) 
+		{
+			var viewModel = (OfficerViewModel)BindingContext;
+			if (viewModel.SearchCommand.CanExecute(e.NewTextValue))
+			{
+				viewModel.SearchCommand.Execute(e.NewTextValue);
+			}
+
+		}
 	}
 }
