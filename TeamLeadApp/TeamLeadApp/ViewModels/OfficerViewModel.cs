@@ -37,8 +37,8 @@ namespace TeamLeadApp.ViewModels
 			{
 				return;
 			}
-			bool answer = await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Employee", "Yes", "No");
-			if (answer == true)
+
+			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Employee", "Yes", "No"))
 			{
 				await App.OfficerService.DeleteProductAsync(officer.Id);
 				await ExecuteLoadOfficerCommand();
