@@ -95,17 +95,24 @@ namespace TeamLeadApp.ViewModels
 			{
 				Officers.Clear();
 				var officerList = await App.OfficerService.GetProductsAsync();
+				//foreach (var officer in officerList) 
+				//{
+
+				//	Officers.Add(officer);
+
+				//}
+
 				foreach (var stsofficer in officerList)
 				{
 					if (stsofficer.Rank.ToUpper().Trim() == "STSO")
 					{
 						Officers.Add(stsofficer);
 					}
-					else 
+					else
 					{
 						continue;
 					}
-					
+
 				}
 
 				foreach (var ltsofficer in officerList)
@@ -123,7 +130,7 @@ namespace TeamLeadApp.ViewModels
 
 				foreach (var ftpmofficer in officerList)
 				{
-					if (ftpmofficer.Rank.ToUpper().Trim() == "TSO" && ftpmofficer.FullTime == true && ftpmofficer.Shift == "PM" )
+					if (ftpmofficer.Rank.ToUpper().Trim() == "TSO" && ftpmofficer.FullTime == true && ftpmofficer.Shift == "PM")
 					{
 						Officers.Add(ftpmofficer);
 					}
