@@ -125,8 +125,8 @@ namespace TeamLeadApp.ViewModels
 			try
 			{
 				Officers.Clear();
-				
-				//foreach (var officer in officerList) 
+
+				//foreach (var officer in officerList)
 				//{
 
 				//	Officers.Add(officer);
