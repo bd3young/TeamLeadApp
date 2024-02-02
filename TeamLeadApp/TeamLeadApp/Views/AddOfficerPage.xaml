@@ -57,22 +57,22 @@
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Begins" FontSize="Medium"/>
                     <Picker TextColor="Black" SelectedItem="{Binding Officer.ShiftBegin, Mode=TwoWay}" Title="Enter Time" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
-                            <x:String>0100</x:String>
-                            <x:String>0130</x:String>
-                            <x:String>0230</x:String>
-                            <x:String>0300</x:String>
-                            <x:String>0330</x:String>
-                            <x:String>0400</x:String>
-                            <x:String>0430</x:String>
-                            <x:String>0530</x:String>
-                            <x:String>0600</x:String>
-                            <x:String>0630</x:String>
-                            <x:String>0700</x:String>
-                            <x:String>0730</x:String>
-                            <x:String>0800</x:String>
-                            <x:String>0830</x:String>
-                            <x:String>0900</x:String>
-                            <x:String>0930</x:String>
+                            <x:String>100</x:String>
+                            <x:String>130</x:String>
+                            <x:String>230</x:String>
+                            <x:String>300</x:String>
+                            <x:String>330</x:String>
+                            <x:String>400</x:String>
+                            <x:String>430</x:String>
+                            <x:String>530</x:String>
+                            <x:String>600</x:String>
+                            <x:String>630</x:String>
+                            <x:String>700</x:String>
+                            <x:String>730</x:String>
+                            <x:String>800</x:String>
+                            <x:String>830</x:String>
+                            <x:String>900</x:String>
+                            <x:String>930</x:String>
                             <x:String>1000</x:String>
                             <x:String>1030</x:String>
                             <x:String>1100</x:String>
@@ -109,22 +109,22 @@
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Ends" FontSize="Medium"/>
                     <Picker TextColor="Black" SelectedItem="{Binding Officer.ShiftEnd, Mode=TwoWay}" Title="Enter Time" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
-                            <x:String>0100</x:String>
-                            <x:String>0130</x:String>
-                            <x:String>0230</x:String>
-                            <x:String>0300</x:String>
-                            <x:String>0330</x:String>
-                            <x:String>0400</x:String>
-                            <x:String>0430</x:String>
-                            <x:String>0530</x:String>
-                            <x:String>0600</x:String>
-                            <x:String>0630</x:String>
-                            <x:String>0700</x:String>
-                            <x:String>0730</x:String>
-                            <x:String>0800</x:String>
-                            <x:String>0830</x:String>
-                            <x:String>0900</x:String>
-                            <x:String>0930</x:String>
+                            <x:String>100</x:String>
+                            <x:String>130</x:String>
+                            <x:String>230</x:String>
+                            <x:String>300</x:String>
+                            <x:String>330</x:String>
+                            <x:String>400</x:String>
+                            <x:String>430</x:String>
+                            <x:String>530</x:String>
+                            <x:String>600</x:String>
+                            <x:String>630</x:String>
+                            <x:String>700</x:String>
+                            <x:String>730</x:String>
+                            <x:String>800</x:String>
+                            <x:String>830</x:String>
+                            <x:String>900</x:String>
+                            <x:String>930</x:String>
                             <x:String>1000</x:String>
                             <x:String>1030</x:String>
                             <x:String>1100</x:String>
