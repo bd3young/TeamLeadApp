@@ -13,8 +13,8 @@ namespace TeamLeadApp.Models
 		public String LastName { get; set; }
 		public String RdoOne { get; set; }
 		public String RdoTwo { get; set; }
-		public int ShiftBegin { get; set; }
-		public int ShiftEnd { get; set; }
+		public string ShiftBegin { get; set; }
+		public string ShiftEnd { get; set; }
 		public string Gender { get; set; }
 		public string Rank { get; set; }
 		public string Shift { get; set; }

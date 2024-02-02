@@ -161,7 +161,7 @@
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Gender" FontSize="Medium"/>
-                    <Picker TextColor="Black" SelectedItem="{Binding Officer.Gender, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.Gender, Mode=TwoWay}" Title="Enter Gender" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
                             <x:String>M</x:String>
                             <x:String>F</x:String>
