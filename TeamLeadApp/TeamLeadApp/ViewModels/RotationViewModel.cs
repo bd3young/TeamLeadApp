@@ -20,12 +20,15 @@ namespace TeamLeadApp.ViewModels
 		public Command UpdateNotesCommand { get; }
 		public ObservableCollection<Officer> PmOfficers { get; }
 		public ObservableCollection<Officer> AmOfficers { get; }
+		public DateTime CurrentDate { get; set; }
+
 		public RotationViewModel(INavigation _navigation) 
 		{
 			LoadPmRotationCommand = new Command(async () => await ExecuteLoadPmRotationCommand());
 			LoadAmRotationCommand = new Command(async () => await ExecuteLoadAmRotationCommand());
 			PmOfficers = new ObservableCollection<Officer>();
 			AmOfficers = new ObservableCollection<Officer>();
+			CurrentDate = DateTime.Now;
 			UpdateBreakOneCommand = new Command<Officer>(OnUpdateBreakOne);
 			UpdateBreakTwoCommand = new Command<Officer>(OnUpdateBreakTwo);
 			UpdateLunchCommand = new Command<Officer>(OnUpdateLunch);
@@ -102,6 +105,7 @@ namespace TeamLeadApp.ViewModels
 		}
 		private async Task ExecuteLoadPmRotationCommand()
 		{
+			CurrentDate = DateTime.Now;
 			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
 			try
@@ -223,8 +227,8 @@ namespace TeamLeadApp.ViewModels
 		}
 		private async Task ExecuteLoadAmRotationCommand()
 		{
-			IsBusy = true;
 
+			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
 
 			try
