@@ -13,7 +13,7 @@
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Position" FontSize="Medium"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="Fill" PlaceholderColor="LightGray" Placeholder="Enter First Name" TextColor="Black" Text="{Binding Position.Name, Mode=TwoWay}" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="Fill" PlaceholderColor="LightGray" Placeholder="Enter Position" TextColor="Black" Text="{Binding Position.Name, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal">

@@ -8,7 +8,7 @@ namespace TeamLeadApp.Models
 	public class Officer
 	{
 		[PrimaryKey, AutoIncrement]
-		public int Id { get; set; }	
+		public int Id { get; set; }
 		public String FirstName { get; set; }
 		public String LastName { get; set; }
 		public String RdoOne { get; set; }
@@ -25,5 +25,8 @@ namespace TeamLeadApp.Models
 		public string Notes { get; set; } = "";
 		public bool Lv { get; set; } = false;
 		public bool Ehs { get; set; } = false;
+		public string Position { get; set; } = "";
+		//public List<string> PositionsList { get; set; } = new List<string>();
+		//public List<string> Positions { get; set; } = new List<string>();
 	}
 }

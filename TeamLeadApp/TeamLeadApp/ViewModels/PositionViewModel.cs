@@ -34,6 +34,9 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnDeletePosition(Position position)
 		{
+			var officerList = await App.OfficerService.GetProductsAsync();
+			
+
 			if (position == null)
 			{
 				return;
@@ -41,8 +44,15 @@ namespace TeamLeadApp.ViewModels
 
 			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Position", "Yes", "No"))
 			{
-				await App.OfficerService.DeleteProductAsync(position.Id);
-				await ExecuteLoadPositionCommand();
+				await App.PositionService.DeleteProductAsync(position.Id);
+				var positionList = await App.PositionService.GetProductsAsync();
+				foreach (var officer in officerList) 
+				{
+					foreach (var pos in positionList) 
+					{
+						//officer.PositionsList.Add(pos.Name);
+					}
+				}
 			}
 			else
 			{
@@ -53,19 +63,40 @@ namespace TeamLeadApp.ViewModels
 		private async void OnEditPosition(Position position)
 		{
 			await Navigation.PushAsync(new AddPositionPage(position));
+			var officerList = await App.OfficerService.GetProductsAsync();
+			var positionList = await App.PositionService.GetProductsAsync();
+			foreach (var officer in officerList)
+			{
+				foreach (var pos in positionList)
+				{
+					//officer.PositionsList.Add(pos.Name);
+				}
+			}
 		}
 
 		private async void OnAddPosition(object obj)
 		{
 			await Shell.Current.GoToAsync(nameof(AddPositionPage));
+			var officerList = await App.OfficerService.GetProductsAsync();
+			var positionList = await App.PositionService.GetProductsAsync();
+			foreach (var officer in officerList)
+			{
+				foreach (var pos in positionList)
+				{
+					//officer.PositionsList.Add(pos.Name);
+				}
+			}
 		}
 
 		async Task ExecuteLoadPositionCommand()
 		{
+			
 			IsBusy = true;
 			var positionList = await App.PositionService.GetProductsAsync();
+
 			try 
 			{
+				Positions.Clear();
 				foreach (var position in positionList) 
 				{
 					Positions.Add(position);
