@@ -11,6 +11,7 @@ namespace TeamLeadApp
 	public partial class App : Application
 	{
 		static OfficerService _officerService;
+		static PositionService _positionService;
 		public static OfficerService OfficerService
 		{
 			get 
@@ -20,6 +21,17 @@ namespace TeamLeadApp
 					_officerService = new OfficerService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Officer.db3"));
 				}
 				return _officerService;
+			}
+		}
+		public static PositionService PositionService
+		{
+			get
+			{
+				if (_positionService == null)
+				{
+					_positionService = new PositionService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Position.db3"));
+				}
+				return _positionService;
 			}
 		}
 

@@ -20,6 +20,7 @@ namespace TeamLeadApp.ViewModels
 		public Command UpdateNotesCommand { get; }
 		public ObservableCollection<Officer> PmOfficers { get; }
 		public ObservableCollection<Officer> AmOfficers { get; }
+		public List<string> Names { get; } 
 		public DateTime CurrentDate { get; set; }
 
 		public RotationViewModel(INavigation _navigation) 
@@ -28,6 +29,7 @@ namespace TeamLeadApp.ViewModels
 			LoadAmRotationCommand = new Command(async () => await ExecuteLoadAmRotationCommand());
 			PmOfficers = new ObservableCollection<Officer>();
 			AmOfficers = new ObservableCollection<Officer>();
+			Names = new List<string>();
 			CurrentDate = DateTime.Now;
 			UpdateBreakOneCommand = new Command<Officer>(OnUpdateBreakOne);
 			UpdateBreakTwoCommand = new Command<Officer>(OnUpdateBreakTwo);
@@ -128,6 +130,7 @@ namespace TeamLeadApp.ViewModels
 						else 
 						{
 							PmOfficers.Add(sofficer);
+							//Names.Add(sofficer.LastName);
 						}
 						
 					}
