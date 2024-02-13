@@ -18,6 +18,7 @@
             <RefreshView x:DataType="local:RotationViewModel"
              Command="{Binding LoadPmRotationCommand}"
              IsRefreshing="{Binding IsBusy,Mode=OneWay}">
+                
                 <CollectionView
             ItemsSource="{Binding PmOfficers}"
             SelectionMode="None">
@@ -39,7 +40,7 @@
                                                 <StackLayout Orientation="Horizontal" >
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand" >
                                                         <Label TextColor="Black" Text="Officer" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                                                        <Label Grid.Column="1" TextColor="Black" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label  Grid.Column="1" TextColor="Black" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                         <Label Grid.Column="1" TextColor="Black" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
@@ -57,15 +58,13 @@
 
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                         <Label TextColor="Black" Text="Position" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="20,0,20,0"/>
-                                                        <Picker TextColor="Black" FontSize="Small" VerticalOptions="CenterAndExpand" ItemsSource="{Binding Position}" ItemDisplayBinding="{Binding Position}" SelectedItem="{Binding Position}">
-
-                                                        </Picker>
+                                                        <Picker HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" VerticalOptions="CenterAndExpand" ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}}, Path= Positions}" SelectedItem="{Binding Position}" SelectedIndexChanged="Picker_SelectedIndexChanged" />
                                                     </StackLayout>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                     <Label TextColor="Black" Text="Notes" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="30,0,30,0"/>
                                                     <Entry WidthRequest="230" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}},
-                                                    Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Notes}" VerticalOptions="CenterAndExpand"></Entry>
+                                                    Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Position}" VerticalOptions="CenterAndExpand"></Entry>
                                                 </StackLayout>
                                             </StackLayout>
                                             <Frame.Triggers>

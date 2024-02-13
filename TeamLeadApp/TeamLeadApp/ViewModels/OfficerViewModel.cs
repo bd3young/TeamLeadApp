@@ -103,6 +103,7 @@ namespace TeamLeadApp.ViewModels
 					officer.Notes = "";
 					officer.Lv = false;
 					officer.Ehs = false;
+					officer.Position = "";
 
 					await App.OfficerService.AddProductAsync(officer);
 				}

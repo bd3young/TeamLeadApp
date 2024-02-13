@@ -18,25 +18,44 @@ namespace TeamLeadApp.ViewModels
 		public Command UpdateLunchCommand { get; }
 		public Command UpdateLvCommand { get; }
 		public Command UpdateNotesCommand { get; }
+		public Command UpdatePositionCommand { get; }
 		public ObservableCollection<Officer> PmOfficers { get; }
 		public ObservableCollection<Officer> AmOfficers { get; }
-		public List<string> Names { get; } 
+		public List<string> Positions { get; }
+		
 		public DateTime CurrentDate { get; set; }
 
-		public RotationViewModel(INavigation _navigation) 
+		public RotationViewModel(INavigation _navigation)
 		{
 			LoadPmRotationCommand = new Command(async () => await ExecuteLoadPmRotationCommand());
 			LoadAmRotationCommand = new Command(async () => await ExecuteLoadAmRotationCommand());
 			PmOfficers = new ObservableCollection<Officer>();
 			AmOfficers = new ObservableCollection<Officer>();
-			Names = new List<string>();
+			Positions = new List<string>();
 			CurrentDate = DateTime.Now;
 			UpdateBreakOneCommand = new Command<Officer>(OnUpdateBreakOne);
 			UpdateBreakTwoCommand = new Command<Officer>(OnUpdateBreakTwo);
 			UpdateLunchCommand = new Command<Officer>(OnUpdateLunch);
 			UpdateLvCommand = new Command<Officer>(OnUpdateLv);
 			UpdateNotesCommand = new Command<Officer>(OnUpdateNotes);
+			UpdatePositionCommand = new Command<Officer>(OnUpdatePosition);
 			Navigation = _navigation;
+		}
+
+		private async void OnUpdatePosition(Officer officer)
+		{
+			if (officer.Position != null)
+			{
+
+				var offList = await App.OfficerService.GetProductsAsync();
+				foreach (var product in offList)
+				{
+					if (product.Id == officer.Id && product.Position != officer.Position)
+					{
+						await App.OfficerService.AddProductAsync(officer);
+					}
+				}
+			}
 		}
 
 		public void OnAppearing()
@@ -107,9 +126,15 @@ namespace TeamLeadApp.ViewModels
 		}
 		private async Task ExecuteLoadPmRotationCommand()
 		{
+			Positions.Clear();
 			CurrentDate = DateTime.Now;
 			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
+			var positionList = await App.PositionService.GetProductsAsync();
+			foreach (var position in positionList) 
+			{
+				Positions.Add(position.Name);
+			}
 			try
 			{
 				PmOfficers.Clear();
@@ -130,7 +155,6 @@ namespace TeamLeadApp.ViewModels
 						else 
 						{
 							PmOfficers.Add(sofficer);
-							//Names.Add(sofficer.LastName);
 						}
 						
 					}

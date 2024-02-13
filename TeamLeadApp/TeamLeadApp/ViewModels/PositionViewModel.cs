@@ -45,6 +45,7 @@ namespace TeamLeadApp.ViewModels
 			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Position", "Yes", "No"))
 			{
 				await App.PositionService.DeleteProductAsync(position.Id);
+				await ExecuteLoadPositionCommand();
 				var positionList = await App.PositionService.GetProductsAsync();
 				foreach (var officer in officerList) 
 				{
