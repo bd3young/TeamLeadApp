@@ -55,6 +55,8 @@ namespace TeamLeadApp.ViewModels
 						await App.OfficerService.AddProductAsync(officer);
 					}
 				}
+				await ExecuteLoadAmRotationCommand();
+				await ExecuteLoadPmRotationCommand();
 			}
 		}
 
@@ -126,19 +128,20 @@ namespace TeamLeadApp.ViewModels
 		}
 		private async Task ExecuteLoadPmRotationCommand()
 		{
-			Positions.Clear();
+			
 			CurrentDate = DateTime.Now;
 			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
 			var positionList = await App.PositionService.GetProductsAsync();
-			foreach (var position in positionList) 
-			{
-				Positions.Add(position.Name);
-			}
 			try
 			{
 				PmOfficers.Clear();
-				
+				Positions.Clear();
+				foreach (var position in positionList)
+				{
+					Positions.Add(position.Name);
+				}
+
 				foreach (var sofficer in officerList)
 				{
 					if (sofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.Lv != true && sofficer.Shift == "PM" && sofficer.Rank.ToUpper().Trim() == "SUP"

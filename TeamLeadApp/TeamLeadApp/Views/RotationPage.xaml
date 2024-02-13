@@ -8,7 +8,7 @@
              Title="PM Rotation">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding CurrentDate.Date}"/>
+        <ToolbarItem Text="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}}, Path= CurrentDate.Date}"/>
         <ToolbarItem Text="{Binding PmOfficers.Count}"/>
 
     </ContentPage.ToolbarItems>
@@ -57,14 +57,14 @@
                                                     </StackLayout>
 
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label TextColor="Black" Text="Position" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="20,0,20,0"/>
-                                                        <Picker HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" VerticalOptions="CenterAndExpand" ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}}, Path= Positions}" SelectedItem="{Binding Position}" SelectedIndexChanged="Picker_SelectedIndexChanged" />
+                                                        <Label TextColor="Black" Text="{Binding Position}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="20,0,20,0"/>
+                                                        <Picker WidthRequest="70" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" VerticalOptions="CenterAndExpand" SelectedItem="{Binding Position} " ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}}, Path= Positions}" SelectedIndexChanged="Picker_SelectedIndexChanged" />
                                                     </StackLayout>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                     <Label TextColor="Black" Text="Notes" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="30,0,30,0"/>
                                                     <Entry WidthRequest="230" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}},
-                                                    Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Position}" VerticalOptions="CenterAndExpand"></Entry>
+                                                    Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Notes}" VerticalOptions="CenterAndExpand"></Entry>
                                                 </StackLayout>
                                             </StackLayout>
                                             <Frame.Triggers>

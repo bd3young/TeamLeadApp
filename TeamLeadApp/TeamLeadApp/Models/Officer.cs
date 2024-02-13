@@ -25,7 +25,7 @@ namespace TeamLeadApp.Models
 		public string Notes { get; set; } = "";
 		public bool Lv { get; set; } = false;
 		public bool Ehs { get; set; } = false;
-		public string Position { get; set; } = "";
+		public string Position { get; set; }
 		//public List<Position> PositionsList { get; set; }
 		//public List<Position> Positions { get; set; }
 	}
