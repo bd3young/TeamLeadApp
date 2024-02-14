@@ -133,14 +133,14 @@ namespace TeamLeadApp.ViewModels
 			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
 			var positionList = await App.PositionService.GetProductsAsync();
+			Positions.Clear();
+			foreach (var position in positionList)
+			{
+				Positions.Add(position.Name);
+			}
 			try
 			{
 				PmOfficers.Clear();
-				Positions.Clear();
-				foreach (var position in positionList)
-				{
-					Positions.Add(position.Name);
-				}
 
 				foreach (var sofficer in officerList)
 				{
