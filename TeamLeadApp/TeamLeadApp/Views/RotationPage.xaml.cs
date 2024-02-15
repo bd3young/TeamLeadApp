@@ -60,6 +60,7 @@ namespace TeamLeadApp.Views
 			var picker = (Picker)sender;
 
 			var viewModel = (RotationViewModel)BindingContext;
+			
 			if (viewModel.UpdatePositionCommand.CanExecute(picker.BindingContext)) 
 			{
 				viewModel.UpdatePositionCommand.Execute(picker.BindingContext);
