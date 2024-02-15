@@ -44,10 +44,11 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnUpdatePosition(Officer officer)
 		{
+			var offList = await App.OfficerService.GetProductsAsync();
 			if (officer.Position != null)
 			{
 
-				var offList = await App.OfficerService.GetProductsAsync();
+				
 				foreach (var product in offList)
 				{
 					if (product.Id == officer.Id && product.Position != officer.Position)
@@ -55,8 +56,18 @@ namespace TeamLeadApp.ViewModels
 						await App.OfficerService.AddProductAsync(officer);
 					}
 				}
-				await ExecuteLoadAmRotationCommand();
-				await ExecuteLoadPmRotationCommand();
+				//await ExecuteLoadAmRotationCommand();
+				//await ExecuteLoadPmRotationCommand();
+			}
+			else 
+			{
+				foreach (var product in offList)
+				{
+					if (product.Id == officer.Id && product.Position != officer.Position)
+					{
+						officer.Position = product.Position;
+					}
+				}
 			}
 		}
 

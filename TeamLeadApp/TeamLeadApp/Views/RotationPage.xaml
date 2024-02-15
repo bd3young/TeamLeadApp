@@ -58,7 +58,7 @@
 
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                         <Label TextColor="Black" Text="{Binding Position}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="20,0,20,0"/>
-                                                        <Picker WidthRequest="70" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" VerticalOptions="CenterAndExpand" SelectedItem="{Binding Position, Mode=TwoWay}" ItemsSource="{Binding Positions, Source={RelativeSource AncestorType={x:Type local:RotationViewModel}}}" SelectedIndexChanged="Picker_SelectedIndexChanged" />
+                                                        <Picker WidthRequest="70" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" VerticalOptions="CenterAndExpand" SelectedIndexChanged="Picker_SelectedIndexChanged" ItemsSource="{Binding Positions, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:RotationViewModel}}}" SelectedItem="{Binding Position, Mode=TwoWay}"  />
                                                     </StackLayout>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
