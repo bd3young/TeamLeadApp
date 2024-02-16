@@ -196,6 +196,12 @@
                     <CheckBox Color="Black" HorizontalOptions="CenterAndExpand" IsChecked="{Binding Officer.FullTime, Mode=TwoWay}"/>
                 </StackLayout>
             </StackLayout>
+            <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Administrative" FontSize="Medium"/>
+                    <CheckBox Color="Black" HorizontalOptions="CenterAndExpand" IsChecked="{Binding Officer.Admin, Mode=TwoWay}"/>
+                </StackLayout>
+            </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>

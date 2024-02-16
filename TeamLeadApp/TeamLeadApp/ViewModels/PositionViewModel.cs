@@ -34,7 +34,6 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnDeletePosition(Position position)
 		{
-			var officerList = await App.OfficerService.GetProductsAsync();
 			
 
 			if (position == null)
@@ -46,14 +45,6 @@ namespace TeamLeadApp.ViewModels
 			{
 				await App.PositionService.DeleteProductAsync(position.Id);
 				await ExecuteLoadPositionCommand();
-				var positionList = await App.PositionService.GetProductsAsync();
-				foreach (var officer in officerList) 
-				{
-					foreach (var pos in positionList) 
-					{
-						//officer.PositionsList.Add(pos.Name);
-					}
-				}
 			}
 			else
 			{
@@ -64,29 +55,11 @@ namespace TeamLeadApp.ViewModels
 		private async void OnEditPosition(Position position)
 		{
 			await Navigation.PushAsync(new AddPositionPage(position));
-			var officerList = await App.OfficerService.GetProductsAsync();
-			var positionList = await App.PositionService.GetProductsAsync();
-			foreach (var officer in officerList)
-			{
-				foreach (var pos in positionList)
-				{
-					//officer.PositionsList.Add(pos.Name);
-				}
-			}
 		}
 
 		private async void OnAddPosition(object obj)
 		{
 			await Shell.Current.GoToAsync(nameof(AddPositionPage));
-			var officerList = await App.OfficerService.GetProductsAsync();
-			var positionList = await App.PositionService.GetProductsAsync();
-			foreach (var officer in officerList)
-			{
-				foreach (var pos in positionList)
-				{
-					//officer.PositionsList.Add(pos.Name);
-				}
-			}
 		}
 
 		async Task ExecuteLoadPositionCommand()
