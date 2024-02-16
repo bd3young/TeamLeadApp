@@ -56,10 +56,14 @@
                                                     </StackLayout>
 
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label TextColor="Black" Text="Notes" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="30,0,30,0"/>
-                                                        <Entry HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}},
-                                                    Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Notes}" VerticalOptions="CenterAndExpand"></Entry>
+                                                        <Label TextColor="Black" Text="Position" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="20,0,20,0"/>
+                                                        <Picker WidthRequest="70" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" VerticalOptions="CenterAndExpand" Title="{Binding Position, Mode=OneWay}" TitleColor="Black" SelectedIndexChanged="Picker_SelectedIndexChanged" ItemsSource="{Binding Positions, Source={RelativeSource AncestorType={x:Type local:RotationViewModel}}}" SelectedItem="{Binding SelectedPosition, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:RotationViewModel}}}"/>
                                                     </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
+                                                    <Label TextColor="Black" Text="Notes" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Margin="30,0,30,0"/>
+                                                    <Entry WidthRequest="230" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}},
+                                                       Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Notes}" VerticalOptions="CenterAndExpand"></Entry>
                                                 </StackLayout>
                                             </StackLayout>
                                             <Frame.Triggers>

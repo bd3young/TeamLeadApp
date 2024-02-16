@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamLeadApp.Views.AddPositionPage"
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
+             Title="Position">
+    <ContentPage.BindingContext>
+        <local:AddPositionViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Spacing="5" Padding="15">
+            <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Position" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="Fill" PlaceholderColor="LightGray" Placeholder="Enter Position" TextColor="Black" Text="{Binding Position.Name, Mode=TwoWay}" FontSize="Medium"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
