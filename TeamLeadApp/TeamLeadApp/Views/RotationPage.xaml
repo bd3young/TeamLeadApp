@@ -17,7 +17,8 @@
         <StackLayout>
             <RefreshView x:DataType="local:RotationViewModel"
              Command="{Binding LoadPmRotationCommand}"
-             IsRefreshing="{Binding IsBusy,Mode=OneWay}">
+             IsRefreshing="{Binding IsBusy,Mode=OneWay}"
+             >
                 
                 <CollectionView
             ItemsSource="{Binding PmOfficers}"

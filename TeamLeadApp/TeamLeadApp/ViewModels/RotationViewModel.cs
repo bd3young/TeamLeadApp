@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeamLeadApp.Models;
@@ -74,14 +75,15 @@ namespace TeamLeadApp.ViewModels
 			if (officer != null) 
 			{
 			
-			var offList = await App.OfficerService.GetProductsAsync();
-			foreach (var product in offList) 
-			{
-				if (product.Id == officer.Id && product.BreakOne != officer.BreakOne) 
+				var offList = await App.OfficerService.GetProductsAsync();
+				foreach (var product in offList) 
 				{
-					await App.OfficerService.AddProductAsync(officer);
+					if (product.Id == officer.Id && product.BreakOne != officer.BreakOne) 
+					{
+						await App.OfficerService.AddProductAsync(officer);
+					}
 				}
-			}
+
 			}
 			
 		}
@@ -96,8 +98,10 @@ namespace TeamLeadApp.ViewModels
 					if (product.Id == officer.Id && product.BreakTwo != officer.BreakTwo)
 					{
 						await App.OfficerService.AddProductAsync(officer);
+
 					}
 				}
+
 			}
 		}
 		private async void OnUpdateNotes(Officer officer)
@@ -112,6 +116,7 @@ namespace TeamLeadApp.ViewModels
 			{
 
 				var offList = await App.OfficerService.GetProductsAsync();
+				
 				foreach (var product in offList)
 				{
 					if (product.Id == officer.Id && product.Lunch != officer.Lunch)
@@ -119,6 +124,7 @@ namespace TeamLeadApp.ViewModels
 						await App.OfficerService.AddProductAsync(officer);
 					}
 				}
+				
 			}
 		}
 		private async void OnUpdateLv(Officer officer)
@@ -143,6 +149,7 @@ namespace TeamLeadApp.ViewModels
 			try
 			{
 				PmOfficers.Clear();
+				AmOfficers.Clear();
 
 				Positions.Clear();
 				foreach (var position in positionList)
@@ -274,9 +281,11 @@ namespace TeamLeadApp.ViewModels
 			var officerList = await App.OfficerService.GetProductsAsync();
 			var positionList = await App.PositionService.GetProductsAsync();
 
+
 			try
 			{
 				AmOfficers.Clear();
+				PmOfficers.Clear();
 
 				Positions.Clear();
 				foreach (var position in positionList)
