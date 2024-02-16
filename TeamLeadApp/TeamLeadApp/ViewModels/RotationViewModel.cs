@@ -140,6 +140,8 @@ namespace TeamLeadApp.ViewModels
 		private async Task ExecuteLoadPmRotationCommand()
 		{
 			
+			PmOfficers.Clear();
+			AmOfficers.Clear();
 			CurrentDate = DateTime.Now;
 			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
@@ -148,8 +150,7 @@ namespace TeamLeadApp.ViewModels
 
 			try
 			{
-				PmOfficers.Clear();
-				AmOfficers.Clear();
+				
 
 				Positions.Clear();
 				foreach (var position in positionList)
@@ -277,6 +278,8 @@ namespace TeamLeadApp.ViewModels
 		private async Task ExecuteLoadAmRotationCommand()
 		{
 
+			AmOfficers.Clear();
+			PmOfficers.Clear();
 			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
 			var positionList = await App.PositionService.GetProductsAsync();
@@ -284,8 +287,7 @@ namespace TeamLeadApp.ViewModels
 
 			try
 			{
-				AmOfficers.Clear();
-				PmOfficers.Clear();
+				
 
 				Positions.Clear();
 				foreach (var position in positionList)
