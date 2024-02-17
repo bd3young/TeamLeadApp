@@ -36,7 +36,7 @@ namespace TeamLeadApp.ViewModels
 			AmOfficers = new ObservableCollection<Officer>();
 			SelectedPosition = "";
 			Positions = new List<string>();
-			CurrentDate = DateTime.Now;
+			CurrentDate = DateTime.Now.Date;
 			UpdateBreakOneCommand = new Command<Officer>(OnUpdateBreakOne);
 			UpdateBreakTwoCommand = new Command<Officer>(OnUpdateBreakTwo);
 			UpdateLunchCommand = new Command<Officer>(OnUpdateLunch);
@@ -131,10 +131,23 @@ namespace TeamLeadApp.ViewModels
 		{
 			officer.Lv = true;
 			officer.Ehs = false;
-			
+
 			await App.OfficerService.AddProductAsync(officer);
-			await ExecuteLoadAmRotationCommand();
-			await ExecuteLoadPmRotationCommand();
+
+			if (officer.Shift == "AM")
+			{
+				AmOfficers.Remove(officer);
+			}
+			if (officer.Shift == "PM")
+			{
+				PmOfficers.Remove(officer);
+			}
+			if (officer.Admin == true) 
+			{
+				AmOfficers.Remove(officer);
+				PmOfficers.Remove(officer);
+			}
+
 
 		}
 		private async Task ExecuteLoadPmRotationCommand()
@@ -142,14 +155,14 @@ namespace TeamLeadApp.ViewModels
 			
 			PmOfficers.Clear();
 			AmOfficers.Clear();
-			CurrentDate = DateTime.Now;
+			CurrentDate = DateTime.Now.Date;
 			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
 			var positionList = await App.PositionService.GetProductsAsync();
 
-
 			try
 			{
+				
 				
 
 				Positions.Clear();
