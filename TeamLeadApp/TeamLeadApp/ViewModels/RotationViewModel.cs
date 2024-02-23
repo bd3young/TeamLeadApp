@@ -135,10 +135,17 @@ namespace TeamLeadApp.ViewModels
 		}
 		private async void OnUpdateLv(Officer officer)
 		{
+			// update lv and ehs variables
+
 			officer.Lv = true;
 			officer.Ehs = false;
 
-			await App.OfficerService.AddProductAsync(officer);
+			// variables to help get the officer to their proper shift
+
+			int shiftBegin = Convert.ToInt32(officer.ShiftBegin);
+			int shiftEnd = Convert.ToInt32(officer.ShiftEnd);
+
+			// if statements to remove the officer from the proper list
 
 			if (officer.Shift == "AM")
 			{
@@ -153,6 +160,21 @@ namespace TeamLeadApp.ViewModels
 				AmOfficers.Remove(officer);
 				PmOfficers.Remove(officer);
 			}
+
+			// if statements to return the officer to the proper shift
+
+			if (shiftBegin >= 300 && shiftEnd <= 1400 && officer.Admin == false)
+			{
+				officer.Shift = "AM";
+			}
+			if (shiftBegin >= 900 && shiftEnd <= 2000 && officer.Admin == false)
+			{
+				officer.Shift = "PM";
+			}
+
+			await App.OfficerService.AddProductAsync(officer);
+
+			
 
 
 		}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeamLeadApp.Models;
@@ -85,8 +86,21 @@ namespace TeamLeadApp.ViewModels
 		{
 			officer.Lv = false;
 			officer.Ehs = true;
+			if (officer.Admin == false) 
+			{
+				if (await App.Current.MainPage.DisplayAlert("Extra Hours", "Which shift?", "PM", "AM"))
+				{
+					officer.Shift = "PM";
+				}
+				else 
+				{
+					officer.Shift = "AM";
+				}
+			}
+			
 
 			await App.OfficerService.AddProductAsync(officer);
+			await ExecuteLoadOfficerCommand();
 		}
 
 		async void ResetOfficers(object obj)
@@ -104,9 +118,20 @@ namespace TeamLeadApp.ViewModels
 					officer.Lv = false;
 					officer.Ehs = false;
 					officer.Position = "";
+					int shiftBegin = Convert.ToInt32(officer.ShiftBegin);
+					int shiftEnd = Convert.ToInt32(officer.ShiftEnd);
+					if (shiftBegin >= 300 && shiftEnd <= 1400 && officer.Admin == false)
+					{
+						officer.Shift = "AM";
+					}
+					else if (shiftBegin >= 900 && shiftEnd <= 2000 && officer.Admin == false) 
+					{
+						officer.Shift = "PM";
+					}
 
 					await App.OfficerService.AddProductAsync(officer);
 				}
+				await ExecuteLoadOfficerCommand();
 			}
 			else
 			{
