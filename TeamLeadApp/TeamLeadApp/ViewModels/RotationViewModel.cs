@@ -36,7 +36,7 @@ namespace TeamLeadApp.ViewModels
 			AmOfficers = new ObservableCollection<Officer>();
 			SelectedPosition = "";
 			Positions = new List<string>();
-			CurrentDate = UpDateTime();
+			CurrentDate = DateTime.Now.ToString().Remove(10);
 			UpdateBreakOneCommand = new Command<Officer>(OnUpdateBreakOne);
 			UpdateBreakTwoCommand = new Command<Officer>(OnUpdateBreakTwo);
 			UpdateLunchCommand = new Command<Officer>(OnUpdateLunch);
@@ -46,10 +46,9 @@ namespace TeamLeadApp.ViewModels
 			Navigation = _navigation;
 		}
 
-		private string UpDateTime()
+		private void UpDateTime()
 		{
-			CurrentDate = DateTime.Now.ToString().Remove(10);
-			return CurrentDate;
+			CurrentDate = DateTime.Now.ToString();
 		}
 
 		private async void OnUpdatePosition(Officer officer)
@@ -73,6 +72,7 @@ namespace TeamLeadApp.ViewModels
 
 		public void OnAppearing()
 		{
+			UpDateTime();
 			IsBusy = true;
 		}
 
@@ -183,7 +183,7 @@ namespace TeamLeadApp.ViewModels
 			
 			PmOfficers.Clear();
 			AmOfficers.Clear();
-			CurrentDate = DateTime.Now.Date.ToString().Remove(10);
+			UpDateTime();
 			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
 			var positionList = await App.PositionService.GetProductsAsync();
@@ -321,7 +321,7 @@ namespace TeamLeadApp.ViewModels
 
 			AmOfficers.Clear();
 			PmOfficers.Clear();
-			CurrentDate = DateTime.Now.Date.ToString().Remove(10);
+			UpDateTime();
 			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
 			var positionList = await App.PositionService.GetProductsAsync();
