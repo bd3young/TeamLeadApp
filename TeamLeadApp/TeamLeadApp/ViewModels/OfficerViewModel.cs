@@ -86,6 +86,14 @@ namespace TeamLeadApp.ViewModels
 		{
 			officer.Lv = false;
 			officer.Ehs = true;
+			officer.BreakOne = false;
+			officer.BreakTwo = false;
+			officer.Lunch = false;
+			officer.Notes = "";
+			officer.Lv = false;
+			officer.Ehs = false;
+			officer.Position = "";
+			officer.BreakNumber = "";
 			if (officer.Admin == false) 
 			{
 				if (await App.Current.MainPage.DisplayAlert("Extra Hours", "Which shift?", "PM", "AM"))
