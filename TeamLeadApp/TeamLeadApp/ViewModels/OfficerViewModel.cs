@@ -91,10 +91,19 @@ namespace TeamLeadApp.ViewModels
 				if (await App.Current.MainPage.DisplayAlert("Extra Hours", "Which shift?", "PM", "AM"))
 				{
 					officer.Shift = "PM";
+	
 				}
 				else 
 				{
 					officer.Shift = "AM";
+				}
+				if (await App.Current.MainPage.DisplayAlert("Breaks", "How many", "One", "Three"))
+				{
+					officer.FullTime = false;
+				}
+				else 
+				{
+					officer.FullTime = true;
 				}
 			}
 			
@@ -118,11 +127,21 @@ namespace TeamLeadApp.ViewModels
 					officer.Lv = false;
 					officer.Ehs = false;
 					officer.Position = "";
+					officer.BreakNumber = "";
 					int shiftBegin = Convert.ToInt32(officer.ShiftBegin);
 					int shiftEnd = Convert.ToInt32(officer.ShiftEnd);
+					if (shiftEnd - shiftBegin == 830 || shiftEnd - shiftBegin == 870 || shiftEnd - shiftBegin == 1030 || shiftEnd - shiftBegin == 1070)
+					{
+						officer.FullTime = true;
+					}
+					else 
+					{
+						officer.FullTime = false;
+					}
 					if (shiftBegin >= 300 && shiftEnd <= 1400 && officer.Admin == false)
 					{
 						officer.Shift = "AM";
+						
 					}
 					else if (shiftBegin >= 900 && shiftEnd <= 2000 && officer.Admin == false) 
 					{

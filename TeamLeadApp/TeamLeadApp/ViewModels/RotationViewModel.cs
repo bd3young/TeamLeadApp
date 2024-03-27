@@ -21,10 +21,12 @@ namespace TeamLeadApp.ViewModels
 		public Command UpdateLvCommand { get; }
 		public Command UpdateNotesCommand { get; }
 		public Command UpdatePositionCommand { get; }
+		public Command UpdateBreakNumberCommand { get; }
 		public ObservableCollection<Officer> PmOfficers { get; }
 		public ObservableCollection<Officer> AmOfficers { get; }
 		public List<string> Positions { get; }
 		public string SelectedPosition { get; set; }
+		public string SelectedBreakNumber { get; set; }
 
 		public string CurrentDate { get; set; }
 
@@ -35,20 +37,52 @@ namespace TeamLeadApp.ViewModels
 			PmOfficers = new ObservableCollection<Officer>();
 			AmOfficers = new ObservableCollection<Officer>();
 			SelectedPosition = "";
+			SelectedBreakNumber = "";
 			Positions = new List<string>();
-			CurrentDate = DateTime.Now.ToString().Remove(10);
+			CurrentDate = UpDateTime();
 			UpdateBreakOneCommand = new Command<Officer>(OnUpdateBreakOne);
 			UpdateBreakTwoCommand = new Command<Officer>(OnUpdateBreakTwo);
 			UpdateLunchCommand = new Command<Officer>(OnUpdateLunch);
 			UpdateLvCommand = new Command<Officer>(OnUpdateLv);
 			UpdateNotesCommand = new Command<Officer>(OnUpdateNotes);
 			UpdatePositionCommand = new Command<Officer>(OnUpdatePosition);
+			UpdateBreakNumberCommand = new Command<Officer>(OnUpdateBreakNumber);
 			Navigation = _navigation;
 		}
 
-		private void UpDateTime()
+		private async void OnUpdateBreakNumber(Officer officer)
 		{
-			CurrentDate = DateTime.Now.ToString();
+			var offList = await App.OfficerService.GetProductsAsync();
+			if (SelectedBreakNumber != null) 
+			{
+				foreach (var product in offList)
+				{
+					if (product.Id == officer.Id && product.BreakNumber != SelectedBreakNumber)
+					{
+						officer.BreakNumber = SelectedBreakNumber;
+						await App.OfficerService.AddProductAsync(officer);
+						SelectedBreakNumber = null;
+					}
+				}
+			}
+			
+		}
+
+		private string UpDateTime()
+		{
+			if (DateTime.Now.ToString().Length == 20) 
+			{
+				CurrentDate = DateTime.Now.ToString().Remove(8);
+			}
+			if (DateTime.Now.ToString().Length == 21)
+			{
+				CurrentDate = DateTime.Now.ToString().Remove(9);
+			}
+			else 
+			{
+				CurrentDate = DateTime.Now.ToString().Remove(10);
+			}
+			return CurrentDate;
 		}
 
 		private async void OnUpdatePosition(Officer officer)
@@ -161,7 +195,16 @@ namespace TeamLeadApp.ViewModels
 				PmOfficers.Remove(officer);
 			}
 
-			// if statements to return the officer to the proper shift
+			// if statements to return the officer to the proper shift and Fulltime status
+
+			if (shiftEnd - shiftBegin == 830 || shiftEnd - shiftBegin == 870 || shiftEnd - shiftBegin == 1030 || shiftEnd - shiftBegin == 1070)
+			{
+				officer.FullTime = true;
+			}
+			else
+			{
+				officer.FullTime = false;
+			}
 
 			if (shiftBegin >= 300 && shiftEnd <= 1400 && officer.Admin == false)
 			{

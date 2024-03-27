@@ -27,6 +27,7 @@ namespace TeamLeadApp.Models
 		public bool Lv { get; set; } = false;
 		public bool Ehs { get; set; } = false;
 		public string Position { get; set; } = "";
+		public string BreakNumber { get; set; } = "";
 		//public List<Position> PositionsList { get; set; }
 	}
 }
