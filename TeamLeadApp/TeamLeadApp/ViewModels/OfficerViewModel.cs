@@ -91,7 +91,6 @@ namespace TeamLeadApp.ViewModels
 			officer.Lunch = false;
 			officer.Notes = "";
 			officer.Lv = false;
-			officer.Ehs = false;
 			officer.Position = "";
 			officer.BreakNumber = "";
 			if (officer.Admin == false) 
