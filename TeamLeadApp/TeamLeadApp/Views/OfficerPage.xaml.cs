@@ -18,6 +18,7 @@ namespace TeamLeadApp.Views
 		{
 
 			App.OfficerService.AddInitOfficers();
+			App.DateService.AddInitDates();
 
 			
 			InitializeComponent();

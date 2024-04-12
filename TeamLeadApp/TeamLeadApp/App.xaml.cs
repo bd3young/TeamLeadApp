@@ -12,6 +12,8 @@ namespace TeamLeadApp
 	{
 		static OfficerService _officerService;
 		static PositionService _positionService;
+		static ChoreService _choreService;
+		static DateService _dateService;
 		public static OfficerService OfficerService
 		{
 			get 
@@ -32,6 +34,28 @@ namespace TeamLeadApp
 					_positionService = new PositionService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Position.db3"));
 				}
 				return _positionService;
+			}
+		}
+		public static ChoreService ChoreService
+		{
+			get
+			{
+				if (_choreService == null)
+				{
+					_choreService = new ChoreService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Chore.db3"));
+				}
+				return _choreService;
+			}
+		}
+		public static DateService DateService
+		{
+			get
+			{
+				if (_dateService == null)
+				{
+					_dateService = new DateService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Date.db3"));
+				}
+				return _dateService;
 			}
 		}
 

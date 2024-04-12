@@ -13,6 +13,7 @@ namespace TeamLeadApp
 			InitializeComponent();
 			Routing.RegisterRoute(nameof(AddOfficerPage), typeof(AddOfficerPage));
 			Routing.RegisterRoute(nameof(AddPositionPage), typeof(AddPositionPage));
+			Routing.RegisterRoute(nameof(AddChorePage), typeof(AddChorePage));
 		}
 
 	}

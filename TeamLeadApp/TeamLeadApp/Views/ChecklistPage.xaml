@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
+             xmlns:model="clr-namespace:TeamLeadApp.Models"
+             x:Class="TeamLeadApp.Views.ChecklistPage"
+             Title="Checklist">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" x:DataType="local:ChoreViewModel" Command="{Binding AddChoreCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <RefreshView x:DataType="local:ChoreViewModel"
+                         Command="{Binding LoadChoreCommand}"
+                         IsRefreshing="{Binding IsBusy,Mode=OneWay}">
+
+                <CollectionView
+                    ItemsSource="{Binding Chores}"
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout x:DataType="model:Chore" >
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
+                                            <SwipeItem Text="Edit" BackgroundColor="Blue" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ChoreViewModel}},
+                                                Path=EditChoreCommand}" CommandParameter="{Binding .}"/>
+                                            <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ChoreViewModel}},
+                                                Path=DeleteChoreCommand}" CommandParameter="{Binding .}"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid Padding="5" BackgroundColor="White">
+                                        <Frame CornerRadius="10" BorderColor="Black" HasShadow="True" BackgroundColor="White">
+
+                                            <StackLayout Orientation="Vertical" >
+                                                <StackLayout Orientation="Horizontal">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
+                                                        <Label Grid.Column="1" TextColor="Black" FontSize="Medium" Text="{Binding Name}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
+                                                        <CheckBox IsChecked="{Binding IsCompleted}" Color="Black" PropertyChanged="IsCompleted_CheckedChanged"></CheckBox>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
+                                                        <TimePicker Time="{Binding Time, Mode=TwoWay}"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </Grid>
+                                </SwipeView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

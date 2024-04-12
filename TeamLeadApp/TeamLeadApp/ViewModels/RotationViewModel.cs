@@ -24,11 +24,10 @@ namespace TeamLeadApp.ViewModels
 		public Command UpdateBreakNumberCommand { get; }
 		public ObservableCollection<Officer> PmOfficers { get; }
 		public ObservableCollection<Officer> AmOfficers { get; }
+		public Date CurrentDate { get; set; }
 		public List<string> Positions { get; }
 		public string SelectedPosition { get; set; }
 		public string SelectedBreakNumber { get; set; }
-
-		public string CurrentDate { get; set; }
 
 		public RotationViewModel(INavigation _navigation)
 		{
@@ -36,10 +35,10 @@ namespace TeamLeadApp.ViewModels
 			LoadAmRotationCommand = new Command(async () => await ExecuteLoadAmRotationCommand());
 			PmOfficers = new ObservableCollection<Officer>();
 			AmOfficers = new ObservableCollection<Officer>();
+			CurrentDate = new Date();
 			SelectedPosition = "";
 			SelectedBreakNumber = "";
 			Positions = new List<string>();
-			CurrentDate = UpDateTime();
 			UpdateBreakOneCommand = new Command<Officer>(OnUpdateBreakOne);
 			UpdateBreakTwoCommand = new Command<Officer>(OnUpdateBreakTwo);
 			UpdateLunchCommand = new Command<Officer>(OnUpdateLunch);
@@ -68,21 +67,30 @@ namespace TeamLeadApp.ViewModels
 			
 		}
 
-		private string UpDateTime()
+		private async void UpDateTime()
 		{
-			if (DateTime.Now.ToString().Length == 20) 
+			var dates = await App.DateService.GetProductsAsync();
+			foreach (var date in dates) 
 			{
-				CurrentDate = DateTime.Now.ToString().Remove(8);
+				//if (DateTime.Now.ToString().Length == 20) 
+				//{
+				//	date.Day = DateTime.Now.ToString().Remove(8);
+				//}
+				//if (DateTime.Now.ToString().Length == 21)
+				//{
+				//	date.Day = DateTime.Now.ToString().Remove(9);
+				//}
+				//else 
+				//{
+				//	date.Day = DateTime.Now.ToString().Remove(10);
+				//}
+				date.Day = DateTime.Now.ToString();
+				await App.DateService.AddProductAsync(date);
+				CurrentDate = date;
 			}
-			if (DateTime.Now.ToString().Length == 21)
-			{
-				CurrentDate = DateTime.Now.ToString().Remove(9);
-			}
-			else 
-			{
-				CurrentDate = DateTime.Now.ToString().Remove(10);
-			}
-			return CurrentDate;
+
+
+			
 		}
 
 		private async void OnUpdatePosition(Officer officer)
@@ -231,10 +239,10 @@ namespace TeamLeadApp.ViewModels
 			var officerList = await App.OfficerService.GetProductsAsync();
 			var positionList = await App.PositionService.GetProductsAsync();
 
+
 			try
 			{
-				
-				
+	
 
 				Positions.Clear();
 				foreach (var position in positionList)

@@ -10,7 +10,6 @@ namespace TeamLeadApp.Services
     public class PositionService : IPositionRepository
 	{
 		public SQLiteAsyncConnection _pdatabase;
-		List<Position> initPositions;
 		public PositionService(string pdbPath)
 		{
 
