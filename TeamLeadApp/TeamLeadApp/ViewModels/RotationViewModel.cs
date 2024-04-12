@@ -69,25 +69,22 @@ namespace TeamLeadApp.ViewModels
 
 		private async void UpDateTime()
 		{
-			var dates = await App.DateService.GetProductsAsync();
-			foreach (var date in dates) 
-			{
-				//if (DateTime.Now.ToString().Length == 20) 
-				//{
-				//	date.Day = DateTime.Now.ToString().Remove(8);
-				//}
-				//if (DateTime.Now.ToString().Length == 21)
-				//{
-				//	date.Day = DateTime.Now.ToString().Remove(9);
-				//}
-				//else 
-				//{
-				//	date.Day = DateTime.Now.ToString().Remove(10);
-				//}
-				date.Day = DateTime.Now.ToString();
-				await App.DateService.AddProductAsync(date);
-				CurrentDate = date;
-			}
+			var date = await App.DateService.GetProductAsync(1);
+			//if (DateTime.Now.ToString().Length == 20) 
+			//{
+			//	date.Day = DateTime.Now.ToString().Remove(8);
+			//}
+			//if (DateTime.Now.ToString().Length == 21)
+			//{
+			//	date.Day = DateTime.Now.ToString().Remove(9);
+			//}
+			//else 
+			//{
+			//	date.Day = DateTime.Now.ToString().Remove(10);
+			//}
+			date.Day = DateTime.Now.ToString();
+			await App.DateService.AddProductAsync(date);
+			CurrentDate = date;
 
 
 			

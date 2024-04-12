@@ -8,7 +8,7 @@
              Title="PM Rotation">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding PmOfficers[1].FirstName}"/>
+        <ToolbarItem Text="{Binding CurrentDate.Day}"/>
         <ToolbarItem Text="{Binding PmOfficers.Count}"/>
 
     </ContentPage.ToolbarItems>

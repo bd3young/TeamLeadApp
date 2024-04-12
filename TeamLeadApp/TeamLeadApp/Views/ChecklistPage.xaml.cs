@@ -29,11 +29,11 @@ namespace TeamLeadApp.Views
 		{
 			var cb = (CheckBox)sender;
 
-			//var viewModel = (ChoreViewModel)BindingContext;
-			//if (viewModel.UpdateIsCompletedCommand.CanExecute(cb.BindingContext))
-			//{
-			//	viewModel.UpdateIsCompletedCommand.Execute(cb.BindingContext);
-			//}
+			var viewModel = (ChoreViewModel)BindingContext;
+			if (viewModel.UpdateIsCompletedCommand.CanExecute(cb.BindingContext))
+			{
+				viewModel.UpdateIsCompletedCommand.Execute(cb.BindingContext);
+			}
 		}
 	}
 }

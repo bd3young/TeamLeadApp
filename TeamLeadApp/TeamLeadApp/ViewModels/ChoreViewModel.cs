@@ -12,24 +12,44 @@ namespace TeamLeadApp.ViewModels
 	public class ChoreViewModel : BaseChoreViewModel
 	{
 		public Command LoadChoreCommand { get; }
+		public Command UpdateIsCompletedCommand { get; }
 		public ObservableCollection<Chore> Chores { get; }
 		public Command AddChoreCommand { get; }
 		public Command EditChoreCommand { get; }
 		public Command DeleteChoreCommand { get; }
+		public string SelectedTme { get; set; }
 
 		public ChoreViewModel(INavigation _navigation)
 		{
 			LoadChoreCommand = new Command(async () => await ExecuteLoadChoreCommand());
+			UpdateIsCompletedCommand = new Command<Chore>(OnIsCompleted);
 			Chores = new ObservableCollection<Chore>();
 			AddChoreCommand = new Command(OnAddChore);
 			EditChoreCommand = new Command<Chore>(OnEditChore);
 			DeleteChoreCommand = new Command<Chore>(OnDeleteChore);
+			SelectedTme = "";
 			Navigation = _navigation;
 		}
 
 		public void OnAppearing()
 		{
 			IsBusy = true;
+		}
+		private async void OnIsCompleted(Chore chore)
+		{
+			if (chore != null)
+			{
+
+				var currentChore = await App.ChoreService.GetProductAsync(chore.Id);
+				if (currentChore.IsCompleted != chore.IsCompleted) 
+				{
+					currentChore.IsCompleted = chore.IsCompleted;
+					await App.ChoreService.AddProductAsync(currentChore);
+				}
+				
+
+			}
+
 		}
 
 		private async void OnDeleteChore(Chore chore)
