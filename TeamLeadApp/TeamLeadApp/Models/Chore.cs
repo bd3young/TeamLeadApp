@@ -12,6 +12,6 @@ namespace TeamLeadApp.Models
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public bool IsCompleted { get; set; } = false;
-		public string Time { get; set; }
+		public System.TimeSpan Time { get; set; }
 	}
 }

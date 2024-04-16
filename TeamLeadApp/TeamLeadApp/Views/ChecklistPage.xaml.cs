@@ -30,9 +30,22 @@ namespace TeamLeadApp.Views
 			var cb = (CheckBox)sender;
 
 			var viewModel = (ChoreViewModel)BindingContext;
+
 			if (viewModel.UpdateIsCompletedCommand.CanExecute(cb.BindingContext))
 			{
 				viewModel.UpdateIsCompletedCommand.Execute(cb.BindingContext);
+			}
+		}
+
+		private void TimePicker_SelectedTimeChanged(object sender, EventArgs e)
+		{
+			var picker = (TimePicker)sender;
+
+			var viewModel = (ChoreViewModel)BindingContext;
+
+			if (viewModel.UpdateTimeCommand.CanExecute(picker.BindingContext))
+			{
+				viewModel.UpdateTimeCommand.Execute(picker.BindingContext);
 			}
 		}
 	}

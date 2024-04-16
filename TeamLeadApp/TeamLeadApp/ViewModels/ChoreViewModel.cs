@@ -13,22 +13,37 @@ namespace TeamLeadApp.ViewModels
 	{
 		public Command LoadChoreCommand { get; }
 		public Command UpdateIsCompletedCommand { get; }
+		public Command UpdateTimeCommand { get; }
 		public ObservableCollection<Chore> Chores { get; }
 		public Command AddChoreCommand { get; }
 		public Command EditChoreCommand { get; }
 		public Command DeleteChoreCommand { get; }
-		public string SelectedTme { get; set; }
+		public string SelectedTime { get; set; }
 
 		public ChoreViewModel(INavigation _navigation)
 		{
 			LoadChoreCommand = new Command(async () => await ExecuteLoadChoreCommand());
 			UpdateIsCompletedCommand = new Command<Chore>(OnIsCompleted);
+			UpdateTimeCommand = new Command<Chore>(OnUpdateTime);
 			Chores = new ObservableCollection<Chore>();
 			AddChoreCommand = new Command(OnAddChore);
 			EditChoreCommand = new Command<Chore>(OnEditChore);
 			DeleteChoreCommand = new Command<Chore>(OnDeleteChore);
-			SelectedTme = "";
+			SelectedTime = "";
 			Navigation = _navigation;
+		}
+
+		public async void OnUpdateTime(Chore chore)
+		{
+			
+			if (chore != null)
+			{
+				var selectedChore = await App.ChoreService.GetProductAsync(chore.Id);
+				if (chore.Time != selectedChore.Time)
+				{
+					await App.ChoreService.AddProductAsync(chore);
+				}
+			}
 		}
 
 		public void OnAppearing()
@@ -51,6 +66,7 @@ namespace TeamLeadApp.ViewModels
 			}
 
 		}
+
 
 		private async void OnDeleteChore(Chore chore)
 		{
