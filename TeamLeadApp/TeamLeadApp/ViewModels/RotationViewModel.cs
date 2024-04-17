@@ -82,7 +82,7 @@ namespace TeamLeadApp.ViewModels
 			//{
 			//	date.Day = DateTime.Now.ToString().Remove(10);
 			//}
-			date.Day = DateTime.Now.ToString();
+			date.Day = DateTime.Today.ToString();
 			await App.DateService.AddProductAsync(date);
 			CurrentDate = date;
 

@@ -27,7 +27,7 @@ namespace TeamLeadApp.ViewModels
 			AddOfficerCommand = new Command(OnAddOfficer);
 			EditOfficerCommand = new Command<Officer>(OnEditOfficer);
 			DeleteOfficerCommand = new Command<Officer>(OnDeleteOfficer);
-			ResetOfficersCommand = new Command(ResetOfficers);
+			ResetOfficersCommand = new Command(async()=> await ResetOfficers());
 			UpdateEhsCommand = new Command<Officer>(OnUpdateEhs);
 			SearchCommand = new Command(Search);
 			Navigation = _navigation;
@@ -119,11 +119,11 @@ namespace TeamLeadApp.ViewModels
 			await ExecuteLoadOfficerCommand();
 		}
 
-		async void ResetOfficers(object obj)
+		async Task ResetOfficers()
 		{
 
-			if (await App.Current.MainPage.DisplayAlert("New Day", "Are you sure you would like to start a New Day", "Yes", "No"))
-			{
+			//if (await App.Current.MainPage.DisplayAlert("New Day", "Are you sure you would like to start a New Day", "Yes", "No"))
+			//{
 				var officerList = await App.OfficerService.GetProductsAsync();
 				foreach (var officer in officerList)
 				{
@@ -157,12 +157,20 @@ namespace TeamLeadApp.ViewModels
 
 					await App.OfficerService.AddProductAsync(officer);
 				}
-				await ExecuteLoadOfficerCommand();
-			}
-			else
-			{
-				return;
-			}
+				var choreList = await App.ChoreService.GetProductsAsync();
+				foreach (var chore in choreList) 
+				{
+					chore.IsCompleted = false;
+					chore.Time = new System.TimeSpan();
+
+					await App.ChoreService.AddProductAsync(chore);
+				}
+				//await ExecuteLoadOfficerCommand();
+			//}
+			//else
+			//{
+			//	return;
+			//}
 		}
 
 		public void OnAppearing() 
@@ -174,9 +182,19 @@ namespace TeamLeadApp.ViewModels
 		{
 			IsBusy = true;
 			var officerList = await App.OfficerService.GetProductsAsync();
+			var day = await App.DateService.GetProductAsync(1);
+			var currentDay = DateTime.Today.ToString();
 			try
 			{
 				Officers.Clear();
+
+				if (currentDay != day.Day) 
+				{
+					await ResetOfficers();
+					day.Day = currentDay;
+
+					await App.DateService.AddProductAsync(day);
+				}
 
 				//foreach (var officer in officerList)
 				//{
