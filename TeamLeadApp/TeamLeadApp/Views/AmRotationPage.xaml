@@ -8,7 +8,7 @@
              Title="AM Rotation">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding CurrentDate.Day}"/>
+        <ToolbarItem Text="{Binding CurrentDate}"/>
         <ToolbarItem Text="{Binding AmOfficers.Count}"/>
 
     </ContentPage.ToolbarItems>

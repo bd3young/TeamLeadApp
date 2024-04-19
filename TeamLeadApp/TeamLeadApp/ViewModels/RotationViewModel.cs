@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeamLeadApp.Models;
+using TeamLeadApp.Services;
 using TeamLeadApp.Views;
 using Xamarin.Forms;
 
@@ -24,7 +25,7 @@ namespace TeamLeadApp.ViewModels
 		public Command UpdateBreakNumberCommand { get; }
 		public ObservableCollection<Officer> PmOfficers { get; }
 		public ObservableCollection<Officer> AmOfficers { get; }
-		public Date CurrentDate { get; set; }
+		public string CurrentDate { get; set; }
 		public List<string> Positions { get; }
 		public string SelectedPosition { get; set; }
 		public string SelectedBreakNumber { get; set; }
@@ -35,7 +36,7 @@ namespace TeamLeadApp.ViewModels
 			LoadAmRotationCommand = new Command(async () => await ExecuteLoadAmRotationCommand());
 			PmOfficers = new ObservableCollection<Officer>();
 			AmOfficers = new ObservableCollection<Officer>();
-			CurrentDate = new Date();
+			CurrentDate = "";
 			SelectedPosition = "";
 			SelectedBreakNumber = "";
 			Positions = new List<string>();
@@ -84,7 +85,7 @@ namespace TeamLeadApp.ViewModels
 			//}
 			date.Day = DateTime.Today.ToString();
 			await App.DateService.AddProductAsync(date);
-			CurrentDate = date;
+			CurrentDate = date.Day;
 
 
 			
