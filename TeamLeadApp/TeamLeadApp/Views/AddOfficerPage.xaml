@@ -51,6 +51,22 @@
                         </Picker.Items>
                     </Picker>
                 </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Third RDO" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoThree, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
+                        <Picker.Items>
+                            <x:String>None</x:String>
+                            <x:String>Sunday</x:String>
+                            <x:String>Monday</x:String>
+                            <x:String>Tuesday</x:String>
+                            <x:String>Wednesday</x:String>
+                            <x:String>Thursday</x:String>
+                            <x:String>Friday</x:String>
+                            <x:String>Saturday</x:String>
+                            <x:String>None</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
@@ -102,7 +118,6 @@
                             <x:String>2230</x:String>
                             <x:String>2300</x:String>
                             <x:String>2330</x:String>
-                            <x:String>2400</x:String>
                         </Picker.Items>
                     </Picker>
                 </StackLayout>
@@ -155,7 +170,6 @@
                             <x:String>2230</x:String>
                             <x:String>2300</x:String>
                             <x:String>2330</x:String>
-                            <x:String>2400</x:String>
                         </Picker.Items>
                     </Picker>
                 </StackLayout>

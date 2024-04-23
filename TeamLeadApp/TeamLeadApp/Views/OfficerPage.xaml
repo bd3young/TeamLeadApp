@@ -66,6 +66,7 @@
                                                         <Label TextColor="Black" Text="RDO" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                                         <Label Grid.Column="1" TextColor="Black" Text="{Binding RdoOne}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                         <Label Grid.Column="1" TextColor="Black" Text="{Binding RdoTwo}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label Grid.Column="1" TextColor="Black" Text="{Binding RdoThree}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
 
                                                 </StackLayout>

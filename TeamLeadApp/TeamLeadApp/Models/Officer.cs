@@ -13,11 +13,13 @@ namespace TeamLeadApp.Models
 		public string LastName { get; set; }
 		public string RdoOne { get; set; }
 		public string RdoTwo { get; set; }
+		public string RdoThree { get; set; } = "";
 		public string ShiftBegin { get; set; }
 		public string ShiftEnd { get; set; }
 		public string Gender { get; set; }
 		public string Rank { get; set; }
 		public string Shift { get; set; }
+		public bool ThirdRdo { get; set; } = false;
 		public bool FullTime { get; set; } = true;
 		public bool BreakOne { get; set; } = false;
 		public bool BreakTwo { get; set; } = false;
