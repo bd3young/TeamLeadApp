@@ -27,7 +27,7 @@ namespace TeamLeadApp.ViewModels
 			AddOfficerCommand = new Command(OnAddOfficer);
 			EditOfficerCommand = new Command<Officer>(OnEditOfficer);
 			DeleteOfficerCommand = new Command<Officer>(OnDeleteOfficer);
-			ResetOfficersCommand = new Command(async()=> await ResetOfficers());
+			ResetOfficersCommand = new Command(async()=> await App.OfficerService.ResetOfficers());
 			UpdateEhsCommand = new Command<Officer>(OnUpdateEhs);
 			SearchCommand = new Command(Search);
 			Navigation = _navigation;
@@ -119,60 +119,6 @@ namespace TeamLeadApp.ViewModels
 			await ExecuteLoadOfficerCommand();
 		}
 
-		async Task ResetOfficers()
-		{
-
-			//if (await App.Current.MainPage.DisplayAlert("New Day", "Are you sure you would like to start a New Day", "Yes", "No"))
-			//{
-				var officerList = await App.OfficerService.GetProductsAsync();
-				foreach (var officer in officerList)
-				{
-					officer.BreakOne = false;
-					officer.BreakTwo = false;
-					officer.Lunch = false;
-					officer.Notes = "";
-					officer.Lv = false;
-					officer.Ehs = false;
-					officer.Position = "";
-					officer.BreakNumber = "";
-					int shiftBegin = Convert.ToInt32(officer.ShiftBegin);
-					int shiftEnd = Convert.ToInt32(officer.ShiftEnd);
-					if (shiftEnd - shiftBegin == 830 || shiftEnd - shiftBegin == 870 || shiftEnd - shiftBegin == 1030 || shiftEnd - shiftBegin == 1070)
-					{
-						officer.FullTime = true;
-					}
-					else 
-					{
-						officer.FullTime = false;
-					}
-					if (shiftBegin >= 300 && shiftEnd <= 1400 && officer.Admin == false)
-					{
-						officer.Shift = "AM";
-						
-					}
-					else if (shiftBegin >= 900 && shiftEnd <= 2000 && officer.Admin == false) 
-					{
-						officer.Shift = "PM";
-					}
-
-					await App.OfficerService.AddProductAsync(officer);
-				}
-				var choreList = await App.ChoreService.GetProductsAsync();
-				foreach (var chore in choreList) 
-				{
-					chore.IsCompleted = false;
-					chore.Time = new System.TimeSpan();
-
-					await App.ChoreService.AddProductAsync(chore);
-				}
-				//await ExecuteLoadOfficerCommand();
-			//}
-			//else
-			//{
-			//	return;
-			//}
-		}
-
 		public void OnAppearing() 
 		{
 			IsBusy = true;
@@ -190,7 +136,7 @@ namespace TeamLeadApp.ViewModels
 
 				if (currentDay != day.Day) 
 				{
-					await ResetOfficers();
+					await App.OfficerService.ResetOfficers();
 					day.Day = currentDay;
 
 					await App.DateService.AddProductAsync(day);

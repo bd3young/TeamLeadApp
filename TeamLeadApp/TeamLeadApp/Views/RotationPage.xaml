@@ -19,7 +19,6 @@
              Command="{Binding LoadPmRotationCommand}"
              IsRefreshing="{Binding IsBusy,Mode=OneWay}"
              >
-                
                 <CollectionView
             ItemsSource="{Binding PmOfficers}"
             SelectionMode="None">

@@ -92,5 +92,63 @@ namespace TeamLeadApp.Services
 			throw new NotImplementedException();
 		}
 
+		public async Task ResetOfficers()
+		{
+
+			//if (await App.Current.MainPage.DisplayAlert("New Day", "Are you sure you would like to start a New Day", "Yes", "No"))
+			//{
+			var officerList = await App.OfficerService.GetProductsAsync();
+			foreach (var officer in officerList)
+			{
+				officer.BreakOne = false;
+				officer.BreakTwo = false;
+				officer.Lunch = false;
+				officer.Notes = "";
+				officer.Lv = false;
+				officer.Ehs = false;
+				officer.Position = "";
+				officer.BreakNumber = "";
+				int shiftBegin = Convert.ToInt32(officer.ShiftBegin);
+				int shiftEnd = Convert.ToInt32(officer.ShiftEnd);
+				if (shiftEnd - shiftBegin == 830 || shiftEnd - shiftBegin == 870 || shiftEnd - shiftBegin == 1030 || shiftEnd - shiftBegin == 1070)
+				{
+					officer.FullTime = true;
+				}
+				else
+				{
+					officer.FullTime = false;
+				}
+				if (shiftBegin >= 300 && shiftEnd <= 1400 && officer.Admin == false)
+				{
+					officer.Shift = "AM";
+
+				}
+				else if (shiftBegin >= 1030 && shiftEnd <= 2000 && officer.Admin == false)
+				{
+					officer.Shift = "PM";
+				}
+				else 
+				{
+					officer.Shift = "MID";
+				}
+
+				await App.OfficerService.AddProductAsync(officer);
+			}
+			var choreList = await App.ChoreService.GetProductsAsync();
+			foreach (var chore in choreList)
+			{
+				chore.IsCompleted = false;
+				chore.Time = new System.TimeSpan();
+
+				await App.ChoreService.AddProductAsync(chore);
+			}
+			//await ExecuteLoadOfficerCommand();
+			//}
+			//else
+			//{
+			//	return;
+			//}
+		}
+
 	}
 }

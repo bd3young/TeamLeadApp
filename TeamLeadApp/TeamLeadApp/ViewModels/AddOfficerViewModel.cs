@@ -29,6 +29,10 @@ namespace TeamLeadApp.ViewModels
 		private async void OnSave()
 		{
 			var officer = Officer;
+			if (officer.RdoThree.ToUpper() == "NONE") 
+			{
+				officer.RdoThree = "";
+			}
 			await App.OfficerService.AddProductAsync(officer);
 
 			await Shell.Current.GoToAsync("..");

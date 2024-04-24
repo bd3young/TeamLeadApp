@@ -211,6 +211,7 @@
                     <Picker TextColor="Black" Title="Enter Shift" TitleColor="LightGray" SelectedItem="{Binding Officer.Shift, Mode=TwoWay}"   HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
                             <x:String>AM</x:String>
+                            <x:String>MID</x:String>
                             <x:String>PM</x:String>
                         </Picker.Items>
                     </Picker>
