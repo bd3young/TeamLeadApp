@@ -174,19 +174,6 @@ namespace TeamLeadApp.ViewModels
 					}
 
 				}
-
-				foreach (var ftpmofficer in officerList)
-				{
-					if (ftpmofficer.Rank.ToUpper().Trim() == "OFFICER" && ftpmofficer.FullTime == true && ftpmofficer.Shift == "PM")
-					{
-						Officers.Add(ftpmofficer);
-					}
-					else
-					{
-						continue;
-					}
-
-				}
 				foreach (var ftamofficer in officerList)
 				{
 					if (ftamofficer.Rank.ToUpper().Trim() == "OFFICER" && ftamofficer.FullTime == true && ftamofficer.Shift == "AM")
@@ -199,11 +186,23 @@ namespace TeamLeadApp.ViewModels
 					}
 
 				}
-				foreach (var ptpmofficer in officerList)
+				foreach (var ftmidofficer in officerList)
 				{
-					if (ptpmofficer.Rank.ToUpper().Trim() == "OFFICER" && ptpmofficer.FullTime == false && ptpmofficer.Shift == "PM")
+					if (ftmidofficer.Rank.ToUpper().Trim() == "OFFICER" && ftmidofficer.FullTime == true && ftmidofficer.Shift == "MID")
 					{
-						Officers.Add(ptpmofficer);
+						Officers.Add(ftmidofficer);
+					}
+					else
+					{
+						continue;
+					}
+
+				}
+				foreach (var ftpmofficer in officerList)
+				{
+					if (ftpmofficer.Rank.ToUpper().Trim() == "OFFICER" && ftpmofficer.FullTime == true && ftpmofficer.Shift == "PM")
+					{
+						Officers.Add(ftpmofficer);
 					}
 					else
 					{
@@ -216,6 +215,30 @@ namespace TeamLeadApp.ViewModels
 					if (ptamofficer.Rank.ToUpper().Trim() == "OFFICER" && ptamofficer.FullTime == false && ptamofficer.Shift == "AM")
 					{
 						Officers.Add(ptamofficer);
+					}
+					else
+					{
+						continue;
+					}
+
+				}
+				foreach (var ptmidofficer in officerList)
+				{
+					if (ptmidofficer.Rank.ToUpper().Trim() == "OFFICER" && ptmidofficer.FullTime == false && ptmidofficer.Shift == "MID")
+					{
+						Officers.Add(ptmidofficer);
+					}
+					else
+					{
+						continue;
+					}
+
+				}
+				foreach (var ptpmofficer in officerList)
+				{
+					if (ptpmofficer.Rank.ToUpper().Trim() == "OFFICER" && ptpmofficer.FullTime == false && ptpmofficer.Shift == "PM")
+					{
+						Officers.Add(ptpmofficer);
 					}
 					else
 					{

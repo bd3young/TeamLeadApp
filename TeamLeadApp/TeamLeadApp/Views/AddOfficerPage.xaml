@@ -25,7 +25,6 @@
                     <Label HorizontalOptions="Center" TextColor="Black" Text="First RDO" FontSize="Medium"/>
                     <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoOne, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
-                            <x:String>None</x:String>
                             <x:String>Sunday</x:String>
                             <x:String>Monday</x:String>
                             <x:String>Tuesday</x:String>
@@ -33,6 +32,7 @@
                             <x:String>Thursday</x:String>
                             <x:String>Friday</x:String>
                             <x:String>Saturday</x:String>
+                            <x:String>None</x:String>
                         </Picker.Items>
                     </Picker>
                 </StackLayout>
@@ -40,7 +40,6 @@
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Second RDO" FontSize="Medium"/>
                     <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoTwo, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
-                            <x:String>None</x:String>
                             <x:String>Sunday</x:String>
                             <x:String>Monday</x:String>
                             <x:String>Tuesday</x:String>
@@ -48,6 +47,7 @@
                             <x:String>Thursday</x:String>
                             <x:String>Friday</x:String>
                             <x:String>Saturday</x:String>
+                            <x:String>None</x:String>
                         </Picker.Items>
                     </Picker>
                 </StackLayout>
@@ -55,7 +55,6 @@
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Third RDO" FontSize="Medium"/>
                     <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoThree, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
-                            <x:String>None</x:String>
                             <x:String>Sunday</x:String>
                             <x:String>Monday</x:String>
                             <x:String>Tuesday</x:String>
