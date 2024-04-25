@@ -100,7 +100,7 @@ namespace TeamLeadApp.ViewModels
 
 		async Task ExecuteLoadChoreCommand()
 		{
-
+			Chores.Clear();
 			IsBusy = true;
 			var choreList = await App.ChoreService.GetProductsAsync();
 			var day = await App.DateService.GetProductAsync(1);
@@ -116,7 +116,7 @@ namespace TeamLeadApp.ViewModels
 
 			try
 			{
-				Chores.Clear();
+				
 				foreach (var chore in choreList)
 				{
 					Chores.Add(chore);
