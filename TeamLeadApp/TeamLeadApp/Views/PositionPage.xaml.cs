@@ -24,5 +24,27 @@ namespace TeamLeadApp.Views
 			base.OnAppearing();
 			positionViewModel.OnAppearing();
 		}
+		private void Picker_SelectedOfficerOneChanged(object sender, EventArgs e)
+		{
+			var picker = (Picker)sender;
+
+			var viewModel = (PositionViewModel)BindingContext;
+
+			if (viewModel.UpdateOfficerOneCommand.CanExecute(picker.BindingContext))
+			{
+				viewModel.UpdateOfficerOneCommand.Execute(picker.BindingContext);
+			}
+		}
+		private void Picker_SelectedOfficerTwoChanged(object sender, EventArgs e)
+		{
+			var picker = (Picker)sender;
+
+			var viewModel = (PositionViewModel)BindingContext;
+
+			if (viewModel.UpdateOfficerTwoCommand.CanExecute(picker.BindingContext))
+			{
+				viewModel.UpdateOfficerTwoCommand.Execute(picker.BindingContext);
+			}
+		}
 	}
 }

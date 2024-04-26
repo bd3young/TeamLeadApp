@@ -14,17 +14,28 @@ namespace TeamLeadApp.ViewModels
 		public Command LoadPositionCommand { get; }
 		public ObservableCollection<Position> Positions { get; }
 		public Command AddPositionCommand { get; }
+		public Command PositionsListCommand { get; }
 		public Command EditPositionCommand { get; }
 		public Command DeletePositionCommand { get; }
+		public List<string> CurrentOfficers { get; }
+		public string SelectedOfficer { get; set; }
 
 		public PositionViewModel(INavigation _navigation)
 		{
 			LoadPositionCommand = new Command(async () => await ExecuteLoadPositionCommand());
 			Positions = new ObservableCollection<Position>();
 			AddPositionCommand = new Command(OnAddPosition);
+			PositionsListCommand = new Command(PositionsList);
 			EditPositionCommand = new Command<Position>(OnEditPosition);
 			DeletePositionCommand = new Command<Position>(OnDeletePosition);
+			CurrentOfficers = new List<string>();
+			SelectedOfficer = "";
 			Navigation = _navigation;
+		}
+
+		private async void PositionsList()
+		{
+			await Shell.Current.GoToAsync(nameof(PositionsListPage));
 		}
 
 		public void OnAppearing()
@@ -64,13 +75,28 @@ namespace TeamLeadApp.ViewModels
 
 		async Task ExecuteLoadPositionCommand()
 		{
-			
+			Positions.Clear();
+			CurrentOfficers.Clear();
 			IsBusy = true;
 			var positionList = await App.PositionService.GetProductsAsync();
+			var officerList = await App.OfficerService.GetProductsAsync();
 
 			try 
 			{
-				Positions.Clear();
+				foreach (var officer in officerList) 
+				{
+					if (officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true
+						|| officer.Ehs == true && officer.Lv != true
+						|| officer.Ehs == true && officer.Admin == true)
+					{
+						CurrentOfficers.Add(officer.FirstName);
+					}
+					else
+					{
+						continue;
+					}
+
+				}
 				foreach (var position in positionList) 
 				{
 					Positions.Add(position);

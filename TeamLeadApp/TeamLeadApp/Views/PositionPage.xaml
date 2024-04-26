@@ -6,50 +6,69 @@
              x:Class="TeamLeadApp.Views.PositionPage"
              Title="Positions">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Positions List" x:DataType="local:PositionViewModel" Command="{Binding PositionsListCommand}"/>
         <ToolbarItem Text="Add" x:DataType="local:PositionViewModel" Command="{Binding AddPositionCommand}"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
+        
+        <AbsoluteLayout>
             <RefreshView x:DataType="local:PositionViewModel"
                          Command="{Binding LoadPositionCommand}"
                          IsRefreshing="{Binding IsBusy,Mode=OneWay}">
-
+                
                 <CollectionView
                     ItemsSource="{Binding Positions}"
                     SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                         Span="3"/>
+                    </CollectionView.ItemsLayout>
+                    
                     <CollectionView.ItemTemplate>
+
                         <DataTemplate>
-                            <StackLayout x:DataType="model:Position" >
-                                <SwipeView>
-                                    <SwipeView.RightItems>
-                                        <SwipeItems>
-                                            <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
-                                            <SwipeItem Text="Edit" BackgroundColor="Blue" Command="{Binding Source={RelativeSource AncestorType={x:Type local:PositionViewModel}},
-                                                Path=EditPositionCommand}" CommandParameter="{Binding .}"/>
-                                            <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:PositionViewModel}},
-                                                Path=DeletePositionCommand}" CommandParameter="{Binding .}"/>
-                                        </SwipeItems>
-                                    </SwipeView.RightItems>
-                                    <Grid Padding="5" BackgroundColor="White">
-                                        <Frame CornerRadius="10" HasShadow="True" BackgroundColor="LightGreen">
+                            <Grid Padding="5" BackgroundColor="White" x:DataType="model:Position">
+                                <Frame CornerRadius="10" HasShadow="True" BackgroundColor="LightGreen">
+                                    <StackLayout>
+                                        <Label FontSize="Medium" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                        <Picker WidthRequest="70" 
+                                                HorizontalTextAlignment="Center" 
+                                                TextColor="Black" 
+                                                FontSize="Small" 
+                                                VerticalOptions="CenterAndExpand" 
+                                                Title="{Binding OfficerOne, Mode=OneWay}" 
+                                                TitleColor="Black" 
+                                                SelectedIndexChanged="Picker_SelectedOfficerOneChanged"
+                                                ItemsSource="{Binding CurrentOfficers, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}" 
+                                                SelectedItem="{Binding SelectedOfficer, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}"/>
+                                        <Picker IsVisible="{Binding TwoOfficers}"
+                                                WidthRequest="70" 
+                                                HorizontalTextAlignment="Center" 
+                                                TextColor="Black" 
+                                                FontSize="Small" 
+                                                VerticalOptions="CenterAndExpand" 
+                                                Title="{Binding OfficerOne, Mode=OneWay}" 
+                                                TitleColor="Black" 
+                                                SelectedIndexChanged="Picker_SelectedOfficerTwoChanged"
+                                                ItemsSource="{Binding CurrentOfficers, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}" 
+                                                SelectedItem="{Binding SelectedOfficer, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}"/>
 
-                                            <StackLayout Orientation="Vertical" >
-                                                <StackLayout Orientation="Horizontal">
-                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label Grid.Column="1" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                                    </StackLayout>
 
-                                                </StackLayout>
-                                            </StackLayout>
-                                        </Frame>
-                                    </Grid>
-                                </SwipeView>
-                            </StackLayout>
+                                    </StackLayout>
+                                    
+                                </Frame>
+                            </Grid>
                         </DataTemplate>
+                         
                     </CollectionView.ItemTemplate>
+                         
                 </CollectionView>
+                              
             </RefreshView>
-        </StackLayout>
+                
+        </AbsoluteLayout>
+      
     </ContentPage.Content>
+    
 </ContentPage>
