@@ -7,7 +7,6 @@
              Title="Positions">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Positions List" x:DataType="local:PositionViewModel" Command="{Binding PositionsListCommand}"/>
-        <ToolbarItem Text="Add" x:DataType="local:PositionViewModel" Command="{Binding AddPositionCommand}"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -31,7 +30,7 @@
                             <Grid Padding="5" BackgroundColor="White" x:DataType="model:Position">
                                 <Frame CornerRadius="10" HasShadow="True" BackgroundColor="LightGreen">
                                     <StackLayout>
-                                        <Label FontSize="Medium" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                        <Button BackgroundColor="LightGreen" FontSize="Medium" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Pressed="Button_ResetPositionPressed"></Button>
                                         <Picker WidthRequest="70" 
                                                 HorizontalTextAlignment="Center" 
                                                 TextColor="Black" 

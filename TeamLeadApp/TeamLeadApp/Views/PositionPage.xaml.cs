@@ -46,5 +46,16 @@ namespace TeamLeadApp.Views
 				viewModel.UpdateOfficerTwoCommand.Execute(picker.BindingContext);
 			}
 		}
+		private void Button_ResetPositionPressed(object sender, EventArgs e)
+		{
+			var button = (Button)sender;
+
+			var viewModel = (PositionViewModel)BindingContext;
+
+			if (viewModel.ResetPositionCommand.CanExecute(button.BindingContext))
+			{
+				viewModel.ResetPositionCommand.Execute(button.BindingContext);
+			}
+		}
 	}
 }

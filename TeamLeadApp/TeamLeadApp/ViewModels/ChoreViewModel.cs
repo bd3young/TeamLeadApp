@@ -102,7 +102,7 @@ namespace TeamLeadApp.ViewModels
 		{
 			Chores.Clear();
 			IsBusy = true;
-			var choreList = await App.ChoreService.GetProductsAsync();
+			
 			var day = await App.DateService.GetProductAsync(1);
 			var currentDay = DateTime.Today.ToString();
 
@@ -113,6 +113,8 @@ namespace TeamLeadApp.ViewModels
 
 				await App.DateService.AddProductAsync(day);
 			}
+
+			var choreList = await App.ChoreService.GetProductsAsync();
 
 			try
 			{

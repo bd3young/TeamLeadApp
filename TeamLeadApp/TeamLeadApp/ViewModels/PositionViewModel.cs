@@ -17,6 +17,9 @@ namespace TeamLeadApp.ViewModels
 		public Command PositionsListCommand { get; }
 		public Command EditPositionCommand { get; }
 		public Command DeletePositionCommand { get; }
+		public Command UpdateOfficerOneCommand { get; }
+		public Command UpdateOfficerTwoCommand { get; }
+		public Command ResetPositionCommand { get; }
 		public List<string> CurrentOfficers { get; }
 		public string SelectedOfficer { get; set; }
 
@@ -28,9 +31,48 @@ namespace TeamLeadApp.ViewModels
 			PositionsListCommand = new Command(PositionsList);
 			EditPositionCommand = new Command<Position>(OnEditPosition);
 			DeletePositionCommand = new Command<Position>(OnDeletePosition);
+			UpdateOfficerOneCommand = new Command<Position>(OnUpdateOfficerOne);
+			UpdateOfficerTwoCommand = new Command<Position>(OnUpdateOfficerTwo);
+			ResetPositionCommand = new Command<Position>(OnResetPostion);
 			CurrentOfficers = new List<string>();
 			SelectedOfficer = "";
 			Navigation = _navigation;
+		}
+
+		private async void OnResetPostion(Position position)
+		{
+			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
+			CurrentPosition.OfficerOne = "";
+			CurrentPosition.OfficerTwo = "";
+			await App.PositionService.AddProductAsync(CurrentPosition);
+		}
+
+		private async void OnUpdateOfficerTwo(Position position)
+		{
+			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
+			if (SelectedOfficer != null)
+			{
+				if (CurrentPosition.OfficerTwo != SelectedOfficer)
+				{
+					CurrentPosition.OfficerTwo = SelectedOfficer;
+					await App.PositionService.AddProductAsync(CurrentPosition);
+					SelectedOfficer = null;
+				}
+			}
+		}
+
+		private async void OnUpdateOfficerOne(Position position)
+		{
+			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
+			if (SelectedOfficer != null)
+			{
+				if (CurrentPosition.OfficerOne != SelectedOfficer)
+				{
+					CurrentPosition.OfficerOne = SelectedOfficer;
+					await App.PositionService.AddProductAsync(CurrentPosition);
+					SelectedOfficer = null;
+				}
+			}
 		}
 
 		private async void PositionsList()
@@ -55,7 +97,7 @@ namespace TeamLeadApp.ViewModels
 			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Position", "Yes", "No"))
 			{
 				await App.PositionService.DeleteProductAsync(position.Id);
-				await ExecuteLoadPositionCommand();
+				Positions.Remove(position);
 			}
 			else
 			{

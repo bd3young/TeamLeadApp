@@ -250,8 +250,7 @@ namespace TeamLeadApp.ViewModels
 			AmOfficers.Clear();
 			UpDateTime();
 			IsBusy = true;
-			var officerList = await App.OfficerService.GetProductsAsync();
-			var positionList = await App.PositionService.GetProductsAsync();
+			
 			var day = await App.DateService.GetProductAsync(1);
 			var currentDay = DateTime.Today.ToString();
 
@@ -262,7 +261,8 @@ namespace TeamLeadApp.ViewModels
 
 				await App.DateService.AddProductAsync(day);
 			}
-
+			var officerList = await App.OfficerService.GetProductsAsync();
+			var positionList = await App.PositionService.GetProductsAsync();
 
 			try
 			{

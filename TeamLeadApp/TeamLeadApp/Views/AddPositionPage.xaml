@@ -16,32 +16,6 @@
                     <Entry HorizontalTextAlignment="Center" HorizontalOptions="Fill" PlaceholderColor="LightGray" Placeholder="Enter Position" TextColor="Black" Text="{Binding Position.Name, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Row" FontSize="Medium"/>
-                    <Picker TextColor="Black" SelectedItem="{Binding Position.Row, Mode=TwoWay}" Title="Enter Row" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
-                        <Picker.Items>
-                            <x:String>0</x:String>
-                            <x:String>1</x:String>
-                            <x:String>2</x:String>
-                            <x:String>3</x:String>
-                            <x:String>4</x:String>
-                            <x:String>5</x:String>
-                        </Picker.Items>
-                    </Picker>
-                </StackLayout>
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Column" FontSize="Medium"/>
-                    <Picker TextColor="Black" SelectedItem="{Binding Position.Column, Mode=TwoWay}" Title="Enter Column" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
-                        <Picker.Items>
-                            <x:String>0</x:String>
-                            <x:String>1</x:String>
-                            <x:String>2</x:String>
-                            <x:String>3</x:String>
-                            <x:String>4</x:String>
-                            <x:String>5</x:String>
-                        </Picker.Items>
-                    </Picker>
-                </StackLayout>
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Two Officer Position" FontSize="Medium"/>
                     <CheckBox Color="Black" HorizontalOptions="CenterAndExpand" IsChecked="{Binding Position.TwoOfficers, Mode=TwoWay}"/>
                 </StackLayout>

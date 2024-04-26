@@ -142,6 +142,14 @@ namespace TeamLeadApp.Services
 
 				await App.ChoreService.AddProductAsync(chore);
 			}
+			var postionList = await App.PositionService.GetProductsAsync();
+			foreach (var position in postionList) 
+			{
+				position.OfficerOne = "";
+				position.OfficerTwo = "";
+
+				await App.PositionService.AddProductAsync(position);
+			}
 			//await ExecuteLoadOfficerCommand();
 			//}
 			//else
