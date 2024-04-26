@@ -47,7 +47,7 @@
                                                 TextColor="Black" 
                                                 FontSize="Small" 
                                                 VerticalOptions="CenterAndExpand" 
-                                                Title="{Binding OfficerOne, Mode=OneWay}" 
+                                                Title="{Binding OfficerTwo, Mode=OneWay}" 
                                                 TitleColor="Black" 
                                                 SelectedIndexChanged="Picker_SelectedOfficerTwoChanged"
                                                 ItemsSource="{Binding CurrentOfficers, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}" 
