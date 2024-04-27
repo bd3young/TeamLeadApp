@@ -54,18 +54,6 @@ namespace TeamLeadApp.Views
 				viewModel.UpdateLunchCommand.Execute(cb.BindingContext);
 			}
 		}
-
-		private void Picker_SelectedPositionChanged(object sender, EventArgs e)
-		{
-			var picker = (Picker)sender;
-
-			var viewModel = (RotationViewModel)BindingContext;
-			
-			if (viewModel.UpdatePositionCommand.CanExecute(picker.BindingContext)) 
-			{
-				viewModel.UpdatePositionCommand.Execute(picker.BindingContext);
-			}
-		}
 		private void Picker_SelectedBreakNumberChanged(object sender, EventArgs e)
 		{
 			var picker = (Picker)sender;

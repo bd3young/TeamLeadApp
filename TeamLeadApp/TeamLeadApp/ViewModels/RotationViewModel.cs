@@ -26,8 +26,6 @@ namespace TeamLeadApp.ViewModels
 		public ObservableCollection<Officer> PmOfficers { get; }
 		public ObservableCollection<Officer> AmOfficers { get; }
 		public string CurrentDate { get; set; }
-		public List<string> Positions { get; }
-		public string SelectedPosition { get; set; }
 		public string SelectedBreakNumber { get; set; }
 
 		public RotationViewModel(INavigation _navigation)
@@ -37,15 +35,12 @@ namespace TeamLeadApp.ViewModels
 			PmOfficers = new ObservableCollection<Officer>();
 			AmOfficers = new ObservableCollection<Officer>();
 			CurrentDate = "";
-			SelectedPosition = "";
 			SelectedBreakNumber = "";
-			Positions = new List<string>();
 			UpdateBreakOneCommand = new Command<Officer>(OnUpdateBreakOne);
 			UpdateBreakTwoCommand = new Command<Officer>(OnUpdateBreakTwo);
 			UpdateLunchCommand = new Command<Officer>(OnUpdateLunch);
 			UpdateLvCommand = new Command<Officer>(OnUpdateLv);
 			UpdateNotesCommand = new Command<Officer>(OnUpdateNotes);
-			UpdatePositionCommand = new Command<Officer>(OnUpdatePosition);
 			UpdateBreakNumberCommand = new Command<Officer>(OnUpdateBreakNumber);
 			Navigation = _navigation;
 		}
@@ -90,33 +85,6 @@ namespace TeamLeadApp.ViewModels
 
 			
 		}
-
-		private async void OnUpdatePosition(Officer officer)
-		{
-			var offList = await App.OfficerService.GetProductsAsync();
-			if (SelectedPosition != null)
-			{
-
-				
-				foreach (var product in offList)
-				{
-					if (product.Id == officer.Id && product.Position != SelectedPosition)
-					{
-						if (SelectedPosition.ToUpper() == "NONE")
-						{
-							officer.Position = "";
-						}
-						else 
-						{
-							officer.Position = SelectedPosition;
-						}
-						await App.OfficerService.AddProductAsync(officer);
-						SelectedPosition = null;
-					}
-				}
-			}
-		}
-
 		public void OnAppearing()
 		{
 			UpDateTime();
@@ -266,13 +234,6 @@ namespace TeamLeadApp.ViewModels
 
 			try
 			{
-	
-
-				Positions.Clear();
-				foreach (var position in positionList)
-				{
-					Positions.Add(position.Name);
-				}
 
 				foreach (var sofficer in officerList)
 				{
@@ -369,13 +330,6 @@ namespace TeamLeadApp.ViewModels
 
 			try
 			{
-				
-
-				Positions.Clear();
-				foreach (var position in positionList)
-				{
-					Positions.Add(position.Name);
-				}
 
 				foreach (var sofficer in officerList)
 				{
