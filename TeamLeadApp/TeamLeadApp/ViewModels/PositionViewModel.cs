@@ -177,6 +177,7 @@ namespace TeamLeadApp.ViewModels
 					
 
 				}
+				CurrentOfficers.Sort();
 				foreach (var position in positionList) 
 				{
 					Positions.Add(position);
