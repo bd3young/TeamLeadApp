@@ -87,6 +87,24 @@ namespace TeamLeadApp.Services
 			return await Task.FromResult(await _database.Table<Officer>().ToListAsync());
 		}
 
+		public async Task<IEnumerable<Officer>> GetRankOfficersAsync(string rank)
+		{
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Rank == rank).ToListAsync());
+		}
+
+		public async Task<IEnumerable<Officer>> GetShiftRankOfficersAsync(string shift, string rank, bool fullTime, string day)
+		{
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Shift == shift && o.Rank == rank && o.FullTime == fullTime && o.Ehs == false && o.Lv == false && day != o.RdoOne.ToUpper() 
+			|| o.Shift == shift && o.Rank == rank && o.FullTime == fullTime && o.Ehs == false && o.Lv == false && day != o.RdoTwo.ToUpper() 
+			|| o.Shift == shift && o.Rank == rank && o.FullTime == fullTime && o.Ehs == false && o.Lv == false && day != o.RdoThree.ToUpper()
+			).ToListAsync());
+		}
+
+		public async Task<IEnumerable<Officer>> GetEhsOfficersAsync(string shift, bool ehs)
+		{
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Shift == shift && o.Ehs == ehs).ToListAsync());
+		}
+
 		public Task<bool> UpdateProductAsync(Officer officer)
 		{
 			throw new NotImplementedException();
