@@ -229,34 +229,60 @@ namespace TeamLeadApp.ViewModels
 
 				await App.DateService.AddProductAsync(day);
 			}
-			var supOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("PM", "SUP", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
-			var leadOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("PM", "LEAD", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
-			var ftOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("PM", "OFFICER", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
-			var ptOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("PM", "OFFICER", false, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
-			var ehsOfficerList = await App.OfficerService.GetEhsOfficersAsync("PM", true);
+			var supPmOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("PM", "SUP", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var supMidOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("MID", "SUP", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var leadPmOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("PM", "LEAD", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var leadMidOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("MID", "LEAD", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var ftPmOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("PM", "OFFICER", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var ftMidOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("MID", "OFFICER", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var ptPmOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("PM", "OFFICER", false, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var ptMidOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("MID", "OFFICER", false, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var ehsMidOfficerList = await App.OfficerService.GetEhsOfficersAsync("MID", true);
+			var ehsPmOfficerList = await App.OfficerService.GetEhsOfficersAsync("PM", true);
+
 
 
 
 			try
 			{
 
-				foreach (var officer in supOfficerList) 
+				foreach (var officer in supPmOfficerList) 
 				{
 					PmOfficers.Add(officer);
 				}
-				foreach (var officer in leadOfficerList) 
+				foreach (var officer in supMidOfficerList)
 				{
 					PmOfficers.Add(officer);
 				}
-				foreach (var officer in ftOfficerList) 
+				foreach (var officer in leadPmOfficerList) 
 				{
 					PmOfficers.Add(officer);
 				}
-				foreach (var officer in ptOfficerList) 
+				foreach (var officer in leadMidOfficerList)
 				{
 					PmOfficers.Add(officer);
 				}
-				foreach (var officer in ehsOfficerList) 
+				foreach (var officer in ftPmOfficerList) 
+				{
+					PmOfficers.Add(officer);
+				}
+				foreach (var officer in ftMidOfficerList)
+				{
+					PmOfficers.Add(officer);
+				}
+				foreach (var officer in ptPmOfficerList) 
+				{
+					PmOfficers.Add(officer);
+				}
+				foreach (var officer in ptMidOfficerList)
+				{
+					PmOfficers.Add(officer);
+				}
+				foreach (var officer in ehsMidOfficerList) 
+				{
+					PmOfficers.Add(officer);
+				}
+				foreach (var officer in ehsPmOfficerList)
 				{
 					PmOfficers.Add(officer);
 				}
