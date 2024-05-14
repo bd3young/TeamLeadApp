@@ -123,60 +123,153 @@ namespace TeamLeadApp.ViewModels
 			var positionList = await App.PositionService.GetProductsAsync();
 			var officerList = await App.OfficerService.GetProductsAsync();
 
+			var AmOfficerList = await App.OfficerService.GetShiftOfficersAsync("AM", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var MidOfficerList = await App.OfficerService.GetShiftOfficersAsync("MID", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var PmOfficerList = await App.OfficerService.GetShiftOfficersAsync("AM", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var AdminOfficerList = await App.OfficerService.GetAdminOfficersAsync(true);
+			var ehsMidOfficerList = await App.OfficerService.GetEhsOfficersAsync("MID");
+			var ehsAmOfficerList = await App.OfficerService.GetEhsOfficersAsync("AM");
+			var ehsPmOfficerList = await App.OfficerService.GetEhsOfficersAsync("AM");
+
 			try 
 			{
-				foreach (var officer in officerList) 
+
+				if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 30, 00)) 
 				{
-					if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 30, 00)) 
+
+					foreach (var officer in AmOfficerList)
 					{
-						if (officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true
-						|| officer.Ehs == true && officer.Lv != true
-						|| officer.Ehs == true && officer.Admin == true)
-						{
-							CurrentOfficers.Add(officer.FirstName);
-						}
-						else
-						{
-							continue;
-						}
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
-					if (DateTime.Now.TimeOfDay <= new TimeSpan(11, 00, 00)) 
+					foreach (var officer in MidOfficerList)
 					{
-						if (officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "AM"
-							|| officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "MID"
-							|| officer.Ehs == true && officer.Lv != true && officer.Shift == "AM"
-							|| officer.Ehs == true && officer.Lv != true && officer.Shift == "MID"
-							|| officer.Ehs == true && officer.Admin == true)
-						{
-							CurrentOfficers.Add(officer.FirstName);
-						}
-						else
-						{
-							continue;
-						}
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
-					if (DateTime.Now.TimeOfDay >= new TimeSpan(12, 30, 00)) 
+					foreach (var officer in AdminOfficerList)
 					{
-						if (officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "PM"
-							|| officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "MID"
-							|| officer.Ehs == true && officer.Lv != true && officer.Shift == "PM"
-							|| officer.Ehs == true && officer.Lv != true && officer.Shift == "MID"
-							|| officer.Ehs == true && officer.Admin == true)
-						{
-							CurrentOfficers.Add(officer.FirstName);
-						}
-						else
-						{
-							continue;
-						}
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
-					else 
-					{ 
-						continue; 
+					foreach (var officer in ehsAmOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
-					
+					foreach (var officer in ehsMidOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
 
 				}
+				if (DateTime.Now.TimeOfDay <= new TimeSpan(11, 00, 00))
+				{
+
+					foreach (var officer in AmOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					foreach (var officer in MidOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					foreach (var officer in AdminOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					foreach (var officer in PmOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					foreach (var officer in ehsAmOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					foreach (var officer in ehsMidOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					foreach (var officer in ehsPmOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+
+				}
+				if (DateTime.Now.TimeOfDay >= new TimeSpan(12, 30, 00))
+				{
+
+					foreach (var officer in PmOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					foreach (var officer in MidOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					foreach (var officer in AdminOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					foreach (var officer in ehsAmOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					foreach (var officer in ehsMidOfficerList)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+
+				}
+
+				//foreach (var officer in officerList) 
+				//{
+				//	if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 30, 00)) 
+				//	{
+				//		if (officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true
+				//		|| officer.Ehs == true && officer.Lv != true
+				//		|| officer.Ehs == true && officer.Admin == true)
+				//		{
+				//			CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//		}
+				//		else
+				//		{
+				//			continue;
+				//		}
+				//	}
+				//	if (DateTime.Now.TimeOfDay <= new TimeSpan(11, 00, 00)) 
+				//	{
+				//		if (officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "AM"
+				//			|| officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "MID"
+				//			|| officer.Ehs == true && officer.Lv != true && officer.Shift == "AM"
+				//			|| officer.Ehs == true && officer.Lv != true && officer.Shift == "MID"
+				//			|| officer.Ehs == true && officer.Admin == true)
+				//		{
+				//			CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//		}
+				//		else
+				//		{
+				//			continue;
+				//		}
+				//	}
+				//	if (DateTime.Now.TimeOfDay >= new TimeSpan(12, 30, 00)) 
+				//	{
+				//		if (officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "PM"
+				//			|| officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "MID"
+				//			|| officer.Ehs == true && officer.Lv != true && officer.Shift == "PM"
+				//			|| officer.Ehs == true && officer.Lv != true && officer.Shift == "MID"
+				//			|| officer.Ehs == true && officer.Admin == true)
+				//		{
+				//			CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//		}
+				//		else
+				//		{
+				//			continue;
+				//		}
+				//	}
+				//	else 
+				//	{ 
+				//		continue; 
+				//	}
+
+
+				//}
 				CurrentOfficers.Sort();
 				foreach (var position in positionList) 
 				{

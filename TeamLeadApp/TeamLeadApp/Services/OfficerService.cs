@@ -87,9 +87,19 @@ namespace TeamLeadApp.Services
 			return await Task.FromResult(await _database.Table<Officer>().ToListAsync());
 		}
 
-		public async Task<IEnumerable<Officer>> GetRankOfficersAsync(string rank)
+		public async Task<IEnumerable<Officer>> GetRankOfficersAsync(string rank) 
 		{
 			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Rank == rank).ToListAsync());
+		}
+
+		public async Task<IEnumerable<Officer>> GetShiftOfficersAsync(string shift, string day)
+		{
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Shift == shift && o.Lv == false && o.Admin == false && day != o.RdoOne.ToUpper() && day != o.RdoTwo.ToUpper() && day != o.RdoThree.ToUpper()).ToListAsync());
+		}
+
+		public async Task<IEnumerable<Officer>> GetAdminOfficersAsync(bool admin)
+		{
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Admin == admin && o.Ehs == true).ToListAsync());
 		}
 
 		public async Task<IEnumerable<Officer>> GetShiftRankOfficersAsync(string shift, string rank, bool fullTime, string day)
@@ -98,9 +108,14 @@ namespace TeamLeadApp.Services
 			).ToListAsync());
 		}
 
-		public async Task<IEnumerable<Officer>> GetEhsOfficersAsync(string shift, bool ehs)
+		public async Task<IEnumerable<Officer>> GetEhsOfficersAsync(string shift)
 		{
-			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Shift == shift && o.Ehs == ehs).ToListAsync());
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Shift == shift && o.Ehs == true && o.Admin == false).ToListAsync());
+		}
+
+		public async Task<IEnumerable<Officer>> GetAdminRankOfficersAsync(bool admin, string rank)
+		{
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Admin == admin && o.Rank == rank && o.Ehs == true).ToListAsync());
 		}
 
 		public Task<bool> UpdateProductAsync(Officer officer)
