@@ -125,7 +125,7 @@ namespace TeamLeadApp.ViewModels
 
 			var AmOfficerList = await App.OfficerService.GetShiftOfficersAsync("AM", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
 			var MidOfficerList = await App.OfficerService.GetShiftOfficersAsync("MID", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
-			var PmOfficerList = await App.OfficerService.GetShiftOfficersAsync("AM", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var PmOfficerList = await App.OfficerService.GetShiftOfficersAsync("PM", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
 			var AdminOfficerList = await App.OfficerService.GetAdminOfficersAsync(true);
 			var ehsMidOfficerList = await App.OfficerService.GetEhsOfficersAsync("MID");
 			var ehsAmOfficerList = await App.OfficerService.GetEhsOfficersAsync("AM");
@@ -134,7 +134,7 @@ namespace TeamLeadApp.ViewModels
 			try 
 			{
 
-				if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 30, 00)) 
+				if (DateTime.Now.TimeOfDay <= new TimeSpan(11, 00, 00)) 
 				{
 
 					foreach (var officer in AmOfficerList)
@@ -159,7 +159,7 @@ namespace TeamLeadApp.ViewModels
 					}
 
 				}
-				if (DateTime.Now.TimeOfDay <= new TimeSpan(11, 00, 00))
+				if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 30, 00))
 				{
 
 					foreach (var officer in AmOfficerList)
