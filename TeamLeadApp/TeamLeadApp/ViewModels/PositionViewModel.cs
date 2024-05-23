@@ -219,7 +219,7 @@ namespace TeamLeadApp.ViewModels
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
-					foreach (var officer in ehsAmOfficerList)
+					foreach (var officer in ehsPmOfficerList)
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
