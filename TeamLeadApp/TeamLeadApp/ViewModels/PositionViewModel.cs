@@ -141,7 +141,7 @@ namespace TeamLeadApp.ViewModels
 			var AdminOfficerList = await App.OfficerService.GetAdminOfficersAsync(true);
 			var ehsMidOfficerList = await App.OfficerService.GetEhsOfficersAsync("MID");
 			var ehsAmOfficerList = await App.OfficerService.GetEhsOfficersAsync("AM");
-			var ehsPmOfficerList = await App.OfficerService.GetEhsOfficersAsync("AM");
+			var ehsPmOfficerList = await App.OfficerService.GetEhsOfficersAsync("PM");
 
 			try 
 			{
