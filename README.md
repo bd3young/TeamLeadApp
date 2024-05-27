@@ -67,6 +67,30 @@ Find the Position to edit and swipe left on the positions banner. Tap the EDIT o
 
 Find the Position to delete and swipe left on the positions banner. Tap the DELETE option to delete that current Position. Tap the Yes option to confirm the deletion of the officer or No to cancel the deletion.
 
+### Checklist Page
+
+This page alows the user to add, edit, and delete tasks.
+
+#### How To Add a Task
+
+Tap the ADD button that is in the top right of the screen. After completing all of the information tap the save button to save the task. If you dont want to save the task tap the cancel button to cancel the action.
+
+#### How To Edit a Task
+
+Find the Task to edit and swipe left on the Tasks banner. Tap the EDIT option to edit that current Task. Tap the save button when you are done editing or cancel if you want to cancel the edit.
+
+#### How to Delete a Task
+
+Find the Task to delete and swipe left on the Tasks banner. Tap the DELETE option to delete that current Task. Tap the Yes option to confirm the deletion of the Task or No to cancel the deletion.
+
+#### How To Complete a Task
+
+Tap on the boxes next to the Tasks name that you would like to complete.
+
+#### How To Add a Time To a Taak
+
+Tap on the time entry to the right of the checkbox. Enter your desired time and tap ok to save. Tap cancel if you want to cancel.
+
 ### AM/PM Rotations page
 
 This page creates lists of currently working Officers. The top right corner of the page will display the number of Officers in the lists. 
