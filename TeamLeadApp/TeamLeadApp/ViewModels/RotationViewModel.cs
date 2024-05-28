@@ -192,7 +192,7 @@ namespace TeamLeadApp.ViewModels
 				officer.FullTime = false;
 			}
 
-			if (shiftBegin >= 300 && shiftEnd <= 1400 && officer.Admin == false)
+			if (shiftBegin >= 300 && shiftEnd <= 1230 && officer.Admin == false)
 			{
 				officer.Shift = "AM";
 			}
