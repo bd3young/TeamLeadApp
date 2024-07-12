@@ -137,7 +137,6 @@ namespace TeamLeadApp.Services
 				officer.Notes = "";
 				officer.Lv = false;
 				officer.Ehs = false;
-				officer.Position = "";
 				officer.BreakNumber = "";
 				int shiftBegin = Convert.ToInt32(officer.ShiftBegin);
 				int shiftEnd = Convert.ToInt32(officer.ShiftEnd);

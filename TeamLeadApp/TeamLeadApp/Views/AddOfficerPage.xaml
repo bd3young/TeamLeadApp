@@ -70,107 +70,11 @@
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Begins" FontSize="Medium"/>
-                    <Picker TextColor="Black" SelectedItem="{Binding Officer.ShiftBegin, Mode=TwoWay}" Title="Enter Time" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
-                        <Picker.Items>
-                            <x:String>100</x:String>
-                            <x:String>130</x:String>
-                            <x:String>230</x:String>
-                            <x:String>300</x:String>
-                            <x:String>330</x:String>
-                            <x:String>400</x:String>
-                            <x:String>430</x:String>
-                            <x:String>500</x:String>
-                            <x:String>530</x:String>
-                            <x:String>600</x:String>
-                            <x:String>630</x:String>
-                            <x:String>700</x:String>
-                            <x:String>730</x:String>
-                            <x:String>800</x:String>
-                            <x:String>830</x:String>
-                            <x:String>900</x:String>
-                            <x:String>930</x:String>
-                            <x:String>1000</x:String>
-                            <x:String>1030</x:String>
-                            <x:String>1100</x:String>
-                            <x:String>1130</x:String>
-                            <x:String>1200</x:String>
-                            <x:String>1230</x:String>
-                            <x:String>1300</x:String>
-                            <x:String>1330</x:String>
-                            <x:String>1400</x:String>
-                            <x:String>1430</x:String>
-                            <x:String>1500</x:String>
-                            <x:String>1530</x:String>
-                            <x:String>1600</x:String>
-                            <x:String>1630</x:String>
-                            <x:String>1700</x:String>
-                            <x:String>1730</x:String>
-                            <x:String>1800</x:String>
-                            <x:String>1830</x:String>
-                            <x:String>1900</x:String>
-                            <x:String>1930</x:String>
-                            <x:String>2000</x:String>
-                            <x:String>2030</x:String>
-                            <x:String>2100</x:String>
-                            <x:String>2130</x:String>
-                            <x:String>2200</x:String>
-                            <x:String>2230</x:String>
-                            <x:String>2300</x:String>
-                            <x:String>2330</x:String>
-                        </Picker.Items>
-                    </Picker>
+                    <TimePicker FontSize="Large" Time="{Binding Officer.ShiftBegin, Mode=TwoWay}" TextColor="Black"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Ends" FontSize="Medium"/>
-                    <Picker TextColor="Black" SelectedItem="{Binding Officer.ShiftEnd, Mode=TwoWay}" Title="Enter Time" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
-                        <Picker.Items>
-                            <x:String>100</x:String>
-                            <x:String>130</x:String>
-                            <x:String>230</x:String>
-                            <x:String>300</x:String>
-                            <x:String>330</x:String>
-                            <x:String>400</x:String>
-                            <x:String>430</x:String>
-                            <x:String>500</x:String>
-                            <x:String>530</x:String>
-                            <x:String>600</x:String>
-                            <x:String>630</x:String>
-                            <x:String>700</x:String>
-                            <x:String>730</x:String>
-                            <x:String>800</x:String>
-                            <x:String>830</x:String>
-                            <x:String>900</x:String>
-                            <x:String>930</x:String>
-                            <x:String>1000</x:String>
-                            <x:String>1030</x:String>
-                            <x:String>1100</x:String>
-                            <x:String>1130</x:String>
-                            <x:String>1200</x:String>
-                            <x:String>1230</x:String>
-                            <x:String>1300</x:String>
-                            <x:String>1330</x:String>
-                            <x:String>1400</x:String>
-                            <x:String>1430</x:String>
-                            <x:String>1500</x:String>
-                            <x:String>1530</x:String>
-                            <x:String>1600</x:String>
-                            <x:String>1630</x:String>
-                            <x:String>1700</x:String>
-                            <x:String>1730</x:String>
-                            <x:String>1800</x:String>
-                            <x:String>1830</x:String>
-                            <x:String>1900</x:String>
-                            <x:String>1930</x:String>
-                            <x:String>2000</x:String>
-                            <x:String>2030</x:String>
-                            <x:String>2100</x:String>
-                            <x:String>2130</x:String>
-                            <x:String>2200</x:String>
-                            <x:String>2230</x:String>
-                            <x:String>2300</x:String>
-                            <x:String>2330</x:String>
-                        </Picker.Items>
-                    </Picker>
+                    <TimePicker FontSize="Large" Time="{Binding Officer.ShiftEnd, Mode=TwoWay}" TextColor="Black"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">

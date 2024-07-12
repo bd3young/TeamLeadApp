@@ -14,8 +14,8 @@ namespace TeamLeadApp.Models
 		public string RdoOne { get; set; }
 		public string RdoTwo { get; set; }
 		public string RdoThree { get; set; } = "";
-		public string ShiftBegin { get; set; }
-		public string ShiftEnd { get; set; }
+		public System.TimeSpan ShiftBegin { get; set; }
+		public System.TimeSpan ShiftEnd { get; set; }
 		public string Gender { get; set; }
 		public string Rank { get; set; }
 		public string Shift { get; set; }
@@ -28,7 +28,7 @@ namespace TeamLeadApp.Models
 		public string Notes { get; set; } = "";
 		public bool Lv { get; set; } = false;
 		public bool Ehs { get; set; } = false;
-		public string Position { get; set; } = "";
+		//public string Position { get; set; } = "";
 		public string BreakNumber { get; set; } = "";
 		//public List<Position> PositionsList { get; set; }
 	}
