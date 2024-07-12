@@ -138,9 +138,7 @@ namespace TeamLeadApp.Services
 				officer.Lv = false;
 				officer.Ehs = false;
 				officer.BreakNumber = "";
-				int shiftBegin = Convert.ToInt32(officer.ShiftBegin);
-				int shiftEnd = Convert.ToInt32(officer.ShiftEnd);
-				if (shiftEnd - shiftBegin == 830 || shiftEnd - shiftBegin == 870 || shiftEnd - shiftBegin == 1030 || shiftEnd - shiftBegin == 1070)
+				if (officer.ShiftEnd - officer.ShiftBegin == new System.TimeSpan(08,30,00))
 				{
 					officer.FullTime = true;
 				}
@@ -148,12 +146,12 @@ namespace TeamLeadApp.Services
 				{
 					officer.FullTime = false;
 				}
-				if (shiftBegin >= 300 && shiftEnd <= 1230 && officer.Admin == false)
+				if (officer.ShiftBegin >= new System.TimeSpan(03, 00, 00) && officer.ShiftEnd <= new System.TimeSpan(12, 30, 00) && officer.Admin == false)
 				{
 					officer.Shift = "AM";
 
 				}
-				else if (shiftBegin >= 1030 && shiftEnd <= 2000 && officer.Admin == false)
+				else if (officer.ShiftBegin >= new System.TimeSpan(10, 30, 00) && officer.ShiftEnd <= new System.TimeSpan(20, 00, 00) && officer.Admin == false)
 				{
 					officer.Shift = "PM";
 				}

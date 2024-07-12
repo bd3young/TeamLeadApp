@@ -155,11 +155,6 @@ namespace TeamLeadApp.ViewModels
 			officer.Lv = true;
 			officer.Ehs = false;
 
-			// variables to help get the officer to their proper shift
-
-			int shiftBegin = Convert.ToInt32(officer.ShiftBegin);
-			int shiftEnd = Convert.ToInt32(officer.ShiftEnd);
-
 			// if statements to remove the officer from the proper list
 
 			if (officer.Shift == "AM")
@@ -183,7 +178,7 @@ namespace TeamLeadApp.ViewModels
 
 			// if statements to return the officer to the proper shift and Fulltime status
 
-			if (shiftEnd - shiftBegin == 830 || shiftEnd - shiftBegin == 870 || shiftEnd - shiftBegin == 1030 || shiftEnd - shiftBegin == 1070)
+			if (officer.ShiftEnd - officer.ShiftBegin == new System.TimeSpan(08, 30, 00))
 			{
 				officer.FullTime = true;
 			}
@@ -191,12 +186,12 @@ namespace TeamLeadApp.ViewModels
 			{
 				officer.FullTime = false;
 			}
-
-			if (shiftBegin >= 300 && shiftEnd <= 1230 && officer.Admin == false)
+			if (officer.ShiftBegin >= new System.TimeSpan(03, 00, 00) && officer.ShiftEnd <= new System.TimeSpan(12, 30, 00) && officer.Admin == false)
 			{
 				officer.Shift = "AM";
+
 			}
-			if (shiftBegin >= 1030 && shiftEnd <= 2000 && officer.Admin == false)
+			else if (officer.ShiftBegin >= new System.TimeSpan(10, 30, 00) && officer.ShiftEnd <= new System.TimeSpan(20, 00, 00) && officer.Admin == false)
 			{
 				officer.Shift = "PM";
 			}

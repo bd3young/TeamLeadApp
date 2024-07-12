@@ -171,7 +171,7 @@ namespace TeamLeadApp.ViewModels
 					}
 
 				}
-				if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 30, 00))
+				if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 00, 00))
 				{
 
 					foreach (var officer in AmOfficerList)
@@ -204,7 +204,7 @@ namespace TeamLeadApp.ViewModels
 					}
 
 				}
-				if (DateTime.Now.TimeOfDay >= new TimeSpan(12, 30, 00))
+				if (DateTime.Now.TimeOfDay >= new TimeSpan(12, 00, 00))
 				{
 
 					foreach (var officer in PmOfficerList)

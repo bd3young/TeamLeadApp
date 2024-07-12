@@ -70,11 +70,11 @@
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Begins" FontSize="Medium"/>
-                    <TimePicker FontSize="Large" Time="{Binding Officer.ShiftBegin, Mode=TwoWay}" TextColor="Black"/>
+                    <TimePicker FontSize="Large" Time="{Binding Officer.ShiftBegin, Mode=TwoWay}" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Ends" FontSize="Medium"/>
-                    <TimePicker FontSize="Large" Time="{Binding Officer.ShiftEnd, Mode=TwoWay}" TextColor="Black"/>
+                    <TimePicker FontSize="Large" Time="{Binding Officer.ShiftEnd, Mode=TwoWay}" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
