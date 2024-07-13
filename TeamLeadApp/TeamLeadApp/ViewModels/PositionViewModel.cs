@@ -21,7 +21,8 @@ namespace TeamLeadApp.ViewModels
 		public Command UpdateOfficerTwoCommand { get; }
 		public Command ResetPositionCommand { get; }
 		public List<string> CurrentOfficers { get; }
-		public string SelectedOfficer { get; set; }
+		public string SelectedOfficerOne { get; set; }
+		public string SelectedOfficerTwo { get; set; }
 
 		public PositionViewModel(INavigation _navigation)
 		{
@@ -35,28 +36,33 @@ namespace TeamLeadApp.ViewModels
 			UpdateOfficerTwoCommand = new Command<Position>(OnUpdateOfficerTwo);
 			ResetPositionCommand = new Command<Position>(OnResetPostion);
 			CurrentOfficers = new List<string>();
-			SelectedOfficer = "";
+			SelectedOfficerOne = " ";
+			SelectedOfficerTwo = " ";
 			Navigation = _navigation;
 		}
 
 		private async void OnResetPostion(Position position)
 		{
 			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
-			CurrentPosition.OfficerOne = "";
-			CurrentPosition.OfficerTwo = "";
+			CurrentPosition.OfficerOne = " ";
+			CurrentPosition.OfficerTwo = " ";
+			SelectedOfficerOne = " ";
+			SelectedOfficerTwo = " ";
+			OnPropertyChanged(nameof(SelectedOfficerOne));
+			OnPropertyChanged(nameof(SelectedOfficerTwo));
 			await App.PositionService.AddProductAsync(CurrentPosition);
 		}
 
 		private async void OnUpdateOfficerTwo(Position position)
 		{
 			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
-			if (SelectedOfficer != null)
+			if (SelectedOfficerTwo != null)
 			{
-				if (CurrentPosition.OfficerTwo != SelectedOfficer)
+				if (CurrentPosition.OfficerTwo != SelectedOfficerTwo)
 				{
-					CurrentPosition.OfficerTwo = SelectedOfficer;
+					CurrentPosition.OfficerTwo = SelectedOfficerTwo;
 					await App.PositionService.AddProductAsync(CurrentPosition);
-					SelectedOfficer = null;
+					SelectedOfficerTwo = CurrentPosition.OfficerTwo;
 				}
 			}
 		}
@@ -64,14 +70,11 @@ namespace TeamLeadApp.ViewModels
 		private async void OnUpdateOfficerOne(Position position)
 		{
 			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
-			if (SelectedOfficer != null)
+			if (position.OfficerOne != null)
 			{
-				if (CurrentPosition.OfficerOne != SelectedOfficer)
-				{
-					CurrentPosition.OfficerOne = SelectedOfficer;
+
 					await App.PositionService.AddProductAsync(CurrentPosition);
-					SelectedOfficer = null;
-				}
+
 			}
 		}
 
@@ -169,7 +172,7 @@ namespace TeamLeadApp.ViewModels
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
-
+					CurrentOfficers.Add(" ");
 				}
 				if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 00, 00))
 				{
@@ -202,6 +205,7 @@ namespace TeamLeadApp.ViewModels
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
+					CurrentOfficers.Add("  ");
 
 				}
 				if (DateTime.Now.TimeOfDay >= new TimeSpan(12, 00, 00))
@@ -227,7 +231,7 @@ namespace TeamLeadApp.ViewModels
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
-
+					CurrentOfficers.Add("  ");
 				}
 
 				//foreach (var officer in officerList) 
