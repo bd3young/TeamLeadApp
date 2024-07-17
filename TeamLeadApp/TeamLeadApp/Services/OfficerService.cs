@@ -94,7 +94,7 @@ namespace TeamLeadApp.Services
 
 		public async Task<IEnumerable<Officer>> GetShiftOfficersAsync(string shift, string day)
 		{
-			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Shift == shift && o.Lv == false && o.Admin == false && day != o.RdoOne.ToUpper() && day != o.RdoTwo.ToUpper() && day != o.RdoThree.ToUpper()).ToListAsync());
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Shift == shift && o.Lv == false && o.Ehs == false && o.Admin == false && day != o.RdoOne.ToUpper() && day != o.RdoTwo.ToUpper() && day != o.RdoThree.ToUpper()).ToListAsync());
 		}
 
 		public async Task<IEnumerable<Officer>> GetAdminOfficersAsync(bool admin)
