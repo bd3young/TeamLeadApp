@@ -118,6 +118,11 @@ namespace TeamLeadApp.Services
 			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Admin == admin && o.Rank == rank && o.Ehs == true).ToListAsync());
 		}
 
+		public async Task<Officer> GetOfficersByNameAsync(string firstName, string lastName)
+		{
+			return await _database.Table<Officer>().Where(o => o.FirstName == firstName && o.LastName == lastName).FirstOrDefaultAsync();
+		}
+
 		public Task<bool> UpdateProductAsync(Officer officer)
 		{
 			throw new NotImplementedException();
@@ -175,6 +180,8 @@ namespace TeamLeadApp.Services
 			{
 				position.OfficerOne = "";
 				position.OfficerTwo = "";
+				position.OfficerOneGender = "";
+				position.OfficerTwoGender = "";
 
 				await App.PositionService.AddProductAsync(position);
 			}

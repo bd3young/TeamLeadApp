@@ -14,7 +14,7 @@ namespace TeamLeadApp.Models
 		public string OfficerOne { get; set; }
 		public string OfficerTwo { get; set; }
 		public bool TwoOfficers { get; set; }
-		public string Row { get; set; }
-		public string Column { get; set; }
+		public string OfficerOneGender { get; set; } = "";
+		public string OfficerTwoGender { get; set; } = "";
 	}
 }

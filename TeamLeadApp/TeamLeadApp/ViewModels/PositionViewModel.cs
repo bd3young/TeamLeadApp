@@ -36,16 +36,18 @@ namespace TeamLeadApp.ViewModels
 			UpdateOfficerTwoCommand = new Command<Position>(OnUpdateOfficerTwo);
 			ResetPositionCommand = new Command<Position>(OnResetPostion);
 			CurrentOfficers = new List<string>();
-			SelectedOfficerOne = " ";
-			SelectedOfficerTwo = " ";
+			SelectedOfficerOne = "";
+			SelectedOfficerTwo = "";
 			Navigation = _navigation;
 		}
 
 		private async void OnResetPostion(Position position)
 		{
 			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
-			CurrentPosition.OfficerOne = " ";
-			CurrentPosition.OfficerTwo = " ";
+			CurrentPosition.OfficerOne = "";
+			CurrentPosition.OfficerTwo = "";
+			CurrentPosition.OfficerOneGender = "";
+			CurrentPosition.OfficerTwoGender = "";
 			await App.PositionService.AddProductAsync(CurrentPosition);
 
 			IsBusy = true;
@@ -54,13 +56,18 @@ namespace TeamLeadApp.ViewModels
 		private async void OnUpdateOfficerTwo(Position position)
 		{
 			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
+			
 			if (SelectedOfficerTwo != null)
 			{
+				string[] officer = SelectedOfficerTwo.Split(' ');
 				if (CurrentPosition.OfficerTwo != SelectedOfficerTwo)
 				{
+					var CurrentOfficer = await App.OfficerService.GetOfficersByNameAsync(officer[0], officer[1]);
+					CurrentPosition.OfficerTwoGender = CurrentOfficer.Gender;
 					CurrentPosition.OfficerTwo = SelectedOfficerTwo;
 					await App.PositionService.AddProductAsync(CurrentPosition);
 					SelectedOfficerTwo = null;
+					IsBusy = true;
 				}
 			}
 		}
@@ -69,13 +76,18 @@ namespace TeamLeadApp.ViewModels
 		{
 
 			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
+			
 			if (SelectedOfficerOne != null)
 			{
+				string[] officer = SelectedOfficerOne.Split(' ');
 				if (CurrentPosition.OfficerOne != SelectedOfficerOne)
 				{
+					var CurrentOfficer = await App.OfficerService.GetOfficersByNameAsync(officer[0], officer[1]);
+					CurrentPosition.OfficerOneGender = CurrentOfficer.Gender;
 					CurrentPosition.OfficerOne = SelectedOfficerOne;
 					await App.PositionService.AddProductAsync(CurrentPosition);
 					SelectedOfficerOne = null;
+					IsBusy = true;
 				}
 			}
 		}
@@ -233,58 +245,6 @@ namespace TeamLeadApp.ViewModels
 					}
 				}
 
-				//foreach (var officer in officerList) 
-				//{
-				//	if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 30, 00)) 
-				//	{
-				//		if (officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true
-				//		|| officer.Ehs == true && officer.Lv != true
-				//		|| officer.Ehs == true && officer.Admin == true)
-				//		{
-				//			CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-				//		}
-				//		else
-				//		{
-				//			continue;
-				//		}
-				//	}
-				//	if (DateTime.Now.TimeOfDay <= new TimeSpan(11, 00, 00)) 
-				//	{
-				//		if (officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "AM"
-				//			|| officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "MID"
-				//			|| officer.Ehs == true && officer.Lv != true && officer.Shift == "AM"
-				//			|| officer.Ehs == true && officer.Lv != true && officer.Shift == "MID"
-				//			|| officer.Ehs == true && officer.Admin == true)
-				//		{
-				//			CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-				//		}
-				//		else
-				//		{
-				//			continue;
-				//		}
-				//	}
-				//	if (DateTime.Now.TimeOfDay >= new TimeSpan(12, 30, 00)) 
-				//	{
-				//		if (officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "PM"
-				//			|| officer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.Lv != true && officer.Admin != true && officer.Shift == "MID"
-				//			|| officer.Ehs == true && officer.Lv != true && officer.Shift == "PM"
-				//			|| officer.Ehs == true && officer.Lv != true && officer.Shift == "MID"
-				//			|| officer.Ehs == true && officer.Admin == true)
-				//		{
-				//			CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-				//		}
-				//		else
-				//		{
-				//			continue;
-				//		}
-				//	}
-				//	else 
-				//	{ 
-				//		continue; 
-				//	}
-
-
-				//}
 				CurrentOfficers.Sort();
 				foreach (var position in positionList) 
 				{

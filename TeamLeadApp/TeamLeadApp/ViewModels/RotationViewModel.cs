@@ -47,17 +47,14 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnUpdateBreakNumber(Officer officer)
 		{
-			var offList = await App.OfficerService.GetProductsAsync();
+			var CurrentOfficer = await App.OfficerService.GetProductAsync(officer.Id);
 			if (SelectedBreakNumber != null) 
 			{
-				foreach (var product in offList)
+				if (CurrentOfficer.BreakNumber != SelectedBreakNumber)
 				{
-					if (product.Id == officer.Id && product.BreakNumber != SelectedBreakNumber)
-					{
-						officer.BreakNumber = SelectedBreakNumber;
-						await App.OfficerService.AddProductAsync(officer);
-						SelectedBreakNumber = null;
-					}
+					officer.BreakNumber = SelectedBreakNumber;
+					await App.OfficerService.AddProductAsync(officer);
+					SelectedBreakNumber = null;
 				}
 			}
 			
@@ -66,18 +63,6 @@ namespace TeamLeadApp.ViewModels
 		private async void UpDateTime()
 		{
 			var date = await App.DateService.GetProductAsync(1);
-			//if (DateTime.Now.ToString().Length == 20) 
-			//{
-			//	date.Day = DateTime.Now.ToString().Remove(8);
-			//}
-			//if (DateTime.Now.ToString().Length == 21)
-			//{
-			//	date.Day = DateTime.Now.ToString().Remove(9);
-			//}
-			//else 
-			//{
-			//	date.Day = DateTime.Now.ToString().Remove(10);
-			//}
 			date.Day = DateTime.Today.ToString();
 			await App.DateService.AddProductAsync(date);
 			CurrentDate = date.Day;
@@ -95,14 +80,11 @@ namespace TeamLeadApp.ViewModels
 		{
 			if (officer != null) 
 			{
-			
-				var offList = await App.OfficerService.GetProductsAsync();
-				foreach (var product in offList) 
+
+				var CurrentOfficer = await App.OfficerService.GetProductAsync(officer.Id);
+				if (CurrentOfficer.BreakOne != officer.BreakOne)
 				{
-					if (product.Id == officer.Id && product.BreakOne != officer.BreakOne) 
-					{
-						await App.OfficerService.AddProductAsync(officer);
-					}
+					await App.OfficerService.AddProductAsync(officer);
 				}
 
 			}
@@ -113,14 +95,10 @@ namespace TeamLeadApp.ViewModels
 			if (officer != null)
 			{
 
-				var offList = await App.OfficerService.GetProductsAsync();
-				foreach (var product in offList)
+				var CurrentOfficer = await App.OfficerService.GetProductAsync(officer.Id);
+				if (CurrentOfficer.BreakTwo != officer.BreakTwo)
 				{
-					if (product.Id == officer.Id && product.BreakTwo != officer.BreakTwo)
-					{
-						await App.OfficerService.AddProductAsync(officer);
-
-					}
+					await App.OfficerService.AddProductAsync(officer);
 				}
 
 			}
@@ -136,14 +114,10 @@ namespace TeamLeadApp.ViewModels
 			if (officer != null)
 			{
 
-				var offList = await App.OfficerService.GetProductsAsync();
-				
-				foreach (var product in offList)
+				var CurrentOfficer = await App.OfficerService.GetProductAsync(officer.Id);
+				if (CurrentOfficer.Lunch != officer.Lunch)
 				{
-					if (product.Id == officer.Id && product.Lunch != officer.Lunch)
-					{
-						await App.OfficerService.AddProductAsync(officer);
-					}
+					await App.OfficerService.AddProductAsync(officer);
 				}
 				
 			}
@@ -293,68 +267,6 @@ namespace TeamLeadApp.ViewModels
 				{
 					PmOfficers.Add(officer);
 				}
-
-				//foreach (var sofficer in officerList)
-				//{
-				//	if (sofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.Lv != true && sofficer.Shift == "PM" && sofficer.Rank.ToUpper().Trim() == "SUP" && sofficer.Admin != true
-				//		|| sofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.Lv != true && sofficer.Shift == "MID" && sofficer.Rank.ToUpper().Trim() == "SUP" && sofficer.Admin != true
-				//		|| sofficer.Ehs == true && sofficer.Lv != true && sofficer.Shift == "PM" && sofficer.Rank.ToUpper().Trim() == "SUP"
-				//		|| sofficer.Ehs == true && sofficer.Admin == true && sofficer.Rank.ToUpper().Trim() == "SUP")
-				//	{
-				//		PmOfficers.Add(sofficer);	
-				//	}
-				//	else
-				//	{
-				//		continue;
-				//	}
-
-				//}
-				//foreach (var lofficer in officerList)
-				//{
-				//	if (lofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.Lv != true && lofficer.Shift == "PM" && lofficer.Rank.ToUpper().Trim() == "LEAD" && lofficer.Admin != true
-				//		|| lofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.Lv != true && lofficer.Shift == "MID" && lofficer.Rank.ToUpper().Trim() == "LEAD" && lofficer.Admin != true
-				//		|| lofficer.Ehs == true && lofficer.Lv != true && lofficer.Shift == "PM" && lofficer.Rank.ToUpper().Trim() == "LEAD"
-				//		|| lofficer.Ehs == true && lofficer.Admin == true && lofficer.Rank.ToUpper().Trim() == "LEAD")
-				//	{
-				//		PmOfficers.Add(lofficer);
-				//	}
-				//	else
-				//	{
-				//		continue;
-				//	}
-
-				//}
-				//foreach (var ftofficer in officerList)
-				//{
-				//	if (ftofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.Lv != true && ftofficer.Shift == "PM" && ftofficer.Rank.ToUpper().Trim() == "OFFICER" && ftofficer.FullTime == true && ftofficer.Admin != true
-				//		|| ftofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.Lv != true && ftofficer.Shift == "MID" && ftofficer.Rank.ToUpper().Trim() == "OFFICER" && ftofficer.FullTime == true && ftofficer.Admin != true
-				//		|| ftofficer.Ehs == true && ftofficer.Lv != true && ftofficer.Shift == "PM" && ftofficer.Rank.ToUpper().Trim() == "OFFICER" && ftofficer.FullTime == true
-				//		|| ftofficer.Ehs == true && ftofficer.Admin == true && ftofficer.Rank.ToUpper().Trim() == "OFFICER")
-				//	{
-				//		PmOfficers.Add(ftofficer);
-				//	}
-				//	else
-				//	{
-				//		continue;
-				//	}
-
-				//}
-				//foreach (var ptofficer in officerList)
-				//{
-				//	if (ptofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.Lv != true && ptofficer.Shift == "PM" && ptofficer.Rank.ToUpper().Trim() == "OFFICER" && ptofficer.FullTime == false && ptofficer.Admin != true
-				//		|| ptofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.Lv != true && ptofficer.Shift == "MID" && ptofficer.Rank.ToUpper().Trim() == "OFFICER" && ptofficer.FullTime == false && ptofficer.Admin != true
-				//		|| ptofficer.Ehs == true && ptofficer.Lv != true && ptofficer.Shift == "PM" && ptofficer.Rank.ToUpper().Trim() == "OFFICER" && ptofficer.FullTime == false 
-				//		|| ptofficer.Ehs == true && ptofficer.Admin == true && ptofficer.Rank.ToUpper().Trim() == "OFFICER")
-				//	{
-				//		PmOfficers.Add(ptofficer);
-
-				//	}
-				//	else
-				//	{
-				//		continue;
-				//	}
-
-				//}
 			}
 			catch (Exception)
 			{
@@ -452,67 +364,6 @@ namespace TeamLeadApp.ViewModels
 				{
 					AmOfficers.Add(officer);
 				}
-
-				//foreach (var sofficer in officerList)
-				//{
-				//	if (sofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.Lv != true && sofficer.Shift == "AM" && sofficer.Rank.ToUpper().Trim() == "SUP" && sofficer.Admin != true
-				//		|| sofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && sofficer.Lv != true && sofficer.Shift == "MID" && sofficer.Rank.ToUpper().Trim() == "SUP" && sofficer.Admin != true
-				//		|| sofficer.Ehs == true && sofficer.Lv != true && sofficer.Shift == "AM" && sofficer.Rank.ToUpper().Trim() == "SUP"
-				//		|| sofficer.Ehs == true && sofficer.Admin == true && sofficer.Rank.ToUpper().Trim() == "SUP")
-				//	{
-				//		AmOfficers.Add(sofficer);
-				//	}
-				//	else
-				//	{
-				//		continue;
-				//	}
-
-				//}
-				//foreach (var lofficer in officerList)
-				//{
-				//	if (lofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.Lv != true && lofficer.Shift == "AM" && lofficer.Rank.ToUpper().Trim() == "LEAD" && lofficer.Admin != true
-				//		|| lofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && lofficer.Lv != true && lofficer.Shift == "MID" && lofficer.Rank.ToUpper().Trim() == "LEAD" && lofficer.Admin != true
-				//		|| lofficer.Ehs == true && lofficer.Lv != true && lofficer.Shift == "AM" && lofficer.Rank.ToUpper().Trim() == "LEAD"
-				//		|| lofficer.Ehs == true && lofficer.Admin == true && lofficer.Rank.ToUpper().Trim() == "LEAD")
-				//	{
-				//		AmOfficers.Add(lofficer);
-				//	}
-				//	else
-				//	{
-				//		continue;
-				//	}
-
-				//}
-				//foreach (var ftofficer in officerList)
-				//{
-				//	if (ftofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.Lv != true && ftofficer.Shift == "AM" && ftofficer.Rank.ToUpper().Trim() == "OFFICER" && ftofficer.FullTime == true && ftofficer.Admin != true
-				//		|| ftofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ftofficer.Lv != true && ftofficer.Shift == "MID" && ftofficer.Rank.ToUpper().Trim() == "OFFICER" && ftofficer.FullTime == true && ftofficer.Admin != true
-				//		|| ftofficer.Ehs == true && ftofficer.Lv != true && ftofficer.Shift == "AM" && ftofficer.Rank.ToUpper().Trim() == "OFFICER" && ftofficer.FullTime == true
-				//		|| ftofficer.Ehs == true && ftofficer.Admin == true && ftofficer.Rank.ToUpper().Trim() == "OFFICER")
-				//	{
-				//		AmOfficers.Add(ftofficer);
-				//	}
-				//	else
-				//	{
-				//		continue;
-				//	}
-
-				//}
-				//foreach (var ptofficer in officerList)
-				//{
-				//	if (ptofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.Lv != true && ptofficer.Shift == "AM" && ptofficer.Rank.ToUpper().Trim() == "OFFICER" && ptofficer.FullTime == false && ptofficer.Admin != true
-				//		|| ptofficer.RdoOne.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.RdoTwo.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.RdoThree.ToUpper().Trim() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && ptofficer.Lv != true && ptofficer.Shift == "MID" && ptofficer.Rank.ToUpper().Trim() == "OFFICER" && ptofficer.FullTime == false && ptofficer.Admin != true
-				//		|| ptofficer.Ehs == true && ptofficer.Lv != true && ptofficer.Shift == "AM" && ptofficer.Rank.ToUpper().Trim() == "OFFICER" && ptofficer.FullTime == false
-				//		|| ptofficer.Ehs == true && ptofficer.Admin == true && ptofficer.Rank.ToUpper().Trim() == "OFFICER")
-				//	{
-				//		AmOfficers.Add(ptofficer);
-				//	}
-				//	else
-				//	{
-				//		continue;
-				//	}
-
-				//}
 			}
 			catch (Exception)
 			{

@@ -31,6 +31,7 @@
                                 <Frame CornerRadius="10" HasShadow="True" BackgroundColor="LightGreen">
                                     <StackLayout>
                                         <Button BackgroundColor="LightGreen" FontSize="Medium" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Pressed="Button_ResetPositionPressed"></Button>
+                                        <Frame CornerRadius="10" Padding="1,1,1,1" HasShadow="False">
                                         <Picker WidthRequest="70" 
                                                 HorizontalTextAlignment="Center" 
                                                 TextColor="Black" 
@@ -42,6 +43,19 @@
                                                 ItemsSource="{Binding CurrentOfficers, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}" 
                                                 SelectedItem="{Binding SelectedOfficerOne, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}"
                                                 />
+                                            <Frame.Triggers>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerOneGender}"  Value="">
+                                                    <Setter Property="BackgroundColor" Value="LightGreen"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerOneGender}"  Value="M">
+                                                    <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerOneGender}"  Value="F">
+                                                    <Setter Property="BackgroundColor" Value="LightPink"/>
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+                                        </Frame>
+                                        <Frame CornerRadius="10" IsVisible="{Binding TwoOfficers}" Padding="1,1,1,1" HasShadow="False">
                                         <Picker IsVisible="{Binding TwoOfficers}"
                                                 WidthRequest="70" 
                                                 HorizontalTextAlignment="Center" 
@@ -53,6 +67,18 @@
                                                 SelectedIndexChanged="Picker_SelectedOfficerTwoChanged"
                                                 ItemsSource="{Binding CurrentOfficers, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}" 
                                                 SelectedItem="{Binding SelectedOfficerTwo, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}"/>
+                                            <Frame.Triggers>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerTwoGender}"  Value="">
+                                                    <Setter Property="BackgroundColor" Value="LightGreen"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerTwoGender}"  Value="M">
+                                                    <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerTwoGender}"  Value="F">
+                                                    <Setter Property="BackgroundColor" Value="LightPink"/>
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+                                        </Frame>
 
 
                                     </StackLayout>
