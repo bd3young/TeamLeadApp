@@ -63,9 +63,28 @@
                                                     </Picker>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                    <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="{Binding ShiftBegin}"/>
+                                                    <Label FontSize="Medium" Grid.Column="1" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Center">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding ShiftBegin.Hours}"></Span>
+                                                                <Span Text=":"></Span>
+                                                                <Span Text="{Binding ShiftBegin.Minutes}"></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
                                                     <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="-"/>
-                                                    <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="{Binding ShiftEnd}"/>
+                                                    <Label FontSize="Medium" Grid.Column="1" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Center">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding ShiftEnd.Hours}"></Span>
+                                                                <Span Text=":"></Span>
+                                                                <Span Text="{Binding ShiftEnd.Minutes}"></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <!--<Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="{Binding ShiftBegin}"/>
+                                                    <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="-"/>
+                                                    <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="{Binding ShiftEnd}"/>-->
                                                     <Entry WidthRequest="210" Margin="10,0,10,0" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Medium" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}},
                                                     Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Notes}" VerticalOptions="CenterAndExpand"></Entry>
                                                 </StackLayout>

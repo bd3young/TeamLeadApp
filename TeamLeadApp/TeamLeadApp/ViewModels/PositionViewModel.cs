@@ -46,11 +46,9 @@ namespace TeamLeadApp.ViewModels
 			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
 			CurrentPosition.OfficerOne = " ";
 			CurrentPosition.OfficerTwo = " ";
-			SelectedOfficerOne = " ";
-			SelectedOfficerTwo = " ";
-			OnPropertyChanged(nameof(SelectedOfficerOne));
-			OnPropertyChanged(nameof(SelectedOfficerTwo));
 			await App.PositionService.AddProductAsync(CurrentPosition);
+
+			IsBusy = true;
 		}
 
 		private async void OnUpdateOfficerTwo(Position position)
@@ -62,19 +60,23 @@ namespace TeamLeadApp.ViewModels
 				{
 					CurrentPosition.OfficerTwo = SelectedOfficerTwo;
 					await App.PositionService.AddProductAsync(CurrentPosition);
-					SelectedOfficerTwo = CurrentPosition.OfficerTwo;
+					SelectedOfficerTwo = null;
 				}
 			}
 		}
 
 		private async void OnUpdateOfficerOne(Position position)
 		{
+
 			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
-			if (position.OfficerOne != null)
+			if (SelectedOfficerOne != null)
 			{
-
+				if (CurrentPosition.OfficerOne != SelectedOfficerOne)
+				{
+					CurrentPosition.OfficerOne = SelectedOfficerOne;
 					await App.PositionService.AddProductAsync(CurrentPosition);
-
+					SelectedOfficerOne = null;
+				}
 			}
 		}
 
@@ -172,7 +174,6 @@ namespace TeamLeadApp.ViewModels
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
-					CurrentOfficers.Add(" ");
 				}
 				if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 00, 00))
 				{
@@ -205,7 +206,6 @@ namespace TeamLeadApp.ViewModels
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
-					CurrentOfficers.Add("  ");
 
 				}
 				if (DateTime.Now.TimeOfDay >= new TimeSpan(12, 00, 00))
@@ -231,7 +231,6 @@ namespace TeamLeadApp.ViewModels
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
-					CurrentOfficers.Add("  ");
 				}
 
 				//foreach (var officer in officerList) 

@@ -36,11 +36,11 @@
                                                 TextColor="Black" 
                                                 FontSize="Medium" 
                                                 VerticalOptions="CenterAndExpand" 
-                                                Title="{Binding Name, Mode=OneWay}" 
+                                                Title="{Binding OfficerOne, Mode=OneWay}" 
                                                 TitleColor="Black" 
                                                 SelectedIndexChanged="Picker_SelectedOfficerOneChanged"
                                                 ItemsSource="{Binding CurrentOfficers, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}" 
-                                                SelectedItem="{Binding Position.OfficerOne, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}"
+                                                SelectedItem="{Binding SelectedOfficerOne, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}"
                                                 />
                                         <Picker IsVisible="{Binding TwoOfficers}"
                                                 WidthRequest="70" 
@@ -52,7 +52,7 @@
                                                 TitleColor="Black" 
                                                 SelectedIndexChanged="Picker_SelectedOfficerTwoChanged"
                                                 ItemsSource="{Binding CurrentOfficers, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}" 
-                                                SelectedItem="{Binding SelectedOfficer, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}"/>
+                                                SelectedItem="{Binding SelectedOfficerTwo, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}"/>
 
 
                                     </StackLayout>
