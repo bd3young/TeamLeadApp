@@ -59,26 +59,8 @@
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                         <Label FontSize="Medium" TextColor="Black" Text="Work" FontAttributes="Bold"/>
-                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Center">
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{Binding ShiftBegin.Hours}"></Span>
-                                                                    <Span Text=":"></Span>
-                                                                    <Span Text="{Binding ShiftBegin.Minutes}"></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
-                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Center">
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{Binding ShiftEnd.Hours}"></Span>
-                                                                    <Span Text=":"></Span>
-                                                                    <Span Text="{Binding ShiftEnd.Minutes}"></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
-                                                        <!--<TimePicker IsEnabled="False" FontSize="Medium" Grid.Column="1" TextColor="Black" Time="{Binding ShiftEnd}" VerticalOptions="Center" HorizontalOptions="Center"></TimePicker>
-                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding ShiftEnd}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>-->
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding ShiftBegin, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding ShiftEnd, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                         <Label FontSize="Medium" TextColor="Black" Text="RDO" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
