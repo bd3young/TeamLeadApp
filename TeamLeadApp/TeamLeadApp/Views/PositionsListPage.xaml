@@ -32,7 +32,7 @@
                                         </SwipeItems>
                                     </SwipeView.RightItems>
                                     <Grid Padding="5" BackgroundColor="White">
-                                        <Frame CornerRadius="10" HasShadow="True" BackgroundColor="LightGreen">
+                                        <Frame CornerRadius="10" HasShadow="True" BackgroundColor="#becba8">
 
                                             <StackLayout Orientation="Vertical" >
                                                 <StackLayout Orientation="Horizontal">

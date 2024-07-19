@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
              xmlns:model="clr-namespace:TeamLeadApp.Models"
              x:Class="TeamLeadApp.Views.OfficerPage"
-             Title="Officers">
+             Title="Officers"
+             >
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New Day" x:DataType="local:OfficerViewModel" Command="{Binding ResetOfficersCommand}"/>
