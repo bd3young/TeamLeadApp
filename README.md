@@ -1,3 +1,5 @@
+![TeamLeadAppIcon](https://github.com/user-attachments/assets/757c0612-179d-400a-9439-5d000411fca0)
+
 # TeamLead
 
 An Application used to automate the creations of Rotation sheets for an individual in a leadership position.   
