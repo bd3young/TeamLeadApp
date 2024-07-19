@@ -47,7 +47,7 @@ Tap underneath the positions name and select the officer you would like to assig
 
 #### How To Clear a Position that Is No Longer Filled
 
-Tap the name of the Position and refresh the page by swiping down on the screen.
+Tap the name of the Position.
 
 #### How To Edit The Position Page
 
