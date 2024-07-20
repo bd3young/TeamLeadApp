@@ -37,7 +37,7 @@
                                             <StackLayout Orientation="Vertical" >
                                                 <StackLayout Orientation="Horizontal">
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label FontSize="Large" Grid.Column="1" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
 
                                                 </StackLayout>

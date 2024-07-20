@@ -40,8 +40,8 @@
                                                 <StackLayout Orientation="Horizontal" >
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand" >
                                                         
-                                                        <Label FontSize="Large" Grid.Column="1" TextColor="Black" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
-                                                        <Label FontSize="Large" Grid.Column="1" TextColor="Black" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <CheckBox Scale="1.2" IsChecked="{Binding BreakOne}" Color="Black" PropertyChanged="BreakOne_CheckedChanged"></CheckBox>
@@ -52,7 +52,7 @@
                                                     <StackLayout IsVisible="{Binding FullTime}" Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <CheckBox Scale="1.2" IsChecked="{Binding BreakTwo}" Color="Black" PropertyChanged="BreakTwo_CheckedChanged" ></CheckBox>
                                                     </StackLayout>
-                                                    <Picker FontSize="Large" WidthRequest="40" TextColor="Black" Title="{Binding BreakNumber, Mode=OneWay}" TitleColor="Black" SelectedIndexChanged="Picker_SelectedBreakNumberChanged" SelectedItem="{Binding SelectedBreakNumber, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:RotationViewModel}}}" HorizontalTextAlignment="Center" HorizontalOptions="EndAndExpand">
+                                                    <Picker FontSize="Small" WidthRequest="40" TextColor="Black" Title="{Binding BreakNumber, Mode=OneWay}" TitleColor="Black" SelectedIndexChanged="Picker_SelectedBreakNumberChanged" SelectedItem="{Binding SelectedBreakNumber, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:RotationViewModel}}}" HorizontalTextAlignment="Center" HorizontalOptions="EndAndExpand">
                                                         <Picker.Items>
                                                             <x:String>1</x:String>
                                                             <x:String>2</x:String>
@@ -63,10 +63,10 @@
                                                     </Picker>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                    <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding ShiftBegin, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                                    <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="-"/>
-                                                    <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding ShiftEnd, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                                    <Entry WidthRequest="210" Margin="10,0,10,0" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Medium" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}},
+                                                    <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding ShiftBegin, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    <Label FontSize="Small" VerticalOptions="CenterAndExpand" TextColor="Black" Text="-"/>
+                                                    <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding ShiftEnd, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    <Entry WidthRequest="210" Margin="10,0,10,0" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local:RotationViewModel}},
                                                     Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Notes}" VerticalOptions="CenterAndExpand"></Entry>
                                                 </StackLayout>
                                             </StackLayout>
