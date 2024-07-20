@@ -12,18 +12,18 @@
         <StackLayout Spacing="5" Padding="15">
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="First Name" FontSize="Small"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="Fill" PlaceholderColor="LightGray" Placeholder="Enter First Name" TextColor="Black" Text="{Binding Officer.FirstName, Mode=TwoWay}" FontSize="Small"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="First Name" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="Fill" PlaceholderColor="LightGray" Placeholder="Enter First Name" TextColor="Black" Text="{Binding Officer.FirstName, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Last Name" FontSize="Small"/>
-                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="Fill" TextColor="Black" PlaceholderColor="LightGray" Placeholder="Enter Last Name" Text="{Binding Officer.LastName, Mode=TwoWay}" FontSize="Small"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Last Name" FontSize="Medium"/>
+                    <Entry HorizontalTextAlignment="Center" HorizontalOptions="Fill" TextColor="Black" PlaceholderColor="LightGray" Placeholder="Enter Last Name" Text="{Binding Officer.LastName, Mode=TwoWay}" FontSize="Medium"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="First RDO" FontSize="Small"/>
-                    <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoOne, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Small">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="First RDO" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoOne, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
                             <x:String>Sunday</x:String>
                             <x:String>Monday</x:String>
@@ -37,8 +37,8 @@
                     </Picker>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Second RDO" FontSize="Small"/>
-                    <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoTwo, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Small">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Second RDO" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoTwo, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
                             <x:String>Sunday</x:String>
                             <x:String>Monday</x:String>
@@ -52,8 +52,8 @@
                     </Picker>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Third RDO" FontSize="Small"/>
-                    <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoThree, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Small">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Third RDO" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.RdoThree, Mode=TwoWay}" Title="Enter RDO" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
                             <x:String>Sunday</x:String>
                             <x:String>Monday</x:String>
@@ -69,18 +69,18 @@
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Begins" FontSize="Small"/>
-                    <TimePicker FontSize="Small" Time="{Binding Officer.ShiftBegin, Mode=TwoWay}" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Begins" FontSize="Medium"/>
+                    <TimePicker FontSize="Medium" Time="{Binding Officer.ShiftBegin, Mode=TwoWay}" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Ends" FontSize="Small"/>
-                    <TimePicker FontSize="Small" Time="{Binding Officer.ShiftEnd, Mode=TwoWay}" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Shift Ends" FontSize="Medium"/>
+                    <TimePicker FontSize="Medium" Time="{Binding Officer.ShiftEnd, Mode=TwoWay}" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Gender" FontSize="Small"/>
-                    <Picker TextColor="Black" SelectedItem="{Binding Officer.Gender, Mode=TwoWay}" Title="Enter Gender" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Small">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Gender" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.Gender, Mode=TwoWay}" Title="Enter Gender" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
                             <x:String>M</x:String>
                             <x:String>F</x:String>
@@ -88,8 +88,8 @@
                     </Picker>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Rank" FontSize="Small"/>
-                    <Picker TextColor="Black" SelectedItem="{Binding Officer.Rank, Mode=TwoWay}" Title="Enter Rank" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Small">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Rank" FontSize="Medium"/>
+                    <Picker TextColor="Black" SelectedItem="{Binding Officer.Rank, Mode=TwoWay}" Title="Enter Rank" TitleColor="LightGray" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
                             <x:String>SUP</x:String>
                             <x:String>LEAD</x:String>
@@ -100,18 +100,18 @@
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Administrative" FontSize="Small"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Administrative" FontSize="Medium"/>
                     <CheckBox Color="Black" HorizontalOptions="CenterAndExpand" IsChecked="{Binding Officer.Admin, Mode=TwoWay}"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Fulltime" FontSize="Small"/>
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Fulltime" FontSize="Medium"/>
                     <CheckBox Color="Black" HorizontalOptions="CenterAndExpand" IsChecked="{Binding Officer.FullTime, Mode=TwoWay}"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label HorizontalOptions="Center" TextColor="Black" Text="Shift" FontSize="Small"/>
-                    <Picker TextColor="Black" Title="Enter Shift" TitleColor="LightGray" SelectedItem="{Binding Officer.Shift, Mode=TwoWay}"   HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Small">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Shift" FontSize="Medium"/>
+                    <Picker TextColor="Black" Title="Enter Shift" TitleColor="LightGray" SelectedItem="{Binding Officer.Shift, Mode=TwoWay}"   HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="Medium">
                         <Picker.Items>
                             <x:String>AM</x:String>
                             <x:String>MID</x:String>

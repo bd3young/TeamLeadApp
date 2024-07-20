@@ -17,7 +17,7 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar Placeholder="Search Officer" TextChanged="SearchBar_TextChanged" BindingContext="{Binding Officers}" FontSize="Small"/>
+            <SearchBar Placeholder="Search Officer" TextChanged="SearchBar_TextChanged" BindingContext="{Binding Officers}"/>
             <RefreshView x:DataType="local:OfficerViewModel"
                          Command="{Binding LoadOfficerCommand}"
                          IsRefreshing="{Binding IsBusy,Mode=OneWay}">
@@ -46,28 +46,28 @@
                                             <StackLayout Orientation="Vertical" >
                                                 <StackLayout Orientation="Horizontal">
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label FontSize="Small" TextColor="Black" Text="Officer" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" TextColor="Black" Text="Officer" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label FontSize="Small" TextColor="Black" Text="Rank" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding Rank}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" TextColor="Black" Text="Rank" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding Rank}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label FontSize="Small" TextColor="Black" Text="Shift" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding Shift}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" TextColor="Black" Text="Shift" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding Shift}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label FontSize="Small" TextColor="Black" Text="Work" FontAttributes="Bold"/>
-                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding ShiftBegin, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding ShiftEnd, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" TextColor="Black" Text="Work" FontAttributes="Bold"/>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding ShiftBegin, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding ShiftEnd, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label FontSize="Small" TextColor="Black" Text="RDO" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding RdoOne}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding RdoTwo}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                                        <Label FontSize="Small" Grid.Column="1" TextColor="Black" Text="{Binding RdoThree}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" TextColor="Black" Text="RDO" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding RdoOne}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding RdoTwo}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding RdoThree}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
 
                                                 </StackLayout>

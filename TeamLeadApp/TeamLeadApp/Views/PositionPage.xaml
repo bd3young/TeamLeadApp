@@ -30,12 +30,12 @@
                             <Grid Padding="5" BackgroundColor="White" x:DataType="model:Position">
                                 <Frame CornerRadius="10" HasShadow="True" BackgroundColor="#becba8">
                                     <StackLayout>
-                                        <Button BackgroundColor="#becba8" FontSize="Small" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Pressed="Button_ResetPositionPressed"></Button>
+                                        <Button BackgroundColor="#becba8" FontSize="Medium" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Pressed="Button_ResetPositionPressed"></Button>
                                         <Frame CornerRadius="10" Padding="1,1,1,1" HasShadow="False">
                                         <Picker WidthRequest="70" 
                                                 HorizontalTextAlignment="Center" 
                                                 TextColor="Black" 
-                                                FontSize="Small" 
+                                                FontSize="Medium" 
                                                 VerticalOptions="CenterAndExpand" 
                                                 Title="{Binding OfficerOne, Mode=OneWay}" 
                                                 TitleColor="Black" 
@@ -60,7 +60,7 @@
                                                 WidthRequest="70" 
                                                 HorizontalTextAlignment="Center" 
                                                 TextColor="Black" 
-                                                FontSize="Small" 
+                                                FontSize="Medium" 
                                                 VerticalOptions="CenterAndExpand" 
                                                 Title="{Binding OfficerTwo, Mode=OneWay}" 
                                                 TitleColor="Black" 

@@ -37,13 +37,13 @@
                                             <StackLayout Orientation="Vertical" >
                                                 <StackLayout Orientation="Horizontal">
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label Grid.Column="1" TextColor="Black" FontSize="Medium" Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Label Grid.Column="1" TextColor="Black" FontSize="Large" Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
                                                         <CheckBox Scale="1.2" IsChecked="{Binding IsCompleted}" Color="Black" PropertyChanged="IsCompleted_CheckedChanged"></CheckBox>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <TimePicker FontSize="Medium" Time="{Binding Time, Mode=TwoWay}" TextColor="Black" PropertyChanged="TimePicker_SelectedTimeChanged" />
+                                                        <TimePicker FontSize="Large" Time="{Binding Time, Mode=TwoWay}" TextColor="Black" PropertyChanged="TimePicker_SelectedTimeChanged" />
                                                     </StackLayout>
                                                 </StackLayout>
                                             </StackLayout>
