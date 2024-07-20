@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Xamarin.Forms.Platform.Android;
 
 namespace TeamLeadApp.Droid
 {
@@ -12,6 +13,8 @@ namespace TeamLeadApp.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            this.SetStatusBarColor(Xamarin.Forms.Color.FromHex("#57786d").ToAndroid());
+
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
