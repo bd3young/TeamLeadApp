@@ -77,16 +77,17 @@ namespace TeamLeadApp.ViewModels
 
 			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
 			
-			if (SelectedOfficerOne != null)
+			if (position.OfficerOne != null)
 			{
-				string[] officer = SelectedOfficerOne.Split(' ');
-				if (CurrentPosition.OfficerOne != SelectedOfficerOne)
+				string[] officer = position.OfficerOne.Split(' ');
+				if (CurrentPosition.OfficerOne != position.OfficerOne)
 				{
 					var CurrentOfficer = await App.OfficerService.GetOfficersByNameAsync(officer[0], officer[1]);
+					CurrentPosition.OfficerOne = position.OfficerOne;
 					CurrentPosition.OfficerOneGender = CurrentOfficer.Gender;
-					CurrentPosition.OfficerOne = SelectedOfficerOne;
+					//CurrentPosition.OfficerOne = SelectedOfficerOne;
 					await App.PositionService.AddProductAsync(CurrentPosition);
-					SelectedOfficerOne = null;
+					//SelectedOfficerOne = null;
 					IsBusy = true;
 				}
 			}
@@ -134,9 +135,10 @@ namespace TeamLeadApp.ViewModels
 
 		async Task ExecuteLoadPositionCommand()
 		{
+			IsBusy = true;
 			Positions.Clear();
 			CurrentOfficers.Clear();
-			IsBusy = true;
+			
 
 			var day = await App.DateService.GetProductAsync(1);
 			var currentDay = DateTime.Today.ToString();

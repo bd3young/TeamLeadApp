@@ -28,7 +28,7 @@
 
                         <DataTemplate>
                             <Grid Padding="5" BackgroundColor="White" x:DataType="model:Position">
-                                <Frame CornerRadius="10" HasShadow="True" BackgroundColor="#becba8">
+                                <Frame CornerRadius="10" HasShadow="True" BackgroundColor="#becba8" Padding="10,10,10,10">
                                     <StackLayout>
                                         <Button BackgroundColor="#becba8" FontSize="Medium" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Pressed="Button_ResetPositionPressed"></Button>
                                         <Frame CornerRadius="10" Padding="1,1,1,1" HasShadow="False">
@@ -41,7 +41,7 @@
                                                 TitleColor="Black" 
                                                 SelectedIndexChanged="Picker_SelectedOfficerOneChanged"
                                                 ItemsSource="{Binding CurrentOfficers, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}" 
-                                                SelectedItem="{Binding SelectedOfficerOne, Mode=TwoWay, Source={RelativeSource AncestorType={x:Type local:PositionViewModel}}}"
+                                                SelectedItem="{Binding OfficerOne, Mode=TwoWay}"
                                                 />
                                             <Frame.Triggers>
                                                 <DataTrigger TargetType="Frame" Binding="{Binding OfficerOneGender}"  Value="">
