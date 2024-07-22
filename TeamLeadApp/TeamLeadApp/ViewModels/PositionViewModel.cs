@@ -21,8 +21,6 @@ namespace TeamLeadApp.ViewModels
 		public Command UpdateOfficerTwoCommand { get; }
 		public Command ResetPositionCommand { get; }
 		public List<string> CurrentOfficers { get; }
-		public string SelectedOfficerOne { get; set; }
-		public string SelectedOfficerTwo { get; set; }
 
 		public PositionViewModel(INavigation _navigation)
 		{
@@ -36,8 +34,6 @@ namespace TeamLeadApp.ViewModels
 			UpdateOfficerTwoCommand = new Command<Position>(OnUpdateOfficerTwo);
 			ResetPositionCommand = new Command<Position>(OnResetPostion);
 			CurrentOfficers = new List<string>();
-			SelectedOfficerOne = "";
-			SelectedOfficerTwo = "";
 			Navigation = _navigation;
 		}
 
@@ -57,16 +53,15 @@ namespace TeamLeadApp.ViewModels
 		{
 			var CurrentPosition = await App.PositionService.GetProductAsync(position.Id);
 			
-			if (SelectedOfficerTwo != null)
+			if (position.OfficerTwo != null)
 			{
-				string[] officer = SelectedOfficerTwo.Split(' ');
-				if (CurrentPosition.OfficerTwo != SelectedOfficerTwo)
+				string[] officer = position.OfficerTwo.Split(' ');
+				if (CurrentPosition.OfficerTwo != position.OfficerTwo)
 				{
 					var CurrentOfficer = await App.OfficerService.GetOfficersByNameAsync(officer[0], officer[1]);
 					CurrentPosition.OfficerTwoGender = CurrentOfficer.Gender;
-					CurrentPosition.OfficerTwo = SelectedOfficerTwo;
+					CurrentPosition.OfficerTwo = position.OfficerTwo;
 					await App.PositionService.AddProductAsync(CurrentPosition);
-					SelectedOfficerTwo = null;
 					IsBusy = true;
 				}
 			}
@@ -85,9 +80,7 @@ namespace TeamLeadApp.ViewModels
 					var CurrentOfficer = await App.OfficerService.GetOfficersByNameAsync(officer[0], officer[1]);
 					CurrentPosition.OfficerOne = position.OfficerOne;
 					CurrentPosition.OfficerOneGender = CurrentOfficer.Gender;
-					//CurrentPosition.OfficerOne = SelectedOfficerOne;
 					await App.PositionService.AddProductAsync(CurrentPosition);
-					//SelectedOfficerOne = null;
 					IsBusy = true;
 				}
 			}

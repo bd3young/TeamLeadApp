@@ -7,6 +7,8 @@ using TeamLeadApp.ViewModels;
 using TeamLeadApp.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Threading;
+using TeamLeadApp.Models;
 
 namespace TeamLeadApp.Views
 {
@@ -29,11 +31,14 @@ namespace TeamLeadApp.Views
 			var picker = (Picker)sender;
 
 			var viewModel = (PositionViewModel)BindingContext;
+			
 
 			if (viewModel.UpdateOfficerOneCommand.CanExecute(picker.BindingContext))
 			{
 				viewModel.UpdateOfficerOneCommand.Execute(picker.BindingContext);
 			}
+			
+
 		}
 		private void Picker_SelectedOfficerTwoChanged(object sender, EventArgs e)
 		{
@@ -56,6 +61,7 @@ namespace TeamLeadApp.Views
 			{
 				viewModel.ResetPositionCommand.Execute(button.BindingContext);
 			}
+			
 		}
 	}
 }
