@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
+             xmlns:model="clr-namespace:TeamLeadApp.Models"
+             x:Class="TeamLeadApp.Views.RotationPositionsPage"
+             Title="Poisitions">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Positions List" x:DataType="local:RotationPositionsViewModel" Command="{Binding PositionsListCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <AbsoluteLayout>
+            <RefreshView x:DataType="local:RotationPositionsViewModel"
+                         Command="{Binding LoadPositionCommand}"
+                         IsRefreshing="{Binding IsBusy,Mode=OneWay}">
+
+                <CollectionView
+                    ItemsSource="{Binding RotationPositon}"
+                    SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                         Span="3"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+                            <Grid Padding="5" BackgroundColor="White" x:DataType="model:Position">
+                                <Frame CornerRadius="10" HasShadow="True" BackgroundColor="#becba8" Padding="10,10,10,10">
+                                    <StackLayout>
+                                        <Button BackgroundColor="#becba8" FontSize="Medium" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Pressed="Button_ResetPositionPressed" ></Button>
+                                        <Frame CornerRadius="10" Padding="1,1,1,1" HasShadow="False">
+                                            <Picker WidthRequest="70" 
+                                                HorizontalTextAlignment="Center" 
+                                                TextColor="Black" 
+                                                FontSize="Medium" 
+                                                VerticalOptions="CenterAndExpand" 
+                                                Title="{Binding OfficerOne, Mode=OneWay}" 
+                                                TitleColor="Black" 
+                                                SelectedIndexChanged="Picker_SelectedOfficerOneChanged"
+                                                ItemsSource="{Binding CurrentOfficers, Source={RelativeSource AncestorType={x:Type local:RotationPositionsViewModel}}}" 
+                                                SelectedItem="{Binding OfficerOne, Mode=TwoWay}"
+                                                />
+                                            <Frame.Triggers>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerOneGender}"  Value="">
+                                                    <Setter Property="BackgroundColor" Value="#becba8"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerOneGender}"  Value="M">
+                                                    <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerOneGender}"  Value="F">
+                                                    <Setter Property="BackgroundColor" Value="LightPink"/>
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+                                        </Frame>
+                                        <Frame CornerRadius="10" IsVisible="{Binding TwoOfficers}" Padding="1,1,1,1" HasShadow="False">
+                                            <Picker IsVisible="{Binding TwoOfficers}"
+                                                WidthRequest="70" 
+                                                HorizontalTextAlignment="Center" 
+                                                TextColor="Black" 
+                                                FontSize="Medium" 
+                                                VerticalOptions="CenterAndExpand" 
+                                                Title="{Binding OfficerTwo, Mode=OneWay}" 
+                                                TitleColor="Black" 
+                                                SelectedIndexChanged="Picker_SelectedOfficerTwoChanged"
+                                                ItemsSource="{Binding CurrentOfficers, Source={RelativeSource AncestorType={x:Type local:RotationPositionsViewModel}}}" 
+                                                SelectedItem="{Binding OfficerTwo, Mode=TwoWay}"/>
+                                            <Frame.Triggers>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerTwoGender}"  Value="">
+                                                    <Setter Property="BackgroundColor" Value="#becba8"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerTwoGender}"  Value="M">
+                                                    <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerTwoGender}"  Value="F">
+                                                    <Setter Property="BackgroundColor" Value="LightPink"/>
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+                                        </Frame>
+
+
+                                    </StackLayout>
+
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </RefreshView>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>

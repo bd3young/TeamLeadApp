@@ -18,6 +18,7 @@ namespace TeamLeadApp.ViewModels
 		public Command DeleteRotationCommand { get; }
 		public Command ResetOfficersCommand { get; }
 		public Command SearchCommand { get; }
+		public Command LoadPositionsPage { get; }
 		public RotationsViewModel(INavigation _navigation)
 		{
 			LoadRotationCommand = new Command(async () => await ExecuteLoadRotationsCommand());
@@ -27,7 +28,13 @@ namespace TeamLeadApp.ViewModels
 			DeleteRotationCommand = new Command<Rotation>(OnDeleteRotation);
 			ResetOfficersCommand = new Command(async () => await App.OfficerService.ResetOfficers());
 			SearchCommand = new Command(Search);
+			LoadPositionsPage = new Command<Rotation>(OnLoadPositionsPage);
 			Navigation = _navigation;
+		}
+
+		private async void OnLoadPositionsPage(Rotation rotation)
+		{
+			await Navigation.PushAsync(new RotationPositionsPage(rotation));
 		}
 
 		private async void Search(Object obj)
