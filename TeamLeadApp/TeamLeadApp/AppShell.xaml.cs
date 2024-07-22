@@ -15,6 +15,7 @@ namespace TeamLeadApp
 			Routing.RegisterRoute(nameof(AddPositionPage), typeof(AddPositionPage));
 			Routing.RegisterRoute(nameof(AddChorePage), typeof(AddChorePage));
 			Routing.RegisterRoute(nameof(PositionsListPage), typeof(PositionsListPage));
+			Routing.RegisterRoute(nameof(AddRotationPage), typeof(AddRotationPage));
 		}
 
 	}

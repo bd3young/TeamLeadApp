@@ -1,12 +1,14 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace TeamLeadApp.Models
 {
-    public class Position
-    {
+	[Table("Positions")]
+	public class RotationPosition
+	{
 		[PrimaryKey, AutoIncrement]
 
 		public int Id { get; set; }
@@ -17,5 +19,7 @@ namespace TeamLeadApp.Models
 		public string OfficerOneGender { get; set; } = "";
 		public string OfficerTwoGender { get; set; } = "";
 
+		[ForeignKey(typeof(Rotation))]
+		public int RotationId { get; set; }
 	}
 }

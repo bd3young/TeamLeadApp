@@ -31,7 +31,7 @@
 
     <TabBar>
         <ShellContent  Title="Officers" Icon="icon_officer.png" Route="OfficerPage" ContentTemplate="{DataTemplate local:OfficerPage}" />
-        <ShellContent  Title="Positions" Icon="icon_feed.png" Route="PositionPage" ContentTemplate="{DataTemplate local:PositionPage}" />
+        <ShellContent  Title="Positions" Icon="icon_feed.png" Route="RotationsPage" ContentTemplate="{DataTemplate local:RotationsPage}" />
         <ShellContent  Title="Checklist" Icon="check_box.png" Route="ChecklistPage" ContentTemplate="{DataTemplate local:ChecklistPage}" />
         <ShellContent Title="AM Rotation" Icon="icon_sheet.png" ContentTemplate="{DataTemplate local:AmRotationPage}" />
         <ShellContent Title="PM Rotation" Icon="icon_sheet.png" Route="RotationPage" ContentTemplate="{DataTemplate local:RotationPage}" />

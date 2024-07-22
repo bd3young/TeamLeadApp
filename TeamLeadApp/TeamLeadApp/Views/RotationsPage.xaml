@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
+             xmlns:model="clr-namespace:TeamLeadApp.Models"
+             x:Class="TeamLeadApp.Views.RotationsPage"
+             Title="Rotations"
+             >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" x:DataType="local:RotationsViewModel" Command="{Binding AddRotationCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar Placeholder="Search Rotations" TextChanged="SearchBar_TextChanged" BindingContext="{Binding Rotations}"/>
+            <RefreshView x:DataType="local:RotationsViewModel"
+                 Command="{Binding LoadRotationCommand}"
+                 IsRefreshing="{Binding IsBusy,Mode=OneWay}">
+
+                <CollectionView
+            ItemsSource="{Binding Rotations}"
+            SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout x:DataType="model:Rotation" >
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
+                                            <SwipeItem Text="Edit" BackgroundColor="Blue" Command="{Binding Source={RelativeSource AncestorType={x:Type local:RotationsViewModel}},
+                                        Path=EditRotationCommand}" CommandParameter="{Binding .}"/>
+                                            <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:RotationsViewModel}},
+                                        Path=DeleteRotationCommand}" CommandParameter="{Binding .}"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid Padding="5" BackgroundColor="White">
+                                        <Frame CornerRadius="10" BorderColor="Black" HasShadow="True" BackgroundColor="White">
+
+                                            <StackLayout Orientation="Vertical" >
+                                                <StackLayout Orientation="Horizontal">
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
+                                                        <Label FontSize="Medium" TextColor="Black" Text="{Binding RotationTime, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
+                                                        <Label FontSize="Medium" TextColor="Black" Text="{Binding Positions.Count}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </Grid>
+                                </SwipeView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamLeadApp.Views.AddRotationPage"
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
+             Title="Rotation Time">
+    <ContentPage.BindingContext>
+        <local:AddRotationViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Spacing="5" Padding="15">
+            <StackLayout Spacing="5" Padding="15" Orientation="Vertical">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Rotation Time" FontSize="Medium"/>
+                    <TimePicker FontSize="Medium" Time="{Binding Rotation.RotationTime, Mode=TwoWay}" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
