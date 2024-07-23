@@ -4,8 +4,9 @@
              xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
              xmlns:model="clr-namespace:TeamLeadApp.Models"
              x:Class="TeamLeadApp.Views.RotationPositionsPage"
-             Title="Poisitions">
+             Title="{Binding Rotation.RotationTime, Source={RelativeSource AncestorType={x:Type local:RotationPositionsViewModel}}}">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding Rotation.RotationTime, Source={RelativeSource AncestorType={x:Type local:RotationPositionsViewModel}}}" x:DataType="local:RotationPositionsViewModel"/>
         <ToolbarItem Text="Positions List" x:DataType="local:RotationPositionsViewModel" Command="{Binding PositionsListCommand}"/>
     </ContentPage.ToolbarItems>
 
@@ -13,11 +14,11 @@
 
         <AbsoluteLayout>
             <RefreshView x:DataType="local:RotationPositionsViewModel"
-                         Command="{Binding LoadPositionCommand}"
+                         Command="{Binding LoadRotationPositionCommand}"
                          IsRefreshing="{Binding IsBusy,Mode=OneWay}">
 
                 <CollectionView
-                    ItemsSource="{Binding RotationPositon}"
+                    ItemsSource="{Binding RotationPositions}"
                     SelectionMode="None">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"

@@ -11,12 +11,11 @@ namespace TeamLeadApp.Services
 	public class RotationService : IRotationRepository
 	{
 		public SQLiteAsyncConnection _rdatabase;
-		public RotationService(string cdbPath)
+		public RotationService(string rdbPath)
 		{
 
-			_rdatabase = new SQLiteAsyncConnection(cdbPath);
+			_rdatabase = new SQLiteAsyncConnection(rdbPath);
 			_rdatabase.CreateTableAsync<Rotation>().Wait();
-			_rdatabase.CreateTableAsync<RotationPosition>().Wait();
 
 		}
 
@@ -43,43 +42,13 @@ namespace TeamLeadApp.Services
 		{
 			return await _rdatabase.Table<Rotation>().Where(p => p.Id == id).FirstOrDefaultAsync();
 		}
-
+		public async Task<Rotation> GetProductTAsync(TimeSpan time)
+		{
+			return await _rdatabase.Table<Rotation>().Where(p => p.RotationTime == time).FirstOrDefaultAsync();
+		}
 		public async Task<IEnumerable<Rotation>> GetProductsAsync()
 		{
 			return await Task.FromResult(await _rdatabase.Table<Rotation>().ToListAsync());
-		}
-
-		public async Task<bool> AddProductPAsync(RotationPosition rotationPosition)
-		{
-			if (rotationPosition.Id > 0)
-			{
-				await _rdatabase.UpdateAsync(rotationPosition);
-			}
-			else
-			{
-				await _rdatabase.InsertAsync(rotationPosition);
-			}
-			return await Task.FromResult(true);
-		}
-
-		public async Task<bool> DeleteProductPAsync(int id)
-		{
-			await _rdatabase.DeleteAsync<RotationPosition>(id);
-			return await Task.FromResult(true);
-		}
-
-		public async Task<RotationPosition> GetProductPAsync(int id)
-		{
-			return await _rdatabase.Table<RotationPosition>().Where(p => p.Id == id).FirstOrDefaultAsync();
-		}
-
-		public async Task<IEnumerable<RotationPosition>> GetProductsPAsync()
-		{
-			return await Task.FromResult(await _rdatabase.Table<RotationPosition>().ToListAsync());
-		}
-		public async Task<IEnumerable<RotationPosition>> GetProductsRPAsync(int id)
-		{
-			return await Task.FromResult(await _rdatabase.Table<RotationPosition>().Where(p => p.RotationId == id).ToListAsync());
 		}
 	}
 }

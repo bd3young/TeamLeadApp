@@ -29,15 +29,28 @@ namespace TeamLeadApp.ViewModels
 		private async void OnSave()
 		{
 			var rotation = Rotation;
+			await App.RotationService.AddProductAsync(rotation);
+			rotation = await App.RotationService.GetProductTAsync(rotation.RotationTime);
 			var positions = await App.PositionService.GetProductsAsync();
-			var currentPositions = new List<Position>();
+			var currentPositions = new List<RotationPosition>();
 			foreach (var position in positions) 
 			{
-				currentPositions.Add(position);
+				var rotationPosition = new RotationPosition();
+				rotationPosition.Name = position.Name;
+				rotationPosition.OfficerOne = position.OfficerOne;
+				rotationPosition.OfficerTwo = position.OfficerTwo;
+				rotationPosition.OfficerOneGender = position.OfficerOneGender;
+				rotationPosition.OfficerTwoGender = position.OfficerTwoGender;
+				rotationPosition.TwoOfficers = position.TwoOfficers;
+				rotationPosition.RotationId = rotation.Id;
+
+				currentPositions.Add(rotationPosition);
+				await App.RotationPositionService.AddProductAsync(rotationPosition);
 			}
 
 			rotation.Positions = currentPositions;
 			await App.RotationService.AddProductAsync(rotation);
+			
 
 			await Shell.Current.GoToAsync("..");
 		}

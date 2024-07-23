@@ -14,6 +14,6 @@ namespace TeamLeadApp.Models
 		public System.TimeSpan RotationTime { get; set; }
 
 		[OneToMany]
-		public List<Position> Positions { get; set; }
+		public List<RotationPosition> Positions { get; set; }
 	}
 }

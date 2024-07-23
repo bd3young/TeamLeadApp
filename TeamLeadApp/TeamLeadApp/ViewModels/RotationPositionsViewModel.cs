@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using TeamLeadApp.Models;
 using TeamLeadApp.Views;
 using Xamarin.Forms;
+using static Android.Icu.Text.Transliterator;
 
 namespace TeamLeadApp.ViewModels
 {
 	public class RotationPositionsViewModel : BaseRotationPositionViewModel
 	{
-		public Command LoadPositionCommand { get; }
+		public Command RotationPositionsViewCommand { get; }
+		public Command LoadRotationPositionCommand { get; }
 		public ObservableCollection<RotationPosition> RotationPositions { get; }
 		public Rotation Rotation { get; set; } 
 		//public Command AddPositionCommand { get; }
@@ -25,7 +27,8 @@ namespace TeamLeadApp.ViewModels
 
 		public RotationPositionsViewModel(INavigation _navigation)
 		{
-			LoadPositionCommand = new Command(async () => await ExecuteLoadPositionCommand());
+			RotationPositionsViewCommand = new Command<Rotation>(OnRotationPositonsView);
+			LoadRotationPositionCommand = new Command(async () => await ExecuteLoadRotationPositionCommand());
 			RotationPositions = new ObservableCollection<RotationPosition>();
 			//AddPositionCommand = new Command(OnAddPosition);
 			PositionsListCommand = new Command(PositionsList);
@@ -38,21 +41,26 @@ namespace TeamLeadApp.ViewModels
 			Navigation = _navigation;
 		}
 
+		private async void OnRotationPositonsView(Rotation rotation)
+		{
+			await Navigation.PushAsync(new RotationPositionsPage(rotation));
+		}
+
 		private async void OnResetPostion(RotationPosition rotationPosition)
 		{
-			var CurrentPosition = await App.RotationService.GetProductPAsync(rotationPosition.Id);
+			var CurrentPosition = await App.RotationPositionService.GetProductAsync(rotationPosition.Id);
 			CurrentPosition.OfficerOne = "";
 			CurrentPosition.OfficerTwo = "";
 			CurrentPosition.OfficerOneGender = "";
 			CurrentPosition.OfficerTwoGender = "";
-			await App.RotationService.AddProductPAsync(CurrentPosition);
+			await App.RotationPositionService.AddProductAsync(CurrentPosition);
 
 			IsBusy = true;
 		}
 
 		private async void OnUpdateOfficerTwo(RotationPosition rotationPosition)
 		{
-			var CurrentPosition = await App.RotationService.GetProductPAsync(rotationPosition.Id);
+			var CurrentPosition = await App.RotationPositionService.GetProductAsync(rotationPosition.Id);
 
 			if (rotationPosition.OfficerTwo != null)
 			{
@@ -62,7 +70,7 @@ namespace TeamLeadApp.ViewModels
 					var CurrentOfficer = await App.OfficerService.GetOfficersByNameAsync(officer[0], officer[1]);
 					CurrentPosition.OfficerTwoGender = CurrentOfficer.Gender;
 					CurrentPosition.OfficerTwo = rotationPosition.OfficerTwo;
-					await App.RotationService.AddProductPAsync(CurrentPosition);
+					await App.RotationPositionService.AddProductAsync(CurrentPosition);
 					IsBusy = true;
 				}
 			}
@@ -71,7 +79,7 @@ namespace TeamLeadApp.ViewModels
 		private async void OnUpdateOfficerOne(RotationPosition rotationPosition)
 		{
 
-			var CurrentPosition = await App.RotationService.GetProductPAsync(rotationPosition.Id);
+			var CurrentPosition = await App.RotationPositionService.GetProductAsync(rotationPosition.Id);
 
 			if (rotationPosition.OfficerOne != null)
 			{
@@ -81,7 +89,7 @@ namespace TeamLeadApp.ViewModels
 					var CurrentOfficer = await App.OfficerService.GetOfficersByNameAsync(officer[0], officer[1]);
 					CurrentPosition.OfficerOne = rotationPosition.OfficerOne;
 					CurrentPosition.OfficerOneGender = CurrentOfficer.Gender;
-					await App.RotationService.AddProductPAsync(CurrentPosition);
+					await App.RotationPositionService.AddProductAsync(CurrentPosition);
 					IsBusy = true;
 				}
 			}
@@ -127,10 +135,9 @@ namespace TeamLeadApp.ViewModels
 		//	await Shell.Current.GoToAsync(nameof(AddPositionPage));
 		//}
 
-		async Task ExecuteLoadPositionCommand()
+		async Task ExecuteLoadRotationPositionCommand()
 		{
 			IsBusy = true;
-			var Rotation = new Rotation();
 			RotationPositions.Clear();
 			CurrentOfficers.Clear();
 
@@ -146,8 +153,7 @@ namespace TeamLeadApp.ViewModels
 				await App.DateService.AddProductAsync(day);
 			}
 
-			var rotationPositionList = await App.RotationService.GetProductsPAsync();
-			var officerList = await App.OfficerService.GetProductsAsync();
+			var rotationPositionList = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
 
 			var AmOfficerList = await App.OfficerService.GetShiftOfficersAsync("AM", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
 			var MidOfficerList = await App.OfficerService.GetShiftOfficersAsync("MID", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());

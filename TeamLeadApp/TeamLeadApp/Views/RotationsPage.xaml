@@ -39,10 +39,7 @@
                                             <StackLayout Orientation="Vertical" >
                                                 <StackLayout Orientation="Horizontal">
                                                     <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label FontSize="Medium" TextColor="Black" Text="{Binding RotationTime, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                                    </StackLayout>
-                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="CenterAndExpand">
-                                                        <Label FontSize="Medium" TextColor="Black" Text="{Binding Positions.Count}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                        <Button FontSize="Medium" TextColor="Black" Text="{Binding RotationTime, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding Source={RelativeSource AncestorType={x:Type local:RotationsViewModel}}, Path=LoadPositionsPageCommand}" CommandParameter="{Binding .}"></Button>
                                                     </StackLayout>
                                                 </StackLayout>
                                             </StackLayout>

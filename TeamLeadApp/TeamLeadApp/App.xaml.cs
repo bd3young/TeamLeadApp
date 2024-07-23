@@ -15,6 +15,7 @@ namespace TeamLeadApp
 		static ChoreService _choreService;
 		static DateService _dateService;
 		static RotationService _rotationService;
+		static RotationPositionService _rotationPositionService;
 		public static OfficerService OfficerService
 		{
 			get 
@@ -68,6 +69,17 @@ namespace TeamLeadApp
 					_rotationService = new RotationService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Rotation.db3"));
 				}
 				return _rotationService;
+			}
+		}
+		public static RotationPositionService RotationPositionService
+		{
+			get
+			{
+				if (_rotationPositionService == null)
+				{
+					_rotationPositionService = new RotationPositionService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "RotationPosition.db3"));
+				}
+				return _rotationPositionService;
 			}
 		}
 
