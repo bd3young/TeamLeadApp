@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TeamLeadApp.Models;
 using TeamLeadApp.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace TeamLeadApp.ViewModels
 {
@@ -107,6 +108,18 @@ namespace TeamLeadApp.ViewModels
 
 			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Position", "Yes", "No"))
 			{
+				var rotations = await App.RotationService.GetProductsAsync();
+
+				foreach (var rotation in rotations)
+				{
+					var rotationPosition = await App.RotationPositionService.GetProductRNAsync(rotation.Id, position.Name);
+
+					if (rotationPosition != null) 
+					{ 
+						await App.RotationPositionService.DeleteProductAsync(rotationPosition.Id);
+					}					
+				}
+
 				await App.PositionService.DeleteProductAsync(position.Id);
 				Positions.Remove(position);
 			}

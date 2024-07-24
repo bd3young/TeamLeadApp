@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TeamLeadApp.Models;
 using Xamarin.Forms;
+using static Android.Icu.Text.Transliterator;
 
 namespace TeamLeadApp.ViewModels
 {
@@ -29,6 +30,17 @@ namespace TeamLeadApp.ViewModels
 		private async void OnSave()
 		{
 			var rotation = Rotation;
+			var rotations = await App.RotationService.GetProductsAsync();
+			foreach (var product in rotations)
+			{
+				if (rotation.RotationTime == product.RotationTime)
+				{
+					await App.Current.MainPage.DisplayAlert("Rotation Time Taken", "Each rotation is required to have a unique time", "Ok");
+
+					return;
+				}
+			}	
+
 			await App.RotationService.AddProductAsync(rotation);
 			rotation = await App.RotationService.GetProductTAsync(rotation.RotationTime);
 			var positions = await App.PositionService.GetProductsAsync();

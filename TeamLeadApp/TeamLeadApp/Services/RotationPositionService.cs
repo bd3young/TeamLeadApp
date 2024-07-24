@@ -49,5 +49,10 @@ namespace TeamLeadApp.Services
 		{
 			return await Task.FromResult(await _rpdatabase.Table<RotationPosition>().Where(p => p.RotationId == id).ToListAsync());
 		}
+
+		public async Task<RotationPosition> GetProductRNAsync(int id, string name)
+		{
+			return await _rpdatabase.Table<RotationPosition>().Where(p => p.RotationId == id && p.Name == name).FirstOrDefaultAsync();
+		}
 	}
 }

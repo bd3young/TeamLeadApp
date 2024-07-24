@@ -12,14 +12,14 @@ namespace TeamLeadApp.ViewModels
 {
 	public class RotationPositionsViewModel : BaseRotationPositionViewModel
 	{
-		public Command RotationPositionsViewCommand { get; }
+		public Command PullLastRotationCommand { get; set; }
 		public Command LoadRotationPositionCommand { get; }
 		public ObservableCollection<RotationPosition> RotationPositions { get; }
 		public Rotation Rotation { get; set; } 
 		//public Command AddPositionCommand { get; }
 		public Command PositionsListCommand { get; }
 		//public Command EditPositionCommand { get; }
-		//public Command DeletePositionCommand { get; }
+		public Command DeletePositionCommand { get; }
 		public Command UpdateOfficerOneCommand { get; }
 		public Command UpdateOfficerTwoCommand { get; }
 		public Command ResetPositionCommand { get; }
@@ -27,13 +27,13 @@ namespace TeamLeadApp.ViewModels
 
 		public RotationPositionsViewModel(INavigation _navigation)
 		{
-			RotationPositionsViewCommand = new Command<Rotation>(OnRotationPositonsView);
+			PullLastRotationCommand = new Command(OnPullLastRotation);
 			LoadRotationPositionCommand = new Command(async () => await ExecuteLoadRotationPositionCommand());
 			RotationPositions = new ObservableCollection<RotationPosition>();
 			//AddPositionCommand = new Command(OnAddPosition);
 			PositionsListCommand = new Command(PositionsList);
 			//EditPositionCommand = new Command<Position>(OnEditPosition);
-			//DeletePositionCommand = new Command<Position>(OnDeletePosition);
+			DeletePositionCommand = new Command<RotationPosition>(OnDeletePosition);
 			UpdateOfficerOneCommand = new Command<RotationPosition>(OnUpdateOfficerOne);
 			UpdateOfficerTwoCommand = new Command<RotationPosition>(OnUpdateOfficerTwo);
 			ResetPositionCommand = new Command<RotationPosition>(OnResetPostion);
@@ -41,9 +41,25 @@ namespace TeamLeadApp.ViewModels
 			Navigation = _navigation;
 		}
 
-		private async void OnRotationPositonsView(Rotation rotation)
+		private async void OnPullLastRotation()
 		{
-			await Navigation.PushAsync(new RotationPositionsPage(rotation));
+			
+			TimeSpan rotationTime = Rotation.RotationTime - new TimeSpan(00,30,00);
+			var lastRotation = await App.RotationService.GetProductTAsync(rotationTime);
+			var currentPositions = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
+			
+
+			foreach (var position in currentPositions) 
+			{
+				var lastPosition = await App.RotationPositionService.GetProductRNAsync(lastRotation.Id, position.Name);
+				position.OfficerOne = lastPosition.OfficerOne;
+				position.OfficerTwo = lastPosition.OfficerTwo;
+				position.OfficerOneGender = lastPosition.OfficerOneGender;
+				position.OfficerTwoGender = lastPosition.OfficerTwoGender;
+
+				await App.RotationPositionService.AddProductAsync(position);
+			}
+			IsBusy = true;
 		}
 
 		private async void OnResetPostion(RotationPosition rotationPosition)
@@ -105,25 +121,25 @@ namespace TeamLeadApp.ViewModels
 			IsBusy = true;
 		}
 
-		//private async void OnDeletePosition(Position position)
-		//{
+		private async void OnDeletePosition(RotationPosition rotationPosition)
+		{
 
 
-		//	if (position == null)
-		//	{
-		//		return;
-		//	}
+			if (rotationPosition == null)
+			{
+				return;
+			}
 
-		//	if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Position", "Yes", "No"))
-		//	{
-		//		await App.PositionService.DeleteProductAsync(position.Id);
-		//		Positions.Remove(position);
-		//	}
-		//	else
-		//	{
-		//		return;
-		//	}
-		//}
+			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Rotation Position", "Yes", "No"))
+			{
+				await App.RotationPositionService.DeleteProductAsync(rotationPosition.Id);
+				RotationPositions.Remove(rotationPosition);
+			}
+			else
+			{
+				return;
+			}
+		}
 
 		//private async void OnEditPosition(Position position)
 		//{
@@ -137,10 +153,10 @@ namespace TeamLeadApp.ViewModels
 
 		async Task ExecuteLoadRotationPositionCommand()
 		{
-			IsBusy = true;
+			
 			RotationPositions.Clear();
 			CurrentOfficers.Clear();
-
+			IsBusy = true;
 
 			var day = await App.DateService.GetProductAsync(1);
 			var currentDay = DateTime.Today.ToString();
@@ -166,7 +182,7 @@ namespace TeamLeadApp.ViewModels
 			try
 			{
 
-				if (DateTime.Now.TimeOfDay <= new TimeSpan(11, 00, 00))
+				if (Rotation.RotationTime <= new TimeSpan(10, 59, 00))
 				{
 
 					foreach (var officer in AmOfficerList)
@@ -190,7 +206,7 @@ namespace TeamLeadApp.ViewModels
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
 				}
-				if (DateTime.Now.TimeOfDay >= new TimeSpan(11, 00, 00) && DateTime.Now.TimeOfDay <= new TimeSpan(12, 00, 00))
+				if (Rotation.RotationTime >= new TimeSpan(11, 00, 00) && Rotation.RotationTime <= new TimeSpan(11, 59, 00))
 				{
 
 					foreach (var officer in AmOfficerList)
@@ -223,7 +239,7 @@ namespace TeamLeadApp.ViewModels
 					}
 
 				}
-				if (DateTime.Now.TimeOfDay >= new TimeSpan(12, 00, 00))
+				if (Rotation.RotationTime >= new TimeSpan(12, 00, 00))
 				{
 
 					foreach (var officer in PmOfficerList)

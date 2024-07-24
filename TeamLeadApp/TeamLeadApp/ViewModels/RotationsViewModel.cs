@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeamLeadApp.Models;
@@ -68,6 +69,11 @@ namespace TeamLeadApp.ViewModels
 
 			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Rotation", "Yes", "No"))
 			{
+				var rotationPositions = await App.RotationPositionService.GetProductsRPAsync(rotation.Id);
+				foreach (var position in rotationPositions) 
+				{
+					await App.RotationPositionService.DeleteProductAsync(position.Id);
+				}
 				await App.RotationService.DeleteProductAsync(rotation.Id);
 				Rotations.Remove(rotation);
 			}
@@ -95,6 +101,7 @@ namespace TeamLeadApp.ViewModels
 		{
 			IsBusy = true;
 			var rotations = await App.RotationService.GetProductsAsync();
+			rotations = rotations.OrderBy(r => r.RotationTime);
 
 			var day = await App.DateService.GetProductAsync(1);
 			var currentDay = DateTime.Today.ToString();
@@ -115,7 +122,6 @@ namespace TeamLeadApp.ViewModels
 				{
 					Rotations.Add(rotation);
 				}
-
 			}
 			catch (Exception)
 			{

@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:TeamLeadApp.Models" 
              x:DataType="local:RotationViewModel"
              x:Class="TeamLeadApp.Views.RotationPage"
-             Title="PM Rotation">
+             Title="PM Shift">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding CurrentDate}"/>

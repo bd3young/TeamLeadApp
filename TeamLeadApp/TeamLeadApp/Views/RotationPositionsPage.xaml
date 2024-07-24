@@ -4,10 +4,12 @@
              xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
              xmlns:model="clr-namespace:TeamLeadApp.Models"
              x:Class="TeamLeadApp.Views.RotationPositionsPage"
-             Title="{Binding Rotation.RotationTime, Source={RelativeSource AncestorType={x:Type local:RotationPositionsViewModel}}}">
+             x:DataType="local:RotationPositionsViewModel"
+             Title="{Binding Rotation.RotationTime, Mode=OneWay, StringFormat='{0:hh}:{0:mm}  Positions'}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding Rotation.RotationTime, Source={RelativeSource AncestorType={x:Type local:RotationPositionsViewModel}}}" x:DataType="local:RotationPositionsViewModel"/>
-        <ToolbarItem Text="Positions List" x:DataType="local:RotationPositionsViewModel" Command="{Binding PositionsListCommand}"/>
+        <ToolbarItem Text="Pull" x:DataType="local:RotationPositionsViewModel" Command="{Binding PullLastRotationCommand}" CommandParameter="{Binding Rotation}"/>
+        <ToolbarItem Text="|"/>
+        <ToolbarItem Text="List" x:DataType="local:RotationPositionsViewModel" Command="{Binding PositionsListCommand}"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -16,7 +18,6 @@
             <RefreshView x:DataType="local:RotationPositionsViewModel"
                          Command="{Binding LoadRotationPositionCommand}"
                          IsRefreshing="{Binding IsBusy,Mode=OneWay}">
-
                 <CollectionView
                     ItemsSource="{Binding RotationPositions}"
                     SelectionMode="None">
@@ -28,7 +29,7 @@
                     <CollectionView.ItemTemplate>
 
                         <DataTemplate>
-                            <Grid Padding="5" BackgroundColor="White" x:DataType="model:Position">
+                            <Grid Padding="5" BackgroundColor="White" x:DataType="model:RotationPosition">
                                 <Frame CornerRadius="10" HasShadow="True" BackgroundColor="#becba8" Padding="10,10,10,10">
                                     <StackLayout>
                                         <Button BackgroundColor="#becba8" FontSize="Medium" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Pressed="Button_ResetPositionPressed" ></Button>

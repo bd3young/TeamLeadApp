@@ -132,8 +132,6 @@ namespace TeamLeadApp.Services
 		public async Task ResetOfficers()
 		{
 
-			//if (await App.Current.MainPage.DisplayAlert("New Day", "Are you sure you would like to start a New Day", "Yes", "No"))
-			//{
 			var officerList = await App.OfficerService.GetProductsAsync();
 			foreach (var officer in officerList)
 			{
@@ -176,22 +174,17 @@ namespace TeamLeadApp.Services
 
 				await App.ChoreService.AddProductAsync(chore);
 			}
-			var postionList = await App.PositionService.GetProductsAsync();
-			foreach (var position in postionList) 
+			var positions = await App.RotationPositionService.GetProductsAsync();
+			foreach (var position in positions) 
 			{
 				position.OfficerOne = "";
 				position.OfficerTwo = "";
 				position.OfficerOneGender = "";
 				position.OfficerTwoGender = "";
 
-				await App.PositionService.AddProductAsync(position);
+				await App.RotationPositionService.AddProductAsync(position);
 			}
-			//await ExecuteLoadOfficerCommand();
-			//}
-			//else
-			//{
-			//	return;
-			//}
+
 		}
 
 	}
