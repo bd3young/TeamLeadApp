@@ -184,6 +184,13 @@ namespace TeamLeadApp.Services
 
 				await App.RotationPositionService.AddProductAsync(position);
 			}
+			var rotations = await App.RotationService.GetProductsAsync();
+			foreach (var rotation in rotations) 
+			{
+				rotation.IsComplete = false;
+
+				await App.RotationService.AddProductAsync(rotation);
+			}
 
 		}
 

@@ -25,8 +25,8 @@
                                     <SwipeView.RightItems>
                                         <SwipeItems>
                                             <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
-                                            <SwipeItem Text="Edit" BackgroundColor="Blue" Command="{Binding Source={RelativeSource AncestorType={x:Type local:PositionViewModel}},
-                                                Path=EditPositionCommand}" CommandParameter="{Binding .}"/>
+                                            <!--<SwipeItem Text="Edit" BackgroundColor="Blue" Command="{Binding Source={RelativeSource AncestorType={x:Type local:PositionViewModel}},
+                                                Path=EditPositionCommand}" CommandParameter="{Binding .}"/>-->
                                             <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:PositionViewModel}},
                                                 Path=DeletePositionCommand}" CommandParameter="{Binding .}"/>
                                         </SwipeItems>

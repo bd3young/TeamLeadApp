@@ -13,6 +13,7 @@ namespace TeamLeadApp.ViewModels
 	public class RotationsViewModel : BaseRotationViewModel
 	{
 		public Command LoadRotationCommand { get; }
+		public Command UpdateIsCompleteCommand { get; }
 		public ObservableCollection<Rotation> Rotations { get; }
 		public Command AddRotationCommand { get; }
 		public Command EditRotationCommand { get; }
@@ -23,6 +24,7 @@ namespace TeamLeadApp.ViewModels
 		public RotationsViewModel(INavigation _navigation)
 		{
 			LoadRotationCommand = new Command(async () => await ExecuteLoadRotationsCommand());
+			UpdateIsCompleteCommand = new Command<Rotation>(OnUpdateIsComplete);
 			Rotations = new ObservableCollection<Rotation>();
 			AddRotationCommand = new Command(OnAddRotation);
 			EditRotationCommand = new Command<Rotation>(OnEditRotation);
@@ -90,6 +92,21 @@ namespace TeamLeadApp.ViewModels
 		private async void OnAddRotation(object obj)
 		{
 			await Shell.Current.GoToAsync(nameof(AddRotationPage));
+		}
+
+		private async void OnUpdateIsComplete(Rotation rotation)
+		{
+			if (rotation != null)
+			{
+
+				var CurrentRotation = await App.RotationService.GetProductAsync(rotation.Id);
+				if (CurrentRotation.IsComplete != rotation.IsComplete)
+				{
+					await App.RotationService.AddProductAsync(rotation);
+				}
+
+			}
+
 		}
 
 		public void OnAppearing()

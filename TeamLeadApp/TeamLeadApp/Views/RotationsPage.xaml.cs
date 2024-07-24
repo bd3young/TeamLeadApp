@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,16 @@ namespace TeamLeadApp.Views
 				viewModel.SearchCommand.Execute(e.NewTextValue);
 			}
 
+		}
+		private void IsComplete_CheckedChanged(object sender, PropertyChangedEventArgs e)
+		{
+			var cb = (CheckBox)sender;
+
+			var viewModel = (RotationsViewModel)BindingContext;
+			if (viewModel.UpdateIsCompleteCommand.CanExecute(cb.BindingContext))
+			{
+				viewModel.UpdateIsCompleteCommand.Execute(cb.BindingContext);
+			}
 		}
 	}
 }

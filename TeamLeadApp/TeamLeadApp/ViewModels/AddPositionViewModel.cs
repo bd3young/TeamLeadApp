@@ -29,8 +29,6 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnSave()
 		{
-			
-
 			var position = Position;
 			var positions = await App.PositionService.GetProductsAsync();
 			foreach (var product in positions) 

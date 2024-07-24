@@ -12,6 +12,7 @@ namespace TeamLeadApp.Models
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
 		public System.TimeSpan RotationTime { get; set; }
+		public bool IsComplete { get; set; } = false;
 
 		[OneToMany]
 		public List<RotationPosition> Positions { get; set; }
