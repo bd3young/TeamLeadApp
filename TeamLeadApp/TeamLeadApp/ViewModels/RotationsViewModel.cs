@@ -116,6 +116,7 @@ namespace TeamLeadApp.ViewModels
 
 		async Task ExecuteLoadRotationsCommand()
 		{
+			Rotations.Clear();
 			IsBusy = true;
 			var rotations = await App.RotationService.GetProductsAsync();
 			rotations = rotations.OrderBy(r => r.RotationTime);
@@ -125,7 +126,7 @@ namespace TeamLeadApp.ViewModels
 
 			try
 			{
-				Rotations.Clear();
+				
 
 				if (currentDay != day.Day)
 				{

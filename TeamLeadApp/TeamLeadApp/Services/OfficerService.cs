@@ -131,6 +131,13 @@ namespace TeamLeadApp.Services
 
 		public async Task ResetOfficers()
 		{
+			var rotations = await App.RotationService.GetProductsAsync();
+			foreach (var rotation in rotations)
+			{
+				rotation.IsComplete = false;
+
+				await App.RotationService.AddProductAsync(rotation);
+			}
 
 			var officerList = await App.OfficerService.GetProductsAsync();
 			foreach (var officer in officerList)
@@ -184,14 +191,7 @@ namespace TeamLeadApp.Services
 
 				await App.RotationPositionService.AddProductAsync(position);
 			}
-			var rotations = await App.RotationService.GetProductsAsync();
-			foreach (var rotation in rotations) 
-			{
-				rotation.IsComplete = false;
-
-				await App.RotationService.AddProductAsync(rotation);
-			}
-
+			
 		}
 
 	}
