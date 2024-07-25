@@ -12,6 +12,8 @@ namespace TeamLeadApp.ViewModels
 {
 	public class RotationPositionsViewModel : BaseRotationPositionViewModel
 	{
+		public Command PreviousRotationCommand { get; set; }
+		public Command NextRotationCommand { get; set; }
 		public Command PullLastRotationCommand { get; set; }
 		public Command LoadRotationPositionCommand { get; }
 		public ObservableCollection<RotationPosition> RotationPositions { get; }
@@ -27,6 +29,8 @@ namespace TeamLeadApp.ViewModels
 
 		public RotationPositionsViewModel(INavigation _navigation)
 		{
+			PreviousRotationCommand = new Command(OnPreviousRotation);
+			NextRotationCommand = new Command(OnNextRotation);
 			PullLastRotationCommand = new Command(OnPullLastRotation);
 			LoadRotationPositionCommand = new Command(async () => await ExecuteLoadRotationPositionCommand());
 			RotationPositions = new ObservableCollection<RotationPosition>();
@@ -39,6 +43,20 @@ namespace TeamLeadApp.ViewModels
 			ResetPositionCommand = new Command<RotationPosition>(OnResetPostion);
 			CurrentOfficers = new List<string>();
 			Navigation = _navigation;
+		}
+
+		private async void OnNextRotation()
+		{
+			var rotation = await App.RotationService.GetProductTAsync(Rotation.RotationTime + new TimeSpan(00, 30, 00));
+			Rotation = rotation;
+			await Navigation.PushAsync(new RotationPositionsPage(rotation));
+		}
+
+		private async void OnPreviousRotation()
+		{
+			var rotation = await App.RotationService.GetProductTAsync(Rotation.RotationTime - new TimeSpan(00, 30, 00));
+			Rotation = rotation;
+			await Navigation.PushAsync(new RotationPositionsPage(rotation));
 		}
 
 		private async void OnPullLastRotation()

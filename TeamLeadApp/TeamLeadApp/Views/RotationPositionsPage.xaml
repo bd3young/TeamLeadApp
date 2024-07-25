@@ -7,6 +7,10 @@
              x:DataType="local:RotationPositionsViewModel"
              Title="{Binding Rotation.RotationTime, Mode=OneWay, StringFormat='{0:hh}:{0:mm}  Rotation'}">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Prev" x:DataType="local:RotationPositionsViewModel" Command="{Binding PreviousRotationCommand}" CommandParameter="{Binding Rotation}"/>
+        <ToolbarItem Text="-"/>
+        <ToolbarItem Text="Next" x:DataType="local:RotationPositionsViewModel" Command="{Binding NextRotationCommand}" CommandParameter="{Binding Rotation}"/>
+        <ToolbarItem Text="|"/>
         <ToolbarItem Text="Pull" x:DataType="local:RotationPositionsViewModel" Command="{Binding PullLastRotationCommand}" CommandParameter="{Binding Rotation}"/>
         <ToolbarItem Text="|"/>
         <ToolbarItem Text="List" x:DataType="local:RotationPositionsViewModel" Command="{Binding PositionsListCommand}"/>
