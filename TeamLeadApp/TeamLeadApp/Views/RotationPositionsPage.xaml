@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:TeamLeadApp.Models"
              x:Class="TeamLeadApp.Views.RotationPositionsPage"
              x:DataType="local:RotationPositionsViewModel"
-             Title="{Binding Rotation.RotationTime, Mode=OneWay, StringFormat='{0:hh}:{0:mm}  Rotation'}">
+             Title="{Binding Rotation.RotationTime, Mode=OneWay, StringFormat='{0:hh}:{0:mm}'}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Prev" x:DataType="local:RotationPositionsViewModel" Command="{Binding PreviousRotationCommand}" CommandParameter="{Binding Rotation}"/>
         <ToolbarItem Text="-"/>

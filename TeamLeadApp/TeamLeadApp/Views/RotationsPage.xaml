@@ -8,7 +8,7 @@
              >
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Positions" x:DataType="local:RotationPositionsViewModel" Command="{Binding PositionsListCommand}"/>
+        <ToolbarItem Text="Positions" x:DataType="local:RotationsViewModel" Command="{Binding PositionsListCommand}"/>
         <ToolbarItem Text="|"/>
         <ToolbarItem Text="Add" x:DataType="local:RotationsViewModel" Command="{Binding AddRotationCommand}"/>
     </ContentPage.ToolbarItems>
