@@ -49,14 +49,16 @@ namespace TeamLeadApp.ViewModels
 		{
 			var rotation = await App.RotationService.GetProductTAsync(Rotation.RotationTime + new TimeSpan(00, 30, 00));
 			Rotation = rotation;
-			await Navigation.PushAsync(new RotationPositionsPage(rotation));
+			OnPropertyChanged(nameof(Rotation));
+			IsBusy = true;
 		}
 
 		private async void OnPreviousRotation()
 		{
 			var rotation = await App.RotationService.GetProductTAsync(Rotation.RotationTime - new TimeSpan(00, 30, 00));
 			Rotation = rotation;
-			await Navigation.PushAsync(new RotationPositionsPage(rotation));
+			OnPropertyChanged(nameof(Rotation));
+			IsBusy = true;
 		}
 
 		private async void OnPullLastRotation()
@@ -224,7 +226,7 @@ namespace TeamLeadApp.ViewModels
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
 				}
-				if (Rotation.RotationTime >= new TimeSpan(11, 00, 00) && Rotation.RotationTime <= new TimeSpan(11, 59, 00))
+				if (Rotation.RotationTime >= new TimeSpan(11, 00, 00) && Rotation.RotationTime <= new TimeSpan(12, 00, 00))
 				{
 
 					foreach (var officer in AmOfficerList)
@@ -257,7 +259,7 @@ namespace TeamLeadApp.ViewModels
 					}
 
 				}
-				if (Rotation.RotationTime >= new TimeSpan(12, 00, 00))
+				if (Rotation.RotationTime >= new TimeSpan(12, 30, 00))
 				{
 
 					foreach (var officer in PmOfficerList)
