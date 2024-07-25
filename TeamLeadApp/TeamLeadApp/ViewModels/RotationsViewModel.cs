@@ -12,6 +12,7 @@ namespace TeamLeadApp.ViewModels
 {
 	public class RotationsViewModel : BaseRotationViewModel
 	{
+		public Command PositionsListCommand { get; }
 		public Command LoadRotationCommand { get; }
 		public Command UpdateIsCompleteCommand { get; }
 		public ObservableCollection<Rotation> Rotations { get; }
@@ -23,6 +24,7 @@ namespace TeamLeadApp.ViewModels
 		public Command LoadPositionsPageCommand { get; }
 		public RotationsViewModel(INavigation _navigation)
 		{
+			PositionsListCommand = new Command(PositionList);
 			LoadRotationCommand = new Command(async () => await ExecuteLoadRotationsCommand());
 			UpdateIsCompleteCommand = new Command<Rotation>(OnUpdateIsComplete);
 			Rotations = new ObservableCollection<Rotation>();
@@ -33,6 +35,11 @@ namespace TeamLeadApp.ViewModels
 			SearchCommand = new Command(Search);
 			LoadPositionsPageCommand = new Command<Rotation>(OnLoadPositionsPage);
 			Navigation = _navigation;
+		}
+
+		private async void PositionList()
+		{
+			await Shell.Current.GoToAsync(nameof(PositionsListPage));
 		}
 
 		private async void OnLoadPositionsPage(Rotation rotation)

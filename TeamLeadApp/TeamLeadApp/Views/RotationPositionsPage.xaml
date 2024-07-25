@@ -12,8 +12,6 @@
         <ToolbarItem Text="Next" x:DataType="local:RotationPositionsViewModel" Command="{Binding NextRotationCommand}" CommandParameter="{Binding Rotation}"/>
         <ToolbarItem Text="|"/>
         <ToolbarItem Text="Pull" x:DataType="local:RotationPositionsViewModel" Command="{Binding PullLastRotationCommand}" CommandParameter="{Binding Rotation}"/>
-        <ToolbarItem Text="|"/>
-        <ToolbarItem Text="List" x:DataType="local:RotationPositionsViewModel" Command="{Binding PositionsListCommand}"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

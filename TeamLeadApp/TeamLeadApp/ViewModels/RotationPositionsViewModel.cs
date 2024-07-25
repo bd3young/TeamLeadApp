@@ -48,17 +48,25 @@ namespace TeamLeadApp.ViewModels
 		private async void OnNextRotation()
 		{
 			var rotation = await App.RotationService.GetProductTAsync(Rotation.RotationTime + new TimeSpan(00, 30, 00));
-			Rotation = rotation;
-			OnPropertyChanged(nameof(Rotation));
-			IsBusy = true;
+			if (rotation != null)
+			{
+				Rotation = rotation;
+				OnPropertyChanged(nameof(Rotation));
+				IsBusy = true;
+			}
 		}
 
 		private async void OnPreviousRotation()
 		{
+			
 			var rotation = await App.RotationService.GetProductTAsync(Rotation.RotationTime - new TimeSpan(00, 30, 00));
-			Rotation = rotation;
-			OnPropertyChanged(nameof(Rotation));
-			IsBusy = true;
+			if (rotation != null) 
+			{
+				Rotation = rotation;
+				OnPropertyChanged(nameof(Rotation));
+				IsBusy = true;
+			}
+			
 		}
 
 		private async void OnPullLastRotation()
