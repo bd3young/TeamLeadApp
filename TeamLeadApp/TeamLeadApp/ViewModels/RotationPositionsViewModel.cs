@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeamLeadApp.Models;
@@ -84,6 +85,7 @@ namespace TeamLeadApp.ViewModels
 				position.OfficerOneGender = lastPosition.OfficerOneGender;
 				position.OfficerTwoGender = lastPosition.OfficerTwoGender;
 
+
 				await App.RotationPositionService.AddProductAsync(position);
 			}
 			IsBusy = true;
@@ -92,13 +94,30 @@ namespace TeamLeadApp.ViewModels
 		private async void OnResetPostion(RotationPosition rotationPosition)
 		{
 			var CurrentPosition = await App.RotationPositionService.GetProductAsync(rotationPosition.Id);
+			if (CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null) 
+			{
+				CurrentOfficers.Add(CurrentPosition.OfficerOne);
+				CurrentOfficers.Sort();
+			}
+			if (CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null)
+			{
+				CurrentOfficers.Add(CurrentPosition.OfficerTwo);
+				CurrentOfficers.Sort();
+			}
+
 			CurrentPosition.OfficerOne = "";
 			CurrentPosition.OfficerTwo = "";
 			CurrentPosition.OfficerOneGender = "";
 			CurrentPosition.OfficerTwoGender = "";
 			await App.RotationPositionService.AddProductAsync(CurrentPosition);
+			var currentRotationPositionsList = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
+			RotationPositions.Clear();
+			foreach (var p in currentRotationPositionsList)
+			{
+				RotationPositions.Add(p);
+			}
 
-			IsBusy = true;
+			//IsBusy = true;
 		}
 
 		private async void OnUpdateOfficerTwo(RotationPosition rotationPosition)
@@ -111,10 +130,22 @@ namespace TeamLeadApp.ViewModels
 				if (CurrentPosition.OfficerTwo != rotationPosition.OfficerTwo)
 				{
 					var CurrentOfficer = await App.OfficerService.GetOfficersByNameAsync(officer[0], officer[1]);
-					CurrentPosition.OfficerTwoGender = CurrentOfficer.Gender;
-					CurrentPosition.OfficerTwo = rotationPosition.OfficerTwo;
-					await App.RotationPositionService.AddProductAsync(CurrentPosition);
-					IsBusy = true;
+					if (CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null) 
+					{
+						CurrentOfficers.Add(CurrentPosition.OfficerTwo);
+						CurrentOfficers.Sort();
+					}
+					CurrentOfficers.Remove(rotationPosition.OfficerTwo);
+					rotationPosition.OfficerTwoGender = CurrentOfficer.Gender;
+					rotationPosition.OfficerOne = CurrentPosition.OfficerOne;
+					await App.RotationPositionService.AddProductAsync(rotationPosition);
+					var currentRotationPositionsList = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
+					RotationPositions.Clear();
+					foreach (var p in currentRotationPositionsList)
+					{
+						RotationPositions.Add(p);
+					}
+					//IsBusy = true;
 				}
 			}
 		}
@@ -130,10 +161,29 @@ namespace TeamLeadApp.ViewModels
 				if (CurrentPosition.OfficerOne != rotationPosition.OfficerOne)
 				{
 					var CurrentOfficer = await App.OfficerService.GetOfficersByNameAsync(officer[0], officer[1]);
-					CurrentPosition.OfficerOne = rotationPosition.OfficerOne;
-					CurrentPosition.OfficerOneGender = CurrentOfficer.Gender;
-					await App.RotationPositionService.AddProductAsync(CurrentPosition);
-					IsBusy = true;
+					if (CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null)
+					{
+						CurrentOfficers.Add(CurrentPosition.OfficerOne);
+						CurrentOfficers.Sort();
+					}
+					CurrentOfficers.Remove(rotationPosition.OfficerOne);
+					rotationPosition.OfficerOneGender = CurrentOfficer.Gender;
+					rotationPosition.OfficerTwo = CurrentPosition.OfficerTwo;
+					await App.RotationPositionService.AddProductAsync(rotationPosition);
+					var currentRotationPositionsList = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
+					RotationPositions.Clear();
+					foreach (var p in currentRotationPositionsList) 
+					{
+						RotationPositions.Add(p);
+					}
+
+					//var index = RotationPositions.IndexOf(rotationPosition);
+					//RotationPositions.Remove(rotationPosition);
+					//RotationPositions.Insert(index, rotationPosition);
+
+
+					//RotationPositions[index] = rotationPosition;
+					//IsBusy = true;
 				}
 			}
 		}
@@ -291,11 +341,13 @@ namespace TeamLeadApp.ViewModels
 					}
 				}
 
-				CurrentOfficers.Sort();
 				foreach (var position in rotationPositionList)
 				{
+					CurrentOfficers.Remove(position.OfficerOne);
+					CurrentOfficers.Remove(position.OfficerTwo);
 					RotationPositions.Add(position);
 				}
+				CurrentOfficers.Sort();
 			}
 			catch (Exception)
 			{

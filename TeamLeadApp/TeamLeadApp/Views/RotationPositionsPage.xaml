@@ -60,7 +60,7 @@
                                             </Frame.Triggers>
                                         </Frame>
                                         <Frame CornerRadius="10" IsVisible="{Binding TwoOfficers}" Padding="1,1,1,1" HasShadow="False">
-                                            <Picker IsVisible="{Binding TwoOfficers}"
+                                            <Picker
                                                 WidthRequest="70" 
                                                 HorizontalTextAlignment="Center" 
                                                 TextColor="Black" 
