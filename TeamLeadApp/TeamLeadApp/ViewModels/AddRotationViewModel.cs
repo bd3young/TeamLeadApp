@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using TeamLeadApp.Models;
 using Xamarin.Forms;
-using static Android.Icu.Text.Transliterator;
 
 namespace TeamLeadApp.ViewModels
 {

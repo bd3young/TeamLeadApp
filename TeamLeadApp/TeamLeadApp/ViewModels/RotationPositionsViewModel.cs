@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using TeamLeadApp.Models;
 using TeamLeadApp.Views;
 using Xamarin.Forms;
-using static Android.Icu.Text.Transliterator;
 
 namespace TeamLeadApp.ViewModels
 {
