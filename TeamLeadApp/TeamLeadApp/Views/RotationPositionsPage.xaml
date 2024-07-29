@@ -57,6 +57,9 @@
                                                 <DataTrigger TargetType="Frame" Binding="{Binding OfficerOneGender}"  Value="F">
                                                     <Setter Property="BackgroundColor" Value="LightPink"/>
                                                 </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerOneGender}"  Value="SAME">
+                                                    <Setter Property="BackgroundColor" Value="LightGray"/>
+                                                </DataTrigger>
                                             </Frame.Triggers>
                                         </Frame>
                                         <Frame CornerRadius="10" IsVisible="{Binding TwoOfficers}" Padding="1,1,1,1" HasShadow="False">
@@ -80,6 +83,9 @@
                                                 </DataTrigger>
                                                 <DataTrigger TargetType="Frame" Binding="{Binding OfficerTwoGender}"  Value="F">
                                                     <Setter Property="BackgroundColor" Value="LightPink"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding OfficerTwoGender}"  Value="SAME">
+                                                    <Setter Property="BackgroundColor" Value="LightGray"/>
                                                 </DataTrigger>
                                             </Frame.Triggers>
                                         </Frame>

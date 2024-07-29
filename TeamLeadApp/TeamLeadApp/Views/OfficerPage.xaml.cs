@@ -17,7 +17,7 @@ namespace TeamLeadApp.Views
 		public OfficerPage()
 		{
 
-			App.OfficerService.AddInitOfficers();
+			//App.OfficerService.AddInitOfficers();
 			App.DateService.AddInitDates();
 
 			

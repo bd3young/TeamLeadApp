@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.W3c.Dom.LS;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,9 +19,8 @@ namespace TeamLeadApp.ViewModels
 		public Command LoadRotationPositionCommand { get; }
 		public ObservableCollection<RotationPosition> RotationPositions { get; }
 		public Rotation Rotation { get; set; } 
-		//public Command AddPositionCommand { get; }
+		public Rotation LastRotation { get; set; }
 		public Command PositionsListCommand { get; }
-		//public Command EditPositionCommand { get; }
 		public Command DeletePositionCommand { get; }
 		public Command UpdateOfficerOneCommand { get; }
 		public Command UpdateOfficerTwoCommand { get; }
@@ -34,9 +34,7 @@ namespace TeamLeadApp.ViewModels
 			PullLastRotationCommand = new Command(OnPullLastRotation);
 			LoadRotationPositionCommand = new Command(async () => await ExecuteLoadRotationPositionCommand());
 			RotationPositions = new ObservableCollection<RotationPosition>();
-			//AddPositionCommand = new Command(OnAddPosition);
 			PositionsListCommand = new Command(PositionsList);
-			//EditPositionCommand = new Command<Position>(OnEditPosition);
 			DeletePositionCommand = new Command<RotationPosition>(OnDeletePosition);
 			UpdateOfficerOneCommand = new Command<RotationPosition>(OnUpdateOfficerOne);
 			UpdateOfficerTwoCommand = new Command<RotationPosition>(OnUpdateOfficerTwo);
@@ -71,24 +69,40 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnPullLastRotation()
 		{
-			
-			TimeSpan rotationTime = Rotation.RotationTime - new TimeSpan(00,30,00);
-			var lastRotation = await App.RotationService.GetProductTAsync(rotationTime);
-			var currentPositions = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
-			
-
-			foreach (var position in currentPositions) 
+			if (await App.Current.MainPage.DisplayAlert("Pull", "Are you sure you would like to Pull the previous Rotation", "Yes", "No")) 
 			{
-				var lastPosition = await App.RotationPositionService.GetProductRNAsync(lastRotation.Id, position.Name);
-				position.OfficerOne = lastPosition.OfficerOne;
-				position.OfficerTwo = lastPosition.OfficerTwo;
-				position.OfficerOneGender = lastPosition.OfficerOneGender;
-				position.OfficerTwoGender = lastPosition.OfficerTwoGender;
+				var currentPositions = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
+				if (LastRotation != null) 
+				{
+					foreach (var position in currentPositions) 
+					{
+						var lastPosition = await App.RotationPositionService.GetProductRNAsync(LastRotation.Id, position.Name);
+						position.OfficerOne = lastPosition.OfficerOne;
+						position.OfficerTwo = lastPosition.OfficerTwo;
+						if (position.OfficerOne == lastPosition.OfficerOne && position.OfficerOne != "") 
+						{
+							position.OfficerOneGender = "SAME";
+						}
+						if (position.OfficerTwo == lastPosition.OfficerTwo && position.OfficerTwo != "")
+						{
+							position.OfficerTwoGender = "SAME";
+						}
+						if (position.OfficerOne != lastPosition.OfficerOne)
+						{
+							position.OfficerOneGender = lastPosition.OfficerOneGender;
+						}
+						if (position.OfficerTwo != lastPosition.OfficerTwo)
+						{
+							position.OfficerTwoGender = lastPosition.OfficerTwoGender;
+						}
 
-
-				await App.RotationPositionService.AddProductAsync(position);
+						await App.RotationPositionService.AddProductAsync(position);
+					}
+					IsBusy = true;
+				}
 			}
-			IsBusy = true;
+			
+			
 		}
 
 		private async void OnResetPostion(RotationPosition rotationPosition)
@@ -116,16 +130,15 @@ namespace TeamLeadApp.ViewModels
 			{
 				RotationPositions.Add(p);
 			}
-
-			//IsBusy = true;
 		}
 
 		private async void OnUpdateOfficerTwo(RotationPosition rotationPosition)
 		{
-			var CurrentPosition = await App.RotationPositionService.GetProductAsync(rotationPosition.Id);
-
+			
 			if (rotationPosition.OfficerTwo != null)
 			{
+				var CurrentPosition = await App.RotationPositionService.GetProductAsync(rotationPosition.Id);
+				var LastPosition = await App.RotationPositionService.GetProductRNAsync(LastRotation.Id, rotationPosition.Name);
 				string[] officer = rotationPosition.OfficerTwo.Split(' ');
 				if (CurrentPosition.OfficerTwo != rotationPosition.OfficerTwo)
 				{
@@ -135,9 +148,17 @@ namespace TeamLeadApp.ViewModels
 						CurrentOfficers.Add(CurrentPosition.OfficerTwo);
 						CurrentOfficers.Sort();
 					}
-					CurrentOfficers.Remove(rotationPosition.OfficerTwo);
-					rotationPosition.OfficerTwoGender = CurrentOfficer.Gender;
+					if (LastPosition.OfficerTwo != rotationPosition.OfficerTwo)
+					{
+						rotationPosition.OfficerTwoGender = CurrentOfficer.Gender;
+					}
+					if (LastPosition.OfficerTwo == rotationPosition.OfficerTwo || LastPosition.OfficerOne == rotationPosition.OfficerTwo) 
+					{
+						rotationPosition.OfficerTwoGender = "SAME";
+					}
+									
 					rotationPosition.OfficerOne = CurrentPosition.OfficerOne;
+					CurrentOfficers.Remove(rotationPosition.OfficerTwo);
 					await App.RotationPositionService.AddProductAsync(rotationPosition);
 					var currentRotationPositionsList = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
 					RotationPositions.Clear();
@@ -145,18 +166,16 @@ namespace TeamLeadApp.ViewModels
 					{
 						RotationPositions.Add(p);
 					}
-					//IsBusy = true;
 				}
 			}
 		}
 
 		private async void OnUpdateOfficerOne(RotationPosition rotationPosition)
 		{
-
-			var CurrentPosition = await App.RotationPositionService.GetProductAsync(rotationPosition.Id);
-
 			if (rotationPosition.OfficerOne != null)
 			{
+				var CurrentPosition = await App.RotationPositionService.GetProductAsync(rotationPosition.Id);
+				var LastPosition = await App.RotationPositionService.GetProductRNAsync(LastRotation.Id, rotationPosition.Name);
 				string[] officer = rotationPosition.OfficerOne.Split(' ');
 				if (CurrentPosition.OfficerOne != rotationPosition.OfficerOne)
 				{
@@ -166,9 +185,16 @@ namespace TeamLeadApp.ViewModels
 						CurrentOfficers.Add(CurrentPosition.OfficerOne);
 						CurrentOfficers.Sort();
 					}
-					CurrentOfficers.Remove(rotationPosition.OfficerOne);
-					rotationPosition.OfficerOneGender = CurrentOfficer.Gender;
+					if (LastPosition.OfficerOne != rotationPosition.OfficerOne)
+					{
+						rotationPosition.OfficerOneGender = CurrentOfficer.Gender;
+					}
+					if (LastPosition.OfficerOne == rotationPosition.OfficerOne || LastPosition.OfficerTwo == rotationPosition.OfficerOne)
+					{
+						rotationPosition.OfficerOneGender = "SAME";
+					}
 					rotationPosition.OfficerTwo = CurrentPosition.OfficerTwo;
+					CurrentOfficers.Remove(rotationPosition.OfficerOne);
 					await App.RotationPositionService.AddProductAsync(rotationPosition);
 					var currentRotationPositionsList = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
 					RotationPositions.Clear();
@@ -176,14 +202,6 @@ namespace TeamLeadApp.ViewModels
 					{
 						RotationPositions.Add(p);
 					}
-
-					//var index = RotationPositions.IndexOf(rotationPosition);
-					//RotationPositions.Remove(rotationPosition);
-					//RotationPositions.Insert(index, rotationPosition);
-
-
-					//RotationPositions[index] = rotationPosition;
-					//IsBusy = true;
 				}
 			}
 		}
@@ -218,16 +236,6 @@ namespace TeamLeadApp.ViewModels
 			}
 		}
 
-		//private async void OnEditPosition(Position position)
-		//{
-		//	await Navigation.PushAsync(new AddPositionPage(position));
-		//}
-
-		//private async void OnAddPosition(object obj)
-		//{
-		//	await Shell.Current.GoToAsync(nameof(AddPositionPage));
-		//}
-
 		async Task ExecuteLoadRotationPositionCommand()
 		{
 			
@@ -235,6 +243,7 @@ namespace TeamLeadApp.ViewModels
 			CurrentOfficers.Clear();
 			IsBusy = true;
 
+			LastRotation = await App.RotationService.GetProductTAsync(Rotation.RotationTime - new TimeSpan(00, 30, 00));
 			var day = await App.DateService.GetProductAsync(1);
 			var currentDay = DateTime.Today.ToString();
 
@@ -247,99 +256,113 @@ namespace TeamLeadApp.ViewModels
 			}
 
 			var rotationPositionList = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
-
-			var AmOfficerList = await App.OfficerService.GetShiftOfficersAsync("AM", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
-			var MidOfficerList = await App.OfficerService.GetShiftOfficersAsync("MID", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
-			var PmOfficerList = await App.OfficerService.GetShiftOfficersAsync("PM", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
-			var AdminOfficerList = await App.OfficerService.GetAdminOfficersAsync(true);
-			var ehsMidOfficerList = await App.OfficerService.GetEhsOfficersAsync("MID");
-			var ehsAmOfficerList = await App.OfficerService.GetEhsOfficersAsync("AM");
-			var ehsPmOfficerList = await App.OfficerService.GetEhsOfficersAsync("PM");
+			var officers = await App.OfficerService.GetDayOfficersAsync(Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			var ehsOfficers = await App.OfficerService.GetEhsOfficersAsync();
+			//var AmOfficerList = await App.OfficerService.GetShiftOfficersAsync("AM", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			//var MidOfficerList = await App.OfficerService.GetShiftOfficersAsync("MID", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			//var PmOfficerList = await App.OfficerService.GetShiftOfficersAsync("PM", Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
+			//var AdminOfficerList = await App.OfficerService.GetAdminOfficersAsync(true);
+			//var ehsMidOfficerList = await App.OfficerService.GetEhsOfficersAsync("MID");
+			//var ehsAmOfficerList = await App.OfficerService.GetEhsOfficersAsync("AM");
+			//var ehsPmOfficerList = await App.OfficerService.GetEhsOfficersAsync("PM");
 
 			try
 			{
-
-				if (Rotation.RotationTime <= new TimeSpan(10, 59, 00))
+				foreach (var officer in officers) 
 				{
-
-					foreach (var officer in AmOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in MidOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in AdminOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in ehsAmOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in ehsMidOfficerList)
+					if (officer.ShiftBegin <= Rotation.RotationTime && officer.ShiftEnd > Rotation.RotationTime) 
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
 				}
-				if (Rotation.RotationTime >= new TimeSpan(11, 00, 00) && Rotation.RotationTime <= new TimeSpan(12, 00, 00))
+				foreach (var officer in ehsOfficers) 
 				{
-
-					foreach (var officer in AmOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in MidOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in AdminOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in PmOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in ehsAmOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in ehsMidOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in ehsPmOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-
-				}
-				if (Rotation.RotationTime >= new TimeSpan(12, 30, 00))
-				{
-
-					foreach (var officer in PmOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in MidOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in AdminOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in ehsPmOfficerList)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
-					foreach (var officer in ehsMidOfficerList)
+					if (officer.ShiftBegin <= Rotation.RotationTime && officer.ShiftEnd > Rotation.RotationTime)
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
 				}
+				//if (Rotation.RotationTime <= new TimeSpan(10, 59, 00))
+				//{
+
+				//	foreach (var officer in AmOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in MidOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in AdminOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in ehsAmOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in ehsMidOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//}
+				//if (Rotation.RotationTime >= new TimeSpan(11, 00, 00) && Rotation.RotationTime <= new TimeSpan(12, 00, 00))
+				//{
+
+				//	foreach (var officer in AmOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in MidOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in AdminOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in PmOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in ehsAmOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in ehsMidOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in ehsPmOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+
+				//}
+				//if (Rotation.RotationTime >= new TimeSpan(12, 30, 00))
+				//{
+
+				//	foreach (var officer in PmOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in MidOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in AdminOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in ehsPmOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//	foreach (var officer in ehsMidOfficerList)
+				//	{
+				//		CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+				//	}
+				//}
 
 				foreach (var position in rotationPositionList)
 				{
