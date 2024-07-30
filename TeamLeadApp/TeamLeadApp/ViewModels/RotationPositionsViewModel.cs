@@ -87,13 +87,21 @@ namespace TeamLeadApp.ViewModels
 						{
 							position.OfficerTwoGender = "SAME";
 						}
-						if (position.OfficerOne != lastPosition.OfficerOne)
+						if (position.OfficerOne != lastPosition.OfficerOne )
 						{
 							position.OfficerOneGender = lastPosition.OfficerOneGender;
 						}
 						if (position.OfficerTwo != lastPosition.OfficerTwo)
 						{
 							position.OfficerTwoGender = lastPosition.OfficerTwoGender;
+						}
+						if (lastPosition.OfficerOne == "")
+						{
+							position.OfficerOneGender = "";
+						}
+						if (lastPosition.OfficerTwo == "")
+						{
+							position.OfficerTwoGender = "";
 						}
 
 						await App.RotationPositionService.AddProductAsync(position);
