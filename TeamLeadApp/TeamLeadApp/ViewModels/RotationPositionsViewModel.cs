@@ -285,10 +285,7 @@ namespace TeamLeadApp.ViewModels
 				}
 				foreach (var officer in ehsOfficers) 
 				{
-					if (officer.ShiftBegin <= Rotation.RotationTime && officer.ShiftEnd > Rotation.RotationTime)
-					{
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
-					}
+					CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 				}
 
 				foreach (var position in rotationPositionList)
