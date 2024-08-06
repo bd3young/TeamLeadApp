@@ -20,6 +20,7 @@ namespace TeamLeadApp.ViewModels
 		public Command UpdateBreakTwoCommand { get; }
 		public Command UpdateLunchCommand { get; }
 		public Command UpdateLvCommand { get; }
+		public Command UpdateEhsCommand { get; }
 		public Command UpdateNotesCommand { get; }
 		public Command UpdatePositionCommand { get; }
 		public Command UpdateBreakNumberCommand { get; }
@@ -40,9 +41,21 @@ namespace TeamLeadApp.ViewModels
 			UpdateBreakTwoCommand = new Command<Officer>(OnUpdateBreakTwo);
 			UpdateLunchCommand = new Command<Officer>(OnUpdateLunch);
 			UpdateLvCommand = new Command<Officer>(OnUpdateLv);
+			UpdateEhsCommand = new Command<Officer>(OnUpdateEhs);
 			UpdateNotesCommand = new Command<Officer>(OnUpdateNotes);
 			UpdateBreakNumberCommand = new Command<Officer>(OnUpdateBreakNumber);
 			Navigation = _navigation;
+		}
+
+		private async void OnUpdateEhs(Officer officer)
+		{
+			if (await App.Current.MainPage.DisplayAlert("EHS", "Are you sure you would like to put this officer on extra hours.", "Yes", "No")) 
+			{
+				officer.Ehs = true;
+
+				await App.OfficerService.AddProductAsync(officer);
+			}
+			
 		}
 
 		private async void OnUpdateBreakNumber(Officer officer)
