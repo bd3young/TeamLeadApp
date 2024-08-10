@@ -123,7 +123,7 @@ namespace TeamLeadApp.ViewModels
 			{
 				string[] officerOne = CurrentPosition.OfficerOne.Split(' ');
 				var CurrentOfficerOne = await App.OfficerService.GetOfficersByNameAsync(officerOne[0], officerOne[1]);
-				if (CurrentOfficerOne.ShiftEnd > Rotation.RotationTime) 
+				if (CurrentOfficerOne.ShiftEnd > Rotation.RotationTime || CurrentOfficerOne.Ehs == true) 
 				{
 					CurrentOfficers.Add(CurrentPosition.OfficerOne);
 					CurrentOfficers.Sort();
@@ -134,7 +134,7 @@ namespace TeamLeadApp.ViewModels
 			{
 				string[] officerTwo = CurrentPosition.OfficerTwo.Split(' ');
 				var CurrentOfficerTwo = await App.OfficerService.GetOfficersByNameAsync(officerTwo[0], officerTwo[1]);
-				if (CurrentOfficerTwo.ShiftEnd > Rotation.RotationTime)
+				if (CurrentOfficerTwo.ShiftEnd > Rotation.RotationTime || CurrentOfficerTwo.Ehs == true)
 				{
 					CurrentOfficers.Add(CurrentPosition.OfficerTwo);
 					CurrentOfficers.Sort();
@@ -170,7 +170,7 @@ namespace TeamLeadApp.ViewModels
 				if (lastOfficer.Count() > 1)
 				{
 					var LastOfficer = await App.OfficerService.GetOfficersByNameAsync(lastOfficer[0], lastOfficer[1]);
-					if (CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null && LastOfficer.ShiftEnd > Rotation.RotationTime)
+					if (CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null && LastOfficer.ShiftEnd > Rotation.RotationTime || CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null && LastOfficer.Ehs == true)
 					{
 						CurrentOfficers.Add(CurrentPosition.OfficerTwo);
 						CurrentOfficers.Sort();
@@ -216,7 +216,7 @@ namespace TeamLeadApp.ViewModels
 				if (lastOfficer.Count() > 1) 
 				{
 					var LastOfficer = await App.OfficerService.GetOfficersByNameAsync(lastOfficer[0], lastOfficer[1]);
-					if (CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null && LastOfficer.ShiftEnd > Rotation.RotationTime)
+					if (CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null && LastOfficer.ShiftEnd > Rotation.RotationTime || CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null && LastOfficer.Ehs == true)
 					{
 						CurrentOfficers.Add(CurrentPosition.OfficerOne);
 						CurrentOfficers.Sort();
