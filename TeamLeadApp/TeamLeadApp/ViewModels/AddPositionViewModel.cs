@@ -30,6 +30,9 @@ namespace TeamLeadApp.ViewModels
 		{
 			var position = Position;
 			var positions = await App.PositionService.GetProductsAsync();
+			var LastPostion = new Position();
+			LastPostion.Name = "";
+
 			foreach (var product in positions) 
 			{ 
 				if (position.Name.ToUpper() == product.Name.ToUpper()) 
@@ -38,6 +41,11 @@ namespace TeamLeadApp.ViewModels
 
 					return;
 				}
+
+				if (position.Id == product.Id) 
+				{
+					LastPostion = await App.PositionService.GetProductAsync(position.Id);
+				}
 			}
 
 			var rotations = await App.RotationService.GetProductsAsync();
@@ -45,6 +53,14 @@ namespace TeamLeadApp.ViewModels
 			foreach (var rotation in rotations) 
 			{
 				var rotationPosition = new RotationPosition();
+				var LastRotationPosition = new RotationPosition();
+
+				if (LastPostion.Name != "") 
+				{
+					LastRotationPosition = await App.RotationPositionService.GetProductRNAsync(rotation.Id, LastPostion.Name);
+
+					rotationPosition.Id = LastRotationPosition.Id;
+				}
 
 				rotationPosition.Name = position.Name;
 				rotationPosition.TwoOfficers = position.TwoOfficers;
