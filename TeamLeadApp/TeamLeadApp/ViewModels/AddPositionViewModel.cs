@@ -33,6 +33,13 @@ namespace TeamLeadApp.ViewModels
 			var LastPostion = new Position();
 			LastPostion.Name = "";
 
+			if (position.Name == null || position.Name == "") 
+			{
+				await App.Current.MainPage.DisplayAlert("Incorrect Name", "Position name cannot be blank", "Ok");
+
+				return;
+			}
+
 			foreach (var product in positions) 
 			{ 
 				if (position.Name.ToUpper() == product.Name.ToUpper()) 
