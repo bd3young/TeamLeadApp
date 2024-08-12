@@ -42,7 +42,7 @@ namespace TeamLeadApp.ViewModels
 
 			foreach (var product in positions) 
 			{ 
-				if (position.Name.ToUpper() == product.Name.ToUpper()) 
+				if (position.Name.ToUpper() == product.Name.ToUpper() && position.Id != product.Id) 
 				{
 					await App.Current.MainPage.DisplayAlert("Name Taken", "Each position is required to have a unique name", "Ok");
 
