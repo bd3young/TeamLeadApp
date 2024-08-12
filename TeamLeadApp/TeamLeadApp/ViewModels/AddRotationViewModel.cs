@@ -38,7 +38,14 @@ namespace TeamLeadApp.ViewModels
 
 					return;
 				}
-			}	
+			}
+
+			if (rotation.RotationTime.Minutes > new TimeSpan(00,00,00).Minutes && rotation.RotationTime.Minutes < new TimeSpan(00, 30, 00).Minutes || rotation.RotationTime.Minutes <= new TimeSpan(00, 59, 00).Minutes && rotation.RotationTime.Minutes > new TimeSpan(00, 30, 00).Minutes) 
+			{
+				await App.Current.MainPage.DisplayAlert("Wrong Rotation Time", "Rotations are required to end with 00 or 30 minutes", "Ok");
+
+				return;
+			}
 
 			await App.RotationService.AddProductAsync(rotation);
 			rotation = await App.RotationService.GetProductTAsync(rotation.RotationTime);
