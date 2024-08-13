@@ -84,37 +84,41 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnUpdateEhs(Officer officer)
 		{
-			officer.Lv = false;
-			officer.Ehs = true;
-			officer.BreakOne = false;
-			officer.BreakTwo = false;
-			officer.Lunch = false;
-			officer.Notes = "";
-			officer.BreakNumber = "";
-			if (officer.Admin == false) 
+			if (await App.Current.MainPage.DisplayAlert("Extra Hours - " + officer.FirstName + " " + officer.LastName, "Would you like to put " + officer.FirstName + " " + officer.LastName + " on extra hours", "Yes", "No")) 
 			{
-				if (await App.Current.MainPage.DisplayAlert("Extra Hours", "Which shift?", "PM", "AM"))
+				officer.Lv = false;
+				officer.Ehs = true;
+				officer.BreakOne = false;
+				officer.BreakTwo = false;
+				officer.Lunch = false;
+				officer.Notes = "";
+				officer.BreakNumber = "";
+				if (officer.Admin == false)
 				{
-					officer.Shift = "PM";
-	
+					if (await App.Current.MainPage.DisplayAlert("Extra Hours", "Which shift?", "PM", "AM"))
+					{
+						officer.Shift = "PM";
+
+					}
+					else
+					{
+						officer.Shift = "AM";
+					}
+					if (await App.Current.MainPage.DisplayAlert("Breaks", "How many", "One", "Three"))
+					{
+						officer.FullTime = false;
+					}
+					else
+					{
+						officer.FullTime = true;
+					}
 				}
-				else 
-				{
-					officer.Shift = "AM";
-				}
-				if (await App.Current.MainPage.DisplayAlert("Breaks", "How many", "One", "Three"))
-				{
-					officer.FullTime = false;
-				}
-				else 
-				{
-					officer.FullTime = true;
-				}
+
+
+				await App.OfficerService.AddProductAsync(officer);
+				await ExecuteLoadOfficerCommand();
 			}
 			
-
-			await App.OfficerService.AddProductAsync(officer);
-			await ExecuteLoadOfficerCommand();
 		}
 
 		public void OnAppearing() 

@@ -49,7 +49,7 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnUpdateEhs(Officer officer)
 		{
-			if (await App.Current.MainPage.DisplayAlert("EHS", "Are you sure you would like to put this officer on extra hours.", "Yes", "No")) 
+			if (await App.Current.MainPage.DisplayAlert("Extra Hours - " + officer.FirstName + " " + officer.LastName, "Are you sure you would like to put " + officer.FirstName + " " + officer.LastName + " on extra hours.", "Yes", "No")) 
 			{
 				officer.Ehs = true;
 
