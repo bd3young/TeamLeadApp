@@ -106,7 +106,7 @@ namespace TeamLeadApp.ViewModels
 				return;
 			}
 
-			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Position", "Yes", "No"))
+			if (await App.Current.MainPage.DisplayAlert("Delete - "  + position.Name, "Are you sure you would like to Delete " + position.Name, "Yes", "No"))
 			{
 				var rotations = await App.RotationService.GetProductsAsync();
 

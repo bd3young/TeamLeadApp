@@ -76,7 +76,7 @@ namespace TeamLeadApp.ViewModels
 				return;
 			}
 
-			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Rotation", "Yes", "No"))
+			if (await App.Current.MainPage.DisplayAlert("Delete - " + rotation.RotationTime, "Are you sure you would like to Delete the " + rotation.RotationTime + " Rotation", "Yes", "No"))
 			{
 				var rotationPositions = await App.RotationPositionService.GetProductsRPAsync(rotation.Id);
 				foreach (var position in rotationPositions) 

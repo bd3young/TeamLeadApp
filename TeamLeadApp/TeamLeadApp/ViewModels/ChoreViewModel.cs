@@ -77,7 +77,7 @@ namespace TeamLeadApp.ViewModels
 				return;
 			}
 
-			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Chore", "Yes", "No"))
+			if (await App.Current.MainPage.DisplayAlert("Delete - " + chore.Name, "Are you sure you would like to Delete the task " + chore.Name, "Yes", "No"))
 			{
 				await App.ChoreService.DeleteProductAsync(chore.Id);
 				await ExecuteLoadChoreCommand();

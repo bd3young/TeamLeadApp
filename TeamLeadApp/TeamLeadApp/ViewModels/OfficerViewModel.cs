@@ -62,7 +62,7 @@ namespace TeamLeadApp.ViewModels
 				return;
 			}
 
-			if (await App.Current.MainPage.DisplayAlert("Delete", "Are you sure you would like to Delete this Officer", "Yes", "No"))
+			if (await App.Current.MainPage.DisplayAlert("Delete - " + officer.FirstName + " " + officer.LastName, "Are you sure you would like to Delete " + officer.FirstName + " " + officer.LastName, "Yes", "No"))
 			{
 				await App.OfficerService.DeleteProductAsync(officer.Id);
 				Officers.Remove(officer);
@@ -95,7 +95,7 @@ namespace TeamLeadApp.ViewModels
 				officer.BreakNumber = "";
 				if (officer.Admin == false)
 				{
-					if (await App.Current.MainPage.DisplayAlert("Extra Hours", "Which shift?", "PM", "AM"))
+					if (await App.Current.MainPage.DisplayAlert("Extra Hours Shift - " + officer.FirstName + " " + officer.LastName, "Which shift?", "PM", "AM"))
 					{
 						officer.Shift = "PM";
 
@@ -104,7 +104,7 @@ namespace TeamLeadApp.ViewModels
 					{
 						officer.Shift = "AM";
 					}
-					if (await App.Current.MainPage.DisplayAlert("Breaks", "How many", "One", "Three"))
+					if (await App.Current.MainPage.DisplayAlert("Breaks - " + officer.FirstName + " " + officer.LastName, "How many breaks", "One", "Three"))
 					{
 						officer.FullTime = false;
 					}
