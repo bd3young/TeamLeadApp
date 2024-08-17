@@ -13,8 +13,8 @@ namespace TeamLeadApp.Models
 
 		public int Id { get; set; }
 		public string Name { get; set; }
-		public string OfficerOne { get; set; }
-		public string OfficerTwo { get; set; }
+		public string OfficerOne { get; set; } = "";
+		public string OfficerTwo { get; set; } = "";
 		public bool TwoOfficers { get; set; }
 		public string OfficerOneGender { get; set; } = "";
 		public string OfficerTwoGender { get; set; } = "";
