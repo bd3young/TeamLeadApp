@@ -2,18 +2,20 @@
 
 # TeamLead
 
-An Application used to automate the creations of Rotation sheets for an individual in a leadership position.   
+An Application used to automate the creation of shift sheets and make creating rotations easy for the User. 
 
 ## Key Features
 
 - Add, Edit, and Delete Officers
 - Add, Edit, and Delete Checklist Tasks
+- Add, Edit, and Delete Rotations
 - Add, Edit, and Delete Postions
 - Creates AM and PM lists of currently working Officers
 - Keeps track of notes on Officers
 - Keeps track of breaks and lunchs
 - Keeps track of tasks throught the day
-- Allows currently working Officers the be assaigned to positions
+- Allows the user to create rotations that have lists of the positions
+- Allows currently working Officers the be assaigned to positions within a rotation
 
 ## How To Use
 
@@ -35,7 +37,7 @@ Find the Officer to delete and swipe left on the officers banner. Tap the DELETE
 
 #### How To Put An Officer On Extra Hours
 
-Find the Officer to put on extra hours and swipe left on the officers banner. Tap the EHS option, select which shift and select how many breaks the Officer will be recieveing. The Officer will not be in the selected shifts rotation sheet.
+Find the Officer to put on extra hours and swipe left on the officers banner. Tap the EHS option, select which shift and select how many breaks the Officer will be recieveing. The Officer will now be in the selected shifts page.
 
 ### Positions Page
 
