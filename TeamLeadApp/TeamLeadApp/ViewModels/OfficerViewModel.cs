@@ -88,22 +88,8 @@ namespace TeamLeadApp.ViewModels
 			{
 				officer.Lv = false;
 				officer.Ehs = true;
-				officer.BreakOne = false;
-				officer.BreakTwo = false;
-				officer.Lunch = false;
-				officer.Notes = "";
-				officer.BreakNumber = "";
 				if (officer.Admin == false)
 				{
-					if (await App.Current.MainPage.DisplayAlert("Extra Hours Shift - " + officer.FirstName + " " + officer.LastName, "Which shift?", "PM", "AM"))
-					{
-						officer.Shift = "PM";
-
-					}
-					else
-					{
-						officer.Shift = "AM";
-					}
 					if (await App.Current.MainPage.DisplayAlert("Breaks - " + officer.FirstName + " " + officer.LastName, "How many breaks", "One", "Three"))
 					{
 						officer.FullTime = false;

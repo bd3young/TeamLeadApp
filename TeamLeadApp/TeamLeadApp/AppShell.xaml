@@ -30,11 +30,12 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent  Title="Officers" Icon="icon_officer.png" Route="OfficerPage" ContentTemplate="{DataTemplate local:OfficerPage}" />
-        <ShellContent  Title="Rotations" Icon="icon_feed.png" Route="RotationsPage" ContentTemplate="{DataTemplate local:RotationsPage}" />
-        <ShellContent  Title="Checklist" Icon="check_box.png" Route="ChecklistPage" ContentTemplate="{DataTemplate local:ChecklistPage}" />
-        <ShellContent Title="AM Shift" Icon="icon_sheet.png" ContentTemplate="{DataTemplate local:AmRotationPage}" />
-        <ShellContent Title="PM Shift" Icon="icon_sheet.png" Route="RotationPage" ContentTemplate="{DataTemplate local:RotationPage}" />
+        <ShellContent Title="Officers" Icon="icon_officer.png" Route="OfficerPage" ContentTemplate="{DataTemplate local:OfficerPage}" />
+        <ShellContent Title="Rotations" Icon="icon_feed.png" Route="RotationsPage" ContentTemplate="{DataTemplate local:RotationsPage}" />
+        <ShellContent Title="Checklist" Icon="check_box.png" Route="ChecklistPage" ContentTemplate="{DataTemplate local:ChecklistPage}" />
+        <ShellContent Title="Shift" Icon="icon_sheet.png" ContentTemplate="{DataTemplate local:ShiftPage}" />
+        <!--<ShellContent Title="AM Shift" Icon="icon_sheet.png" ContentTemplate="{DataTemplate local:AmRotationPage}" />
+        <ShellContent Title="PM Shift" Icon="icon_sheet.png" Route="RotationPage" ContentTemplate="{DataTemplate local:RotationPage}" />-->
     </TabBar>
 
     <!--

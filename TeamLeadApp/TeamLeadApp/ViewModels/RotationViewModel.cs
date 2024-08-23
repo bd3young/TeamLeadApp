@@ -79,8 +79,6 @@ namespace TeamLeadApp.ViewModels
 			date.Day = DateTime.Today.ToString();
 			await App.DateService.AddProductAsync(date);
 			CurrentDate = date.Day;
-
-
 			
 		}
 		public void OnAppearing()
