@@ -86,9 +86,13 @@ namespace TeamLeadApp.ViewModels
 		{
 			if (await App.Current.MainPage.DisplayAlert("Extra Hours - " + officer.FirstName + " " + officer.LastName, "Would you like to put " + officer.FirstName + " " + officer.LastName + " on extra hours", "Yes", "No")) 
 			{
-				officer.Lv = false;
-				officer.Ehs = true;
-				if (officer.Admin == false)
+				
+				if (officer.Admin == true)
+				{
+					officer.Lv = false;
+					officer.Ehs = true;
+				}
+				else 
 				{
 					if (await App.Current.MainPage.DisplayAlert("Breaks - " + officer.FirstName + " " + officer.LastName, "How many breaks", "One", "Three"))
 					{
@@ -99,7 +103,7 @@ namespace TeamLeadApp.ViewModels
 						officer.FullTime = true;
 					}
 				}
-
+				await App.Current.MainPage.Navigation.PushAsync(new AddEhsTimePage(officer));
 
 				await App.OfficerService.AddProductAsync(officer);
 				await ExecuteLoadOfficerCommand();

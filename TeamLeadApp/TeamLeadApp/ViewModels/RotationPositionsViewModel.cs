@@ -122,7 +122,10 @@ namespace TeamLeadApp.ViewModels
 				{
 					string[] officerOne = CurrentPosition.OfficerOne.Split(' ');
 					var CurrentOfficerOne = await App.OfficerService.GetOfficersByNameAsync(officerOne[0], officerOne[1]);
-					if (CurrentOfficerOne.ShiftEnd > Rotation.RotationTime && CurrentOfficerOne.Lv == false || CurrentOfficerOne.Ehs == true) 
+					if (CurrentOfficerOne.ShiftEnd > Rotation.RotationTime && CurrentOfficerOne.Lv == false
+						|| CurrentOfficerOne.Lv == true && CurrentOfficerOne.ShiftBegin <= Rotation.RotationTime && CurrentOfficerOne.LvBegin > Rotation.RotationTime
+						|| CurrentOfficerOne.Lv == true && CurrentOfficerOne.LvEnd <= Rotation.RotationTime && CurrentOfficerOne.ShiftEnd > Rotation.RotationTime
+						|| CurrentOfficerOne.Ehs == true && CurrentOfficerOne.EhsBegin <= Rotation.RotationTime && CurrentOfficerOne.EhsEnd > Rotation.RotationTime) 
 					{
 						CurrentOfficers.Add(CurrentPosition.OfficerOne);
 						CurrentOfficers.Sort();
@@ -133,7 +136,10 @@ namespace TeamLeadApp.ViewModels
 				{
 					string[] officerTwo = CurrentPosition.OfficerTwo.Split(' ');
 					var CurrentOfficerTwo = await App.OfficerService.GetOfficersByNameAsync(officerTwo[0], officerTwo[1]);
-					if (CurrentOfficerTwo.ShiftEnd > Rotation.RotationTime && CurrentOfficerTwo.Lv == false || CurrentOfficerTwo.Ehs == true)
+					if (CurrentOfficerTwo.ShiftEnd > Rotation.RotationTime && CurrentOfficerTwo.Lv == false
+						|| CurrentOfficerTwo.Lv == true && CurrentOfficerTwo.ShiftBegin <= Rotation.RotationTime && CurrentOfficerTwo.LvBegin > Rotation.RotationTime
+						|| CurrentOfficerTwo.Lv == true && CurrentOfficerTwo.LvEnd <= Rotation.RotationTime && CurrentOfficerTwo.ShiftEnd > Rotation.RotationTime
+						|| CurrentOfficerTwo.Ehs == true && CurrentOfficerTwo.EhsBegin <= Rotation.RotationTime && CurrentOfficerTwo.EhsEnd > Rotation.RotationTime)
 					{
 						CurrentOfficers.Add(CurrentPosition.OfficerTwo);
 						CurrentOfficers.Sort();
@@ -172,7 +178,10 @@ namespace TeamLeadApp.ViewModels
 				if (lastOfficer.Count() > 1)
 				{
 					var LastOfficer = await App.OfficerService.GetOfficersByNameAsync(lastOfficer[0], lastOfficer[1]);
-					if (CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null && LastOfficer.ShiftEnd > Rotation.RotationTime && LastOfficer.Lv == false || CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null && LastOfficer.Ehs == true)
+					if (CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null && LastOfficer.ShiftEnd > Rotation.RotationTime && LastOfficer.Lv == false
+						|| CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null && LastOfficer.Lv == true && LastOfficer.ShiftBegin <= Rotation.RotationTime && LastOfficer.LvBegin > Rotation.RotationTime
+						|| CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null && LastOfficer.Lv == true && LastOfficer.LvEnd <= Rotation.RotationTime && LastOfficer.ShiftEnd > Rotation.RotationTime
+						|| CurrentPosition.OfficerTwo != "" && CurrentPosition.OfficerTwo != null && LastOfficer.Ehs == true && LastOfficer.EhsBegin <= Rotation.RotationTime && LastOfficer.EhsEnd > Rotation.RotationTime)
 					{
 						CurrentOfficers.Add(CurrentPosition.OfficerTwo);
 						CurrentOfficers.Sort();
@@ -218,7 +227,10 @@ namespace TeamLeadApp.ViewModels
 				if (lastOfficer.Count() > 1) 
 				{
 					var LastOfficer = await App.OfficerService.GetOfficersByNameAsync(lastOfficer[0], lastOfficer[1]);
-					if (CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null && LastOfficer.ShiftEnd > Rotation.RotationTime && LastOfficer.Lv == false || CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null && LastOfficer.Ehs == true)
+					if (CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null && LastOfficer.ShiftEnd > Rotation.RotationTime && LastOfficer.Lv == false
+						|| CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null && LastOfficer.Lv == true && LastOfficer.ShiftBegin <= Rotation.RotationTime && LastOfficer.LvBegin > Rotation.RotationTime 
+						|| CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null && LastOfficer.Lv == true && LastOfficer.LvEnd <= Rotation.RotationTime && LastOfficer.ShiftEnd > Rotation.RotationTime
+						|| CurrentPosition.OfficerOne != "" && CurrentPosition.OfficerOne != null && LastOfficer.Ehs == true && LastOfficer.EhsBegin <= Rotation.RotationTime && LastOfficer.EhsEnd > Rotation.RotationTime)
 					{
 						CurrentOfficers.Add(CurrentPosition.OfficerOne);
 						CurrentOfficers.Sort();
@@ -292,6 +304,7 @@ namespace TeamLeadApp.ViewModels
 			var rotationPositionList = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
 			var officers = await App.OfficerService.GetDayOfficersAsync(Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
 			var ehsOfficers = await App.OfficerService.GetEhsOfficersAsync();
+			var lvOfficers = await App.OfficerService.GetLvOfficersAsync();
 
 			try
 			{
@@ -304,7 +317,19 @@ namespace TeamLeadApp.ViewModels
 				}
 				foreach (var officer in ehsOfficers) 
 				{
-					CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					if (officer.ShiftBegin <= Rotation.RotationTime && officer.ShiftEnd > Rotation.RotationTime || officer.EhsBegin <= Rotation.RotationTime && officer.EhsEnd > Rotation.RotationTime) 
+					{ 
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					
+				}
+				foreach (var officer in lvOfficers)
+				{
+					if (officer.ShiftBegin <= Rotation.RotationTime && officer.LvBegin > Rotation.RotationTime || officer.LvEnd <= Rotation.RotationTime && officer.ShiftEnd > Rotation.RotationTime) 
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+					
 				}
 
 				foreach (var position in rotationPositionList)

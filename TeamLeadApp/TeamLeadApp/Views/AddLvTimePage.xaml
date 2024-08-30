@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeamLeadApp.Views.AddLvTimePage"
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
+             Title="Leave Hours Time">
+    <ContentPage.BindingContext>
+        <local:AddTimeViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Spacing="5" Padding="15">
+            <Label HorizontalOptions="Center" TextColor="Black" Text="{Binding Officer.FirstName}" FontSize="Medium"/>
+            <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="Begin Time" FontSize="Medium"/>
+                    <TimePicker FontSize="Medium" Time="{Binding Officer.LvBegin, Mode=TwoWay}" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Center" TextColor="Black" Text="End Time" FontSize="Medium"/>
+                    <TimePicker FontSize="Medium" Time="{Binding Officer.LvEnd, Mode=TwoWay}" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
