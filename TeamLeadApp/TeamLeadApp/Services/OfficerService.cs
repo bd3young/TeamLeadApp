@@ -129,11 +129,15 @@ namespace TeamLeadApp.Services
 		}
 		public async Task<IEnumerable<Officer>> GetEhsOfficersAsync()
 		{
-			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Ehs == true).ToListAsync());
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Ehs == true && o.Lv == false).ToListAsync());
 		}
 		public async Task<IEnumerable<Officer>> GetLvOfficersAsync()
 		{
-			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Lv == true).ToListAsync());
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Lv == true && o.Ehs == false).ToListAsync());
+		}
+		public async Task<IEnumerable<Officer>> GetLvEhsOfficersAsync()
+		{
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Lv == true && o.Ehs == true).ToListAsync());
 		}
 
 		public async Task ResetOfficers()

@@ -91,9 +91,12 @@ namespace TeamLeadApp.ViewModels
 				{
 					officer.Lv = false;
 					officer.Ehs = true;
+					officer.EhsBegin = officer.ShiftBegin;
+					officer.EhsEnd = officer.ShiftEnd;
 				}
 				else 
 				{
+					await App.Current.MainPage.Navigation.PushAsync(new AddEhsTimePage(officer));
 					if (await App.Current.MainPage.DisplayAlert("Breaks - " + officer.FirstName + " " + officer.LastName, "How many breaks", "One", "Three"))
 					{
 						officer.FullTime = false;
@@ -103,7 +106,7 @@ namespace TeamLeadApp.ViewModels
 						officer.FullTime = true;
 					}
 				}
-				await App.Current.MainPage.Navigation.PushAsync(new AddEhsTimePage(officer));
+				
 
 				await App.OfficerService.AddProductAsync(officer);
 				await ExecuteLoadOfficerCommand();

@@ -5,7 +5,7 @@
              xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
              Title="Leave Hours Time">
     <ContentPage.BindingContext>
-        <local:AddTimeViewModel/>
+        <local:AddLvTimeViewModel/>
     </ContentPage.BindingContext>
 
     <ContentPage.Content>

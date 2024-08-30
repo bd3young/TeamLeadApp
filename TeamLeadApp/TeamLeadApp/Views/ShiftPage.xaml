@@ -73,17 +73,19 @@
                                                     <Entry HorizontalTextAlignment="Center" Margin="20,0,0,0" TextColor="Black" FontSize="Medium" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local:ShiftViewModel}},
                                                     Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Notes}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Entry>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" IsVisible="{Binding Ehs}">
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" IsVisible="{Binding Ehs}" Padding="20,0,20,0">
                                                     <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="EHS "/>
                                                     <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding EhsBegin, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="-"/>
                                                     <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding EhsEnd, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" IsVisible="{Binding Lv}">
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" IsVisible="{Binding Lv}" Padding="20,0,20,0">
                                                     <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="LV "/>
                                                     <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding LvBegin, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                                     <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="-"/>
                                                     <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding LvEnd, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                </StackLayout>
                                                 </StackLayout>
                                             </StackLayout>
                                             <Frame.Triggers>

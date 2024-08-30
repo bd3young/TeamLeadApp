@@ -107,8 +107,6 @@ namespace TeamLeadApp.ViewModels
 				}
 				else 
 				{
-					officer.Lv = true;
-					officer.Ehs = false;
 
 					await App.Current.MainPage.Navigation.PushAsync(new AddLvTimePage(officer));
 				}
@@ -152,10 +150,12 @@ namespace TeamLeadApp.ViewModels
 			var officers = await App.OfficerService.GetDayOfficersAsync(Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
 			var ehsOfficers = await App.OfficerService.GetEhsOfficersAsync();
 			var lvOfficers = await App.OfficerService.GetLvOfficersAsync();
+			var lvEhsOfficers = await App.OfficerService.GetLvEhsOfficersAsync();
 
 			officers = officers.OrderBy(o => o.Shift);
 			ehsOfficers = ehsOfficers.OrderBy(o => o.Shift);
 			lvOfficers = lvOfficers.OrderBy(o => o.Shift);
+			lvEhsOfficers = lvEhsOfficers.OrderBy(o => o.Shift);
 
 			if (Shift == "AM")
 			{
@@ -178,6 +178,13 @@ namespace TeamLeadApp.ViewModels
 					foreach (var officer in lvOfficers)
 					{
 						if (officer.ShiftBegin != officer.LvBegin && officer.ShiftEnd != officer.LvEnd && officer.Shift == "AM" || officer.ShiftBegin == officer.LvBegin && officer.ShiftEnd != officer.LvEnd && officer.Shift == "AM" || officer.ShiftBegin != officer.LvBegin && officer.ShiftEnd == officer.LvEnd && officer.Shift == "AM")
+						{
+							Officers.Add(officer);
+						}
+					}
+					foreach (var officer in lvEhsOfficers)
+					{
+						if (officer.Shift == "AM")
 						{
 							Officers.Add(officer);
 						}
@@ -218,6 +225,13 @@ namespace TeamLeadApp.ViewModels
 							Officers.Add(officer);
 						}
 					}
+					foreach (var officer in lvEhsOfficers)
+					{
+						if (officer.Shift == "PM")
+						{
+							Officers.Add(officer);
+						}
+					}
 				}
 				catch (Exception)
 				{
@@ -254,6 +268,13 @@ namespace TeamLeadApp.ViewModels
 							Officers.Add(officer);
 						}
 					}
+					foreach (var officer in lvEhsOfficers)
+					{
+						if (officer.Shift == "MID")
+						{
+							Officers.Add(officer);
+						}
+					}
 				}
 				catch (Exception)
 				{
@@ -286,6 +307,13 @@ namespace TeamLeadApp.ViewModels
 					foreach (var officer in lvOfficers)
 					{
 						if (officer.ShiftBegin <= DateTime.Now.TimeOfDay && officer.LvBegin > DateTime.Now.TimeOfDay || officer.LvEnd <= DateTime.Now.TimeOfDay && officer.ShiftEnd > DateTime.Now.TimeOfDay)
+						{
+							Officers.Add(officer);
+						}
+					}
+					foreach (var officer in lvEhsOfficers)
+					{
+						if (officer.ShiftBegin <= DateTime.Now.TimeOfDay && officer.LvBegin > DateTime.Now.TimeOfDay || officer.LvEnd <= DateTime.Now.TimeOfDay && officer.ShiftEnd > DateTime.Now.TimeOfDay || officer.EhsBegin <= DateTime.Now.TimeOfDay && officer.EhsEnd > DateTime.Now.TimeOfDay)
 						{
 							Officers.Add(officer);
 						}

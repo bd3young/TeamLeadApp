@@ -16,9 +16,9 @@ namespace TeamLeadApp.Views
 		public AddLvTimePage (Officer officer)
 		{
 			InitializeComponent();
-			BindingContext = new AddTimeViewModel();
+			BindingContext = new AddLvTimeViewModel();
 
-			((AddTimeViewModel)BindingContext).Officer = officer;
+			((AddLvTimeViewModel)BindingContext).Officer = officer;
 		}
 	}
 }
