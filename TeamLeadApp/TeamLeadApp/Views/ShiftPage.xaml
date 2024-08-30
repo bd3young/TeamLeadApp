@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TeamLeadApp.ViewModels"
+             xmlns:model="clr-namespace:TeamLeadApp.Models" 
+             x:DataType="local:ShiftViewModel"
+             x:Class="TeamLeadApp.Views.ShiftPage"
+             Title="Shift">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding CurrentDate}"/>
+        <ToolbarItem Text="{Binding Officers.Count}"/>
+
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content title="Shift">
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Search" FontSize="Large" HorizontalOptions="Start" TextColor="Black" VerticalOptions="CenterAndExpand" Padding="20,0,20,0"/>
+                <Picker TextColor="Black" TitleColor="Black" SelectedIndexChanged="Picker_BindingContextChanged" SelectedItem="{Binding Shift}" SelectedIndex="{Binding Shift, Mode=TwoWay}" FontSize="Large" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center">
+                    <Picker.Items>
+                        <x:String>AM</x:String>
+                        <x:String>PM</x:String>
+                        <x:String>MID</x:String>
+                        <x:String>LIVE</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <RefreshView x:DataType="local:ShiftViewModel"
+             Command="{Binding LoadShiftCommand}"
+             IsRefreshing="{Binding IsBusy,Mode=OneWay}"
+             >
+                <CollectionView
+            ItemsSource="{Binding Officers}"
+            SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout x:DataType="model:Officer">
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
+                                            <SwipeItem Text="EHS" BackgroundColor="MediumPurple" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ShiftViewModel}},
+                                            Path=UpdateEhsCommand}" CommandParameter="{Binding .}"/>
+                                            <SwipeItem Text="LV" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ShiftViewModel}},
+                                            Path=UpdateLvCommand}" CommandParameter="{Binding .}"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid Padding="5" BackgroundColor="White">
+                                        <Frame CornerRadius="10" HasShadow="True">
+
+                                            <StackLayout Orientation="Vertical">
+                                                <StackLayout Orientation="Horizontal" >
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="StartAndExpand" Padding="20,0,20,0">
+
+                                                        <Label FontSize="Large" Grid.Column="1" TextColor="Black" Text="{Binding FirstName}" VerticalOptions="Center" HorizontalTextAlignment="Start" HorizontalOptions="Start"></Label>
+                                                        <Label FontSize="Large" Grid.Column="1" TextColor="Black" Text="{Binding LastName}" VerticalOptions="Center" HorizontalTextAlignment="Start" HorizontalOptions="Start"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                                        <CheckBox Scale="1.2" IsChecked="{Binding BreakOne}" Color="Black" PropertyChanged="BreakOne_CheckedChanged"></CheckBox>
+                                                    </StackLayout>
+                                                    <StackLayout IsVisible="{Binding FullTime}" Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                                        <CheckBox Scale="1.2" IsChecked="{Binding Lunch}" Color="Black" PropertyChanged="Lunch_CheckedChanged"></CheckBox>
+                                                    </StackLayout>
+                                                    <StackLayout IsVisible="{Binding FullTime}" Orientation="Vertical" Margin="0,0,5,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                                        <CheckBox Scale="1.2" IsChecked="{Binding BreakTwo}" Color="Black" PropertyChanged="BreakTwo_CheckedChanged" ></CheckBox>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Margin="0,0,5,0" HorizontalOptions="FillAndExpand" Padding="20,0,20,0">
+                                                    <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding ShiftBegin, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    <Label FontSize="Medium" VerticalOptions="CenterAndExpand" TextColor="Black" Text="-"/>
+                                                    <Label FontSize="Medium" Grid.Column="1" TextColor="Black" Text="{Binding ShiftEnd, StringFormat='{0:hh}:{0:mm}'}" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                                    <Entry HorizontalTextAlignment="Center" Margin="20,0,0,0" TextColor="Black" FontSize="Medium" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local:ShiftViewModel}},
+                                                    Path=UpdateNotesCommand}" ReturnCommandParameter="{Binding .}" Text="{Binding Notes}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Entry>
+                                                </StackLayout>
+                                            </StackLayout>
+                                            <Frame.Triggers>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding Gender}"  Value="M">
+                                                    <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding Gender}"  Value="F">
+                                                    <Setter Property="BackgroundColor" Value="LightPink"/>
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+                                        </Frame>
+                                    </Grid>
+                                </SwipeView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
