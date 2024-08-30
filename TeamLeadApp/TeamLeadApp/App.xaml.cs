@@ -116,6 +116,7 @@ namespace TeamLeadApp
 
 			if (currentDay != day.Day)
 			{
+				MainPage = new AppShell();
 				await App.OfficerService.ResetOfficers();
 				day.Day = currentDay;
 
