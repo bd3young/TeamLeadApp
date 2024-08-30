@@ -288,16 +288,6 @@ namespace TeamLeadApp.ViewModels
 			IsBusy = true;
 
 			LastRotation = await App.RotationService.GetProductTAsync(Rotation.RotationTime - new TimeSpan(00, 30, 00));
-			var day = await App.DateService.GetProductAsync(1);
-			var currentDay = DateTime.Today.ToString();
-
-			if (currentDay != day.Day)
-			{
-				await App.OfficerService.ResetOfficers();
-				day.Day = currentDay;
-
-				await App.DateService.AddProductAsync(day);
-			}
 
 			var rotationPositionList = await App.RotationPositionService.GetProductsRPAsync(Rotation.Id);
 			var officers = await App.OfficerService.GetDayOfficersAsync(Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());

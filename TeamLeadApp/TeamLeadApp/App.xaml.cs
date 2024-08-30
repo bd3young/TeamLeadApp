@@ -5,6 +5,7 @@ using TeamLeadApp.Services;
 using TeamLeadApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Threading.Tasks;
 
 namespace TeamLeadApp
 {
@@ -89,17 +90,37 @@ namespace TeamLeadApp
 			MainPage = new AppShell();
 		}
 
-		protected override void OnStart()
+		protected override async void OnStart()
 		{
-			
+			var day = await App.DateService.GetProductAsync(1);
+			var currentDay = DateTime.Today.ToString();
+
+			if (currentDay != day.Day)
+			{
+				
+				await App.OfficerService.ResetOfficers();
+				day.Day = currentDay;
+
+				await App.DateService.AddProductAsync(day);
+			}
 		}
 
 		protected override void OnSleep()
 		{
 		}
 
-		protected override void OnResume()
+		protected override async void OnResume()
 		{
+			var day = await App.DateService.GetProductAsync(1);
+			var currentDay = DateTime.Today.ToString();
+
+			if (currentDay != day.Day)
+			{
+				await App.OfficerService.ResetOfficers();
+				day.Day = currentDay;
+
+				await App.DateService.AddProductAsync(day);
+			}
 		}
 	}
 }

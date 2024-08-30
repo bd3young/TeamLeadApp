@@ -128,20 +128,8 @@ namespace TeamLeadApp.ViewModels
 			var rotations = await App.RotationService.GetProductsAsync();
 			rotations = rotations.OrderBy(r => r.RotationTime);
 
-			var day = await App.DateService.GetProductAsync(1);
-			var currentDay = DateTime.Today.ToString();
-
 			try
 			{
-				
-
-				if (currentDay != day.Day)
-				{
-					await App.OfficerService.ResetOfficers();
-					day.Day = currentDay;
-
-					await App.DateService.AddProductAsync(day);
-				}
 
 				foreach (var rotation in rotations)
 				{

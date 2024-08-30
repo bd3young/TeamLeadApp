@@ -144,18 +144,6 @@ namespace TeamLeadApp.ViewModels
 			IsBusy = true;
 			Positions.Clear();
 			CurrentOfficers.Clear();
-			
-
-			var day = await App.DateService.GetProductAsync(1);
-			var currentDay = DateTime.Today.ToString();
-
-			if (currentDay != day.Day)
-			{
-				await App.OfficerService.ResetOfficers();
-				day.Day = currentDay;
-
-				await App.DateService.AddProductAsync(day);
-			}
 
 			var positionList = await App.PositionService.GetProductsAsync();
 			var officerList = await App.OfficerService.GetProductsAsync();

@@ -120,20 +120,9 @@ namespace TeamLeadApp.ViewModels
 			var leadOfficerList = await App.OfficerService.GetRankOfficersAsync("LEAD");
 			var officers = await App.OfficerService.GetProductsAsync();
 
-			var day = await App.DateService.GetProductAsync(1);
-			var currentDay = DateTime.Today.ToString();
-
 			try
 			{
 				Officers.Clear();
-
-				if (currentDay != day.Day) 
-				{
-					await App.OfficerService.ResetOfficers();
-					day.Day = currentDay;
-
-					await App.DateService.AddProductAsync(day);
-				}
 
 				foreach (var sup in supOfficerList)
 				{

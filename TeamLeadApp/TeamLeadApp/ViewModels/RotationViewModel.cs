@@ -198,17 +198,7 @@ namespace TeamLeadApp.ViewModels
 			AmOfficers.Clear();
 			UpDateTime();
 			IsBusy = true;
-			
-			var day = await App.DateService.GetProductAsync(1);
-			var currentDay = DateTime.Today.ToString();
-
-			if (currentDay != day.Day)
-			{
-				await App.OfficerService.ResetOfficers();
-				day.Day = currentDay;
-
-				await App.DateService.AddProductAsync(day);
-			}
+		
 			var supPmOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("PM", "SUP", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
 			var supMidOfficerList = await App.OfficerService.GetShiftRankOfficersAsync("MID", "SUP", true, Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
 			var supAdminOfficerList = await App.OfficerService.GetAdminRankOfficersAsync(true, "SUP");
