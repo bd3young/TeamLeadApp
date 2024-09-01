@@ -305,6 +305,7 @@ namespace TeamLeadApp.ViewModels
 			var officers = await App.OfficerService.GetDayOfficersAsync(Convert.ToString(DateTime.Now.DayOfWeek).ToUpper());
 			var ehsOfficers = await App.OfficerService.GetEhsOfficersAsync();
 			var lvOfficers = await App.OfficerService.GetLvOfficersAsync();
+			var lvEhsOfficers = await App.OfficerService.GetLvEhsOfficersAsync();
 
 			try
 			{
@@ -317,19 +318,44 @@ namespace TeamLeadApp.ViewModels
 				}
 				foreach (var officer in ehsOfficers) 
 				{
-					if (officer.ShiftBegin <= Rotation.RotationTime && officer.ShiftEnd > Rotation.RotationTime || officer.EhsBegin <= Rotation.RotationTime && officer.EhsEnd > Rotation.RotationTime) 
-					{ 
-						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					if (officer.RdoOne.ToUpper() == DateTime.Now.DayOfWeek.ToString().ToUpper()
+						|| officer.RdoTwo.ToUpper() == DateTime.Now.DayOfWeek.ToString().ToUpper()
+						|| officer.RdoThree.ToUpper() == DateTime.Now.DayOfWeek.ToString().ToUpper())
+					{
+						if (officer.EhsBegin <= Rotation.RotationTime && officer.EhsEnd > Rotation.RotationTime)
+						{
+							CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+						}
 					}
+					else 
+					{
+						if (officer.ShiftBegin <= Rotation.RotationTime && officer.ShiftEnd > Rotation.RotationTime 
+							|| officer.EhsBegin <= Rotation.RotationTime && officer.EhsEnd > Rotation.RotationTime) 
+						{ 
+							CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+						}
+					}
+					
 					
 				}
 				foreach (var officer in lvOfficers)
 				{
-					if (officer.ShiftBegin <= Rotation.RotationTime && officer.LvBegin > Rotation.RotationTime || officer.LvEnd <= Rotation.RotationTime && officer.ShiftEnd > Rotation.RotationTime) 
+					if (officer.ShiftBegin <= Rotation.RotationTime && officer.LvBegin > Rotation.RotationTime 
+						|| officer.LvEnd <= Rotation.RotationTime && officer.ShiftEnd > Rotation.RotationTime) 
 					{
 						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
 					}
 					
+				}
+				foreach (var officer in lvEhsOfficers)
+				{
+					if (officer.ShiftBegin <= Rotation.RotationTime && officer.LvBegin > Rotation.RotationTime 
+						|| officer.LvEnd <= Rotation.RotationTime && officer.ShiftEnd > Rotation.RotationTime 
+						|| officer.EhsBegin <= Rotation.RotationTime && officer.EhsEnd > Rotation.RotationTime)
+					{
+						CurrentOfficers.Add(officer.FirstName + " " + officer.LastName);
+					}
+
 				}
 
 				foreach (var position in rotationPositionList)

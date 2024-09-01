@@ -84,9 +84,9 @@ namespace TeamLeadApp.ViewModels
 
 		private async void OnUpdateEhs(Officer officer)
 		{
-			if (await App.Current.MainPage.DisplayAlert("Extra Hours - " + officer.FirstName + " " + officer.LastName, "Would you like to put " + officer.FirstName + " " + officer.LastName + " on extra hours", "Yes", "No")) 
+			if (await App.Current.MainPage.DisplayAlert("Extra Hours - " + officer.FirstName + " " + officer.LastName, "Would you like to put " + officer.FirstName + " " + officer.LastName + " on extra hours", "Yes", "No"))
 			{
-				
+
 				if (officer.Admin == true)
 				{
 					officer.Lv = false;
@@ -94,7 +94,7 @@ namespace TeamLeadApp.ViewModels
 					officer.EhsBegin = officer.ShiftBegin;
 					officer.EhsEnd = officer.ShiftEnd;
 				}
-				else 
+				else
 				{
 					await App.Current.MainPage.Navigation.PushAsync(new AddEhsTimePage(officer));
 					if (await App.Current.MainPage.DisplayAlert("Breaks - " + officer.FirstName + " " + officer.LastName, "How many breaks", "One", "Three"))
@@ -106,7 +106,7 @@ namespace TeamLeadApp.ViewModels
 						officer.FullTime = true;
 					}
 				}
-				
+
 
 				await App.OfficerService.AddProductAsync(officer);
 				await ExecuteLoadOfficerCommand();

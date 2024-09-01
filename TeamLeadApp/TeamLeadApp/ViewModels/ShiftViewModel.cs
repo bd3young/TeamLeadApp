@@ -105,12 +105,12 @@ namespace TeamLeadApp.ViewModels
 
 					await App.OfficerService.AddProductAsync(officer);
 				}
-				else 
+				else
 				{
 
 					await App.Current.MainPage.Navigation.PushAsync(new AddLvTimePage(officer));
 				}
-				
+
 			}
 		}
 

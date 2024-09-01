@@ -22,7 +22,7 @@ namespace TeamLeadApp.ViewModels
 		private async void OnSave()
 		{
 			var officer = Officer;
-
+			var day = DateTime.Now.DayOfWeek.ToString().ToUpper();
 
 			if (officer.EhsBegin > officer.EhsEnd)
 			{
@@ -30,20 +30,26 @@ namespace TeamLeadApp.ViewModels
 
 				return;
 			}
-			if (officer.RdoOne.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.EhsBegin < officer.ShiftEnd && officer.EhsBegin > officer.ShiftBegin
-				|| officer.RdoTwo.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.EhsBegin < officer.ShiftEnd && officer.EhsBegin > officer.ShiftBegin
-				|| officer.RdoThree.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.EhsBegin < officer.ShiftEnd && officer.EhsBegin > officer.ShiftBegin
-				|| officer.RdoOne.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.EhsEnd < officer.ShiftEnd && officer.EhsEnd > officer.ShiftBegin
-				|| officer.RdoTwo.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.EhsEnd < officer.ShiftEnd && officer.EhsEnd > officer.ShiftBegin
-				|| officer.RdoThree.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.EhsEnd < officer.ShiftEnd && officer.EhsEnd > officer.ShiftBegin
-				|| officer.RdoOne.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.EhsBegin < officer.ShiftBegin && officer.EhsEnd > officer.ShiftEnd
-				|| officer.RdoTwo.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.EhsBegin < officer.ShiftBegin && officer.EhsEnd > officer.ShiftEnd
-				|| officer.RdoThree.ToUpper() != Convert.ToString(DateTime.Now.DayOfWeek).ToUpper() && officer.EhsBegin < officer.ShiftBegin && officer.EhsEnd > officer.ShiftEnd)
+			if (officer.RdoOne.ToUpper() != day
+				&& officer.RdoTwo.ToUpper() != day
+				&& officer.RdoThree.ToUpper() != day) 
 			{
-				await App.Current.MainPage.DisplayAlert("Incorrect Extra Hours", "The Officer can not be on extra hours during their work shift.", "Ok");
+				if (officer.EhsBegin < officer.ShiftEnd && officer.EhsBegin >= officer.ShiftBegin
+					|| officer.EhsEnd < officer.ShiftEnd && officer.EhsEnd > officer.ShiftBegin
+					|| officer.EhsBegin < officer.ShiftBegin && officer.EhsEnd > officer.ShiftEnd)
+				{
+					await App.Current.MainPage.DisplayAlert("Incorrect Extra Hours", "The Officer can not be on extra hours during their work shift.", "Ok");
 
-				return;
+					return;
+				}
+				else
+				{
+					officer.Ehs = true;
+
+					await App.OfficerService.AddProductAsync(officer);
+				}
 			}
+			
 			else 
 			{
 				officer.Ehs = true;

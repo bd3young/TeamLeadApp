@@ -23,20 +23,17 @@ namespace TeamLeadApp.ViewModels
 		{
 			var officer = Officer;
 
-			if (officer.LvBegin != new TimeSpan() && officer.LvEnd != new TimeSpan())
+			if (officer.LvBegin < officer.ShiftBegin || officer.LvEnd > officer.ShiftEnd)
 			{
-				if (officer.LvBegin >= officer.ShiftBegin && officer.LvEnd <= officer.ShiftEnd)
-				{
-					officer.Lv = true;
+				await App.Current.MainPage.DisplayAlert("Incorrect Leave", "Leave time must be within the Officers work shift", "Ok");
 
-					await App.OfficerService.AddProductAsync(officer);
-				}
-				else
-				{
-					await App.Current.MainPage.DisplayAlert("Incorrect Leave", "Leave time must be within the Officers work shift", "Ok");
+				return;
+			}
+			else
+			{
+				officer.Lv = true;
 
-					return;
-				}
+				await App.OfficerService.AddProductAsync(officer);
 			}
 
 			await Shell.Current.GoToAsync("..");

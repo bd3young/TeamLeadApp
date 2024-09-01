@@ -10,7 +10,10 @@
 
     <ContentPage.Content>
         <StackLayout Spacing="5" Padding="15">
-            <Label HorizontalOptions="Center" TextColor="Black" Text="{Binding Officer.FirstName}" FontSize="Medium"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label HorizontalOptions="Center" TextColor="Black" Text="{Binding Officer.FirstName}" FontSize="Large"/>
+                <Label HorizontalOptions="Center" TextColor="Black" Text="{Binding Officer.LastName}" FontSize="Large"/>
+            </StackLayout>
             <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Label HorizontalOptions="Center" TextColor="Black" Text="Begin Time" FontSize="Medium"/>
