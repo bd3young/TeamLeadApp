@@ -288,6 +288,7 @@ namespace TeamLeadApp.ViewModels
 
 			if (Shift == "LIVE") 
 			{
+				var day = DateTime.Now.DayOfWeek.ToString().ToUpper();
 				try
 				{
 					foreach (var officer in officers)
@@ -299,10 +300,24 @@ namespace TeamLeadApp.ViewModels
 					}
 					foreach (var officer in ehsOfficers)
 					{
-						if (officer.EhsBegin <= DateTime.Now.TimeOfDay && officer.EhsEnd > DateTime.Now.TimeOfDay && officer.Lv == false) 
+						if (officer.RdoOne.ToUpper() != day
+							&& officer.RdoTwo.ToUpper() != day
+							&& officer.RdoThree.ToUpper() != day)
 						{
-							Officers.Add(officer);
-						}				
+							if (officer.ShiftBegin <= DateTime.Now.TimeOfDay && officer.ShiftEnd > DateTime.Now.TimeOfDay && officer.Lv == false 
+								|| officer.EhsBegin <= DateTime.Now.TimeOfDay && officer.EhsEnd > DateTime.Now.TimeOfDay && officer.Lv == false)
+							{
+								Officers.Add(officer);
+							}
+						}
+						else 
+						{
+							if (officer.EhsBegin <= DateTime.Now.TimeOfDay && officer.EhsEnd > DateTime.Now.TimeOfDay && officer.Lv == false) 
+							{
+								Officers.Add(officer);
+							}	
+						}
+									
 					}
 					foreach (var officer in lvOfficers)
 					{
