@@ -23,6 +23,12 @@ namespace TeamLeadApp.ViewModels
 		{
 			var officer = Officer;
 
+			if (officer.LvBegin > officer.LvEnd)
+			{
+				await App.Current.MainPage.DisplayAlert("Incorrect Leave Hours", "The begin time cannot be more than the end time.", "Ok");
+
+				return;
+			}
 			if (officer.LvBegin < officer.ShiftBegin || officer.LvEnd > officer.ShiftEnd)
 			{
 				await App.Current.MainPage.DisplayAlert("Incorrect Leave", "Leave time must be within the Officers work shift", "Ok");
