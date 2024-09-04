@@ -10,7 +10,7 @@ An Application used to automate the creation of shift sheets and make creating r
 - Add, Edit, and Delete Checklist Tasks
 - Add, Edit, and Delete Rotations
 - Add, Edit, and Delete Postions
-- Creates a lists of currently working Officers, that can also be filtered by AM, PM, and MID shifts
+- Creates a lists of currently working Officers, that can also be filtered by AM, PM, MID, and LIVE shifts
 - Keeps track of notes on Officers
 - Keeps track of breaks and lunchs
 - Keeps track of tasks throught the day
