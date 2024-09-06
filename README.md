@@ -208,6 +208,14 @@ Tap the name of the Position and confirm that you would like to clear the positi
 
 ![NextRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/NextRotation2.png)
 
+#### How to Pull a Previous Rotation
+
+![PullRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PullRotation1.png)
+
+![PullRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PullRotation2.png)
+
+![PullRotation3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PullRotation3.png)
+
 ### Checklist Page
 
 This page alows the user to add, edit, and delete tasks.
