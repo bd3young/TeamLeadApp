@@ -18,8 +18,6 @@ namespace TeamLeadApp.Services
 			_database = new SQLiteAsyncConnection(dbPath);
 			_database.CreateTableAsync<Officer>().Wait();
 
-			//AddInitOfficers();
-
 		}
 
 		public async void AddInitOfficers()

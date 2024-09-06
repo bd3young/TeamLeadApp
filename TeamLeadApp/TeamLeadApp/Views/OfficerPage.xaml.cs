@@ -15,12 +15,7 @@ namespace TeamLeadApp.Views
 	{
 		OfficerViewModel officerViewModel;
 		public OfficerPage()
-		{
-
-			//App.OfficerService.AddInitOfficers();
-			App.DateService.AddInitDates();
-
-			
+		{		
 			InitializeComponent();
 			BindingContext = officerViewModel = new OfficerViewModel(Navigation);
 		}

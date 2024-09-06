@@ -92,6 +92,9 @@ namespace TeamLeadApp
 
 		protected override async void OnStart()
 		{
+			//App.OfficerService.AddInitOfficers();
+			App.DateService.AddInitDates();
+
 			var day = await App.DateService.GetProductAsync(1);
 			var currentDay = DateTime.Today.ToString();
 
