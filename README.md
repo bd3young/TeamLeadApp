@@ -1,7 +1,10 @@
 ![TeamLeadAppIcon](https://github.com/user-attachments/assets/757c0612-179d-400a-9439-5d000411fca0)
 
-[Officers Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#officers-page)
-[Shift Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#shift-page)
+# Table of Contents
+
+1. [Officers Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#officers-page)
+2. [Shift Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#shift-page)
+3. [Roltations Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#rotations-page)
 
 # TeamLead
 
