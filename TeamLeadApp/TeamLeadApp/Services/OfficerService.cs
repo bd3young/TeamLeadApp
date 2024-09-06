@@ -129,7 +129,15 @@ namespace TeamLeadApp.Services
 		}
 		public async Task<IEnumerable<Officer>> GetEhsOfficersAsync()
 		{
-			return await Task.FromResult(await _database.Table<Officer>().Where(o =>  o.Lv == false && o.Ehs == true).ToListAsync());
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Ehs == true && o.Lv == false).ToListAsync());
+		}
+		public async Task<IEnumerable<Officer>> GetLvOfficersAsync()
+		{
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Lv == true && o.Ehs == false).ToListAsync());
+		}
+		public async Task<IEnumerable<Officer>> GetLvEhsOfficersAsync()
+		{
+			return await Task.FromResult(await _database.Table<Officer>().Where(o => o.Lv == true && o.Ehs == true).ToListAsync());
 		}
 
 		public async Task ResetOfficers()
@@ -152,6 +160,10 @@ namespace TeamLeadApp.Services
 				officer.Lv = false;
 				officer.Ehs = false;
 				officer.BreakNumber = "";
+				officer.LvBegin = new TimeSpan();
+				officer.LvEnd = new TimeSpan();
+				officer.EhsBegin = new TimeSpan();
+				officer.EhsEnd = new TimeSpan();
 				if (officer.ShiftEnd - officer.ShiftBegin == new System.TimeSpan(08,30,00))
 				{
 					officer.FullTime = true;
@@ -159,19 +171,6 @@ namespace TeamLeadApp.Services
 				else
 				{
 					officer.FullTime = false;
-				}
-				if (officer.ShiftBegin >= new System.TimeSpan(03, 00, 00) && officer.ShiftEnd <= new System.TimeSpan(12, 30, 00) && officer.Admin == false)
-				{
-					officer.Shift = "AM";
-
-				}
-				else if (officer.ShiftBegin >= new System.TimeSpan(10, 30, 00) && officer.ShiftEnd <= new System.TimeSpan(20, 00, 00) && officer.Admin == false)
-				{
-					officer.Shift = "PM";
-				}
-				else 
-				{
-					officer.Shift = "MID";
 				}
 
 				await App.OfficerService.AddProductAsync(officer);

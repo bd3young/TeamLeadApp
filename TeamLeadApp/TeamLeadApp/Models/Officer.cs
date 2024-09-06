@@ -16,6 +16,10 @@ namespace TeamLeadApp.Models
 		public string RdoThree { get; set; } = "";
 		public System.TimeSpan ShiftBegin { get; set; }
 		public System.TimeSpan ShiftEnd { get; set; }
+		public System.TimeSpan LvBegin { get; set; }
+		public System.TimeSpan LvEnd { get; set; }
+		public System.TimeSpan EhsBegin { get; set; }
+		public System.TimeSpan EhsEnd { get; set; }
 		public string Gender { get; set; }
 		public string Rank { get; set; }
 		public string Shift { get; set; }
