@@ -22,7 +22,7 @@ An Application used to automate the creation of shift sheets and make creating r
 
 ## How To Use
 
-### Officers Page
+### [Officers Page](https://github.com/bd3young/TeamLeadApp/blob/master/README.md)
 
 This page allows the user to add, edit, delete, place on extra hours, and search officers. The top right hand corner of the page displays the total number of officers.
 
