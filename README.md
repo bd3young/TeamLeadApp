@@ -39,13 +39,35 @@ Note - All portions of the Add Officer form must be filled out to be able to sav
 
 Find the Officer to edit and swipe left on the officers banner. Tap the EDIT option to edit that current Officer. Tap the save button when you are done editing or cancel if you want to cancel the edit. 
 
+![SwipeOfficer](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/SwipeOfficer.png)
+
+![EditOfficer1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/EditOfficer1.png)
+
+![EditOfficer2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/EditOfficer2.png)
+
 #### How To Delete An Officer
 
 Find the Officer to delete and swipe left on the officers banner. Tap the DELETE option to delete that current Officer. Tap the Yes option to confirm the deletion of the officer or No to cancel the deletion.
 
+![SwipeOfficer](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/SwipeOfficer.png)
+
+![DeleteOfficer1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/DeleteOfficer1.png)
+
+![DeleteOfficer2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/DeleteOfficer2.png)
+
 #### How To Put An Officer On Extra Hours
 
 Find the Officer to put on extra hours and swipe left on the officers banner. Tap the EHS option and confirm your selection. Tap how many breaks the Officer will be recieveing. Next enter the time the officer will begin extra hours and end extra hours. The Officer will now be displayed on the Shift page with the proper extra hours begin and end time displayed.
+
+![SwipeOfficer](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/SwipeOfficer.png)
+
+![EhsOfficer1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/EhsOfficer1.png)
+
+![EhsOfficer2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/EhsOfficer2.png)
+
+![EhsOfficer3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/EhsOfficer3.png)
+
+![EhsOfficer4](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/EhsOfficer4.png)
 
 Note - The user cannot place an officer on extra hours during their shift. The user can place officers on extra hours before and after their shift. If the officer is off the day you place them on extra hours, the user can place the officer on extra hours at any time.
 
