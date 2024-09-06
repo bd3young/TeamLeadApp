@@ -125,6 +125,237 @@
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-xxxhdpi\TeamLeadAppIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\OfficersPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\SwipeOfficer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\AddOfficer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\AddOfficer2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\DeleteOfficer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\DeleteOfficer2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\EditOfficer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\EditOfficer2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\EhsOfficer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\EhsOfficer2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\EhsOfficer3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\OfficersPage\EhsOfficer4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationsPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\SwipeRotation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\AddRotation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\AddRotation2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\DeleteRotation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\DeleteRotation2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\EditRotation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\EditRotation2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\PositionsListPage\PositionsListPage1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\PositionsListPage\PositionsListPage2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\PositionsListPage\SwipePosition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\PositionsListPage\AddPosition1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\PositionsListPage\AddPosition2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\PositionsListPage\DeletePosition1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\PositionsListPage\DeletePosition2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\PositionsListPage\EditPosition1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\PositionsListPage\EditPosition2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\RotationPositionsPage1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\RotationPositionsPage2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\AssignPosition1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\AssignPosition2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\AssignPosition3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\ClearPosition1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\ClearPosition2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\PrevRotation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\PrevRotation2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\PullRotation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\PullRotation2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\PullRotation3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\ChecklistPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\SwipeTask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\AddTask1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\AddTask2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\CompleteTask1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\CompleteTask2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\CompletionTime1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\CompletionTime2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\CompletionTime3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\DeleteTask1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\DeleteTask2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\EditTask1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ChecklistPage\EditTask2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\ShiftPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\ShiftPageSearch1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\ShiftPageSearch2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\ShiftPageSearch3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\SwipeShift.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\BreakCheck1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\BreakCheck2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\EhsOfficer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\EhsOfficer2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\EhsOfficer3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\EhsOfficer4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\LvOfficer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\LvOfficer2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\LvOfficerDay1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\LvOfficerDay2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\LvOfficerHours1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\LvOfficerHours2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\LvOfficerHours3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\Notes1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\Notes2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\ShiftPage\Notes3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\NextRotation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Screenshots\RotationsPage\RotationPositionsPage\NextRotation2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
