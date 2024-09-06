@@ -1,5 +1,7 @@
 ![TeamLeadAppIcon](https://github.com/user-attachments/assets/757c0612-179d-400a-9439-5d000411fca0)
 
+1. [Officers Page. ](#OfficersPage)
+
 # TeamLead
 
 An Application used to automate the creation of shift sheets and make creating rotations easy for the User. 
@@ -19,6 +21,7 @@ An Application used to automate the creation of shift sheets and make creating r
 
 ## How To Use
 
+<a name="OfficersPage"/>
 ### Officers Page
 
 This page allows the user to add, edit, delete, place on extra hours, and search officers. The top right hand corner of the page displays the total number of officers.
