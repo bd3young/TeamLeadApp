@@ -1,6 +1,6 @@
 ![TeamLeadAppIcon](https://github.com/user-attachments/assets/757c0612-179d-400a-9439-5d000411fca0)
 
-[Officers Page](###officers-page)
+[Officers Page](###OfficersPage)
 [Shift Page](#shiftpage)
 
 # TeamLead
