@@ -206,7 +206,7 @@ Tap the name of the Position and confirm that you would like to clear the positi
 
 ![NextRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/NextRotation1.png)
 
-![NextRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/NextRotation1.png)
+![NextRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/NextRotation2.png)
 
 ### Checklist Page
 
@@ -262,7 +262,6 @@ Tap on the time entry to the right of the checkbox. Enter your desired time and 
 
 Note - Tasks will automatically have a completion time of 1200am.
 
-<a name="shiftpage"></a>
 ### Shift page
 
 This page creates lists of currently working Officers. The top right corner of the page will display the number of Officers in the lists. You can use the search bar to filter officers by their shift as well as a LIVE filter. The LIVE filter will contain only officers that are currently working.
