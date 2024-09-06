@@ -3,8 +3,25 @@
 # Table of Contents
 
 1. [Officers Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#officers-page)
-2. [Shift Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#shift-page)
+   -  [How to Add an Officer](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-add-an-officer)
+   -  [How to Edit an Officer](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-edit-an-officer)
+   -  [How to Delete an Officer](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-delete-an-officer)
+   -  [How to Put An Officer On Extra Hours](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-put-an-officer-on-extra-hours)
 3. [Roltations Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#rotations-page)
+   -  [How To Add a Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-add-a-rotation)
+   -  [How To Edit a Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-edit-a-rotation)
+   -  [How To Delete a Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-delete-a-rotation)
+   -  [Positions List Page](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#positions-list-page)
+      -  [How To Add a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-add-a-position)
+      -  [How To Edit a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-edit-a-position)
+      -  [How To Edit a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-delete-a-position)
+   -  [Rotation Positions Page](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#rotation-positions-page)
+      -  [How To Assign an Officer To a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-assign-an-officer-to-a-position)
+      -  [How To Clear a Position That Is No Longer Filled](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-clear-a-position-that-is-no-longer-filled)
+      -  [How to Navigate to the Previous Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-navigate-to-the-previous-rotation)
+      -  [How to Navigate to the Next Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-navigate-to-the-next-rotation)
+5. [Checklist Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#shift-page)
+6. [Shift Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#shift-page)
 
 # TeamLead
 
