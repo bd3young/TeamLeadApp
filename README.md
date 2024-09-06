@@ -133,7 +133,7 @@ Find the Position to edit and swipe left on the positions banner. Tap the EDIT o
 
 ![EditPosition1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/EditPosition1.png)
 
-![EditPosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/EditPosition1.png)
+![EditPosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/EditPosition2.png)
 
 ##### How To Delete a Position
 
@@ -151,7 +151,7 @@ After selecting A rotation the user will land on the Rotation Positions Page. Th
 
 ![RotationPositionsPage1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/RotationPositionsPage1.png)
 
-![RotationPositionsPage2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/RotationPositionsPage1.png)
+![RotationPositionsPage2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/RotationPositionsPage2.png)
 
 ##### How To Assign An Officer To a Position 
 
@@ -173,29 +173,69 @@ Tap the name of the Position and confirm that you would like to clear the positi
 
 ![ClearPosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/ClearPosition2.png)
 
+##### How to Navigate to the Previous Rotation
+
+![PrevRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PrevRotation1.png)
+
+![PrevRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PrevRotation2.png)
+
+##### How to Navigate to the Next Rotation
+
+![NextRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/NextRotation1.png)
+
+![NextRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/NextRotation1.png)
+
 ### Checklist Page
 
 This page alows the user to add, edit, and delete tasks.
+
+![ChecklistPage](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/ChecklistPage.png)
 
 #### How To Add a Task
 
 Tap the ADD button that is in the top right of the screen. After completing all of the information tap the save button to save the task. If you dont want to save the task tap the cancel button to cancel the action.
 
+![AddTask1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/AddTask1.png)
+
+![AddTask2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/AddTask2.png)
+
 #### How To Edit a Task
 
 Find the Task to edit and swipe left on the Tasks banner. Tap the EDIT option to edit that current Task. Tap the save button when you are done editing or cancel if you want to cancel the edit.
+
+![SwipeTask](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/SwipeTask.png)
+
+![EditTask1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/EditTask1.png)
+
+![EditTask2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/EditTask2.png)
 
 #### How to Delete a Task
 
 Find the Task to delete and swipe left on the Tasks banner. Tap the DELETE option to delete that current Task. Tap the Yes option to confirm the deletion of the Task or No to cancel the deletion.
 
+![SwipeTask](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/SwipeTask.png)
+
+![DeleteTask1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/DeleteTask1.png)
+
+![DeleteTask2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/DeleteTask2.png)
+
 #### How To Complete a Task
 
 Tap on the checkbox next to the Task name that you would like to complete.
 
-#### How To Add a Completion Time To a Taak
+![CompleteTask1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/CompleteTask1.png)
+
+![CompleteTask2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/CompleteTask2.png)
+
+#### How To Add a Completion Time To a Task
 
 Tap on the time entry to the right of the checkbox. Enter your desired time and tap ok to save. Tap cancel if you want to cancel.
+
+![CompletionTime1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/CompletionTime1.png)
+
+![CompletionTime2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/CompletionTime2.png)
+
+![CompletionTime3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/CompletionTime3.png)
 
 Note - Tasks will automatically have a completion time of 1200am.
 
@@ -203,25 +243,67 @@ Note - Tasks will automatically have a completion time of 1200am.
 
 This page creates lists of currently working Officers. The top right corner of the page will display the number of Officers in the lists. You can use the search bar to filter officers by their shift as well as a LIVE filter. The LIVE filter will contain only officers that are currently working.
 
+![ShiftPage](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/ShiftPage.png)
+
+#### How to Filter Shifts
+
+![ShiftPageSearch1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/ShiftPageSearch1.png)
+
+![ShiftPageSearch2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/ShiftPageSearch2.png)
+
+![ShiftPageSearch3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/ShiftPageSearch3.png)
+
 #### How To Give An Officer a Break/Lunch
 
 Tap on one of the three checkboxes next to the Officers name that you would like to give the Break/Lunch.
+
+![BreakCheck1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/BreakCheck1.png)
+
+![BreakCheck2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/BreakCheck2.png)
 
 #### How To Type Notes On An Officer
 
 Tap on the line next to the Officers shift times. Type the notes you want to take. Tap the check mark on the keyboard to save your notes.
 
+![Notes1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/Notes1.png)
+
+![Notes2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/Notes2.png)
+
+![Notes3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/Notes3.png)
+
 #### How To Put An Officer On Leave
 
-Find the Officer to put on leave and swipe left on the Officers banner. Tap the LV option and confirm that you would like to put the officer on leave. 
+Find the Officer to put on leave and swipe left on the Officers banner. Tap the LV option and confirm that you would like to put the officer on leave.
+
+![LvOfficer1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/LvOfficer1.png)
+
+![LvOfficer2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/LvOfficer2.png)
 
 Tap the hours option if you would like to place the officer on partial leave. After entering the leave begin time and end time tap save. The Officer will now be displayed on the Shift page with the inputted leave begin and end time displayed.
 
+![LvOfficerHours1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/LvOfficerHours1.png)
+
+![LvOfficerHours2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/LvOfficerHours2.png)
+
+![LvOfficerHours3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/LvOfficerHours3.png)
+
 Tap the day option to place the officer on leave for their entire shift. This option will also take the officer out of the shift page.
+
+![LvOfficerDay1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/LvOfficerDay1.png)
+
+![LvOfficerDay2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/LvOfficerDay2.png)
 
 #### How To Put An Officer On Extra Hours
 
 Find the Officer to put on extra hours and swipe left on the officers banner. Tap the EHS option and confirm your selection. Next enter the time the officer will begin extra hours and end extra hours. The Officer will now be displayed on the Shift page with the inputted extra hours begin and end hours displayed.
+
+![EhsOfficer1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/EhsOfficer1.png)
+
+![EhsOfficer2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/EhsOfficer2.png)
+
+![EhsOfficer3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/EhsOfficer3.png)
+
+![EhsOfficer4](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/EhsOfficer4.png)
 
 Note - The user cannot place an officer on extra hours during their shift. The user can place officers on extra hours before and after their shift. If the officer is off the day you place them on extra hours, the user can place the officer on extra hours at any time.
 
