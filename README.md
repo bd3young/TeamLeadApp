@@ -1,7 +1,7 @@
 ![TeamLeadAppIcon](https://github.com/user-attachments/assets/757c0612-179d-400a-9439-5d000411fca0)
 
-[Officers Page](###OfficersPage)
-[Shift Page](#shiftpage)
+[Officers Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#officers-page)
+[Shift Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#shift-page)
 
 # TeamLead
 
@@ -22,7 +22,6 @@ An Application used to automate the creation of shift sheets and make creating r
 
 ## How To Use
 
-<a name="OfficersPage"></a>
 ### Officers Page
 
 This page allows the user to add, edit, delete, place on extra hours, and search officers. The top right hand corner of the page displays the total number of officers.
