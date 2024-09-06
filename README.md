@@ -75,9 +75,15 @@ Note - The user cannot place an officer on extra hours during their shift. The u
 
 This page allows the user to see all the rotations added in the app. You can search for specific rotations using the search bar. Each rotation will have the time of the rotation and a completion checkbox. After the user completes a rotation they can check the box to indicate it's completion. The top right corner has two buttons. The Positions button takes you to the positions page and the Add button allows you to add rotations. Upon rotations being added they will automatically be populated with the positions from the positions page.
 
+![RotationsPage](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationsPage.png)
+
 #### How To Add a Rotation
 
 Click the Add button in the Top right corner of the page. Select the time of the rotation. After selecting the time of the rotation tap save if you would like to save or cancel if you want to cancel the action.
+
+![AddRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/AddRotation1.png)
+
+![AddRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/AddRotation2.png)
 
 Note - Rotation times must be in 30 minute increments and must end with a 00 or 30.
 
@@ -85,27 +91,21 @@ Note - Rotation times must be in 30 minute increments and must end with a 00 or 
 
 Find the Rotation to edit and swipe left on the Rotations banner. Tap the EDIT option to edit that current Rotation. When you are done editing tap the save button when you are done or cancel if you want to cancel the edit. 
 
+![SwipeRotation](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/SwipeRotation.png)
+
+![EditRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/EditRotation1.png)
+
+![EditRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/EditRotation2.png)
+
 #### How to Delete a Rotation 
 
 Find the Rotation to delete and swipe left on the Rotations banner. Tap the DELETE option to delete that current Rotation. Tap the Yes option to confirm the deletion of the Rotation or No to cancel the deletion.
 
-### Rotation Positions Page
+![SwipeRotation](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/SwipeRotation.png)
 
-After selecting A rotation the user will land on the Rotation Positions Page. This page allows the user to assign currently working officers to a position.
+![DeleteRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/DeleteRotation1.png)
 
-#### How To Assign An Officer To a Position 
-
-Tap underneath the positions name and select the officer you would like to assign to the position.
-
-Note - Only officers that are currently working and are not in a position will be selectable.
-
-#### How To Clear a Position that is No Longer Filled
-
-Tap the name of the Position and confirm that you would like to clear the position.
-
-#### How To go to the Positions List Page
-
-Tap Positions list at the top right of the screen.
+![DeleteRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/DeleteRotation2.png)
 
 #### Positions List Page
 
@@ -113,17 +113,65 @@ This page allows the user to add, edit, and delete positions. The Two officers c
 
 Note - When a position is added, edited, or deleted the actions is done for every position in every rotation.
 
+![PositionsListPage1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/PositionsListPage1.png)
+
+![PositionsListPage2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/PositionsListPage2.png)
+
 ##### How To Add a Position 
 
 Tap the ADD button that is in the top right of the screen. After completing all of the information tap the save button to save the position. If you dont want to save the position tap the cancel button to cancel the action.
+
+![AddPosition1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/AddPosition1.png)
+
+![AddPosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/AddPosition2.png)
 
 ##### How To Edit a Position
 
 Find the Position to edit and swipe left on the positions banner. Tap the EDIT option to edit that current Position. Tap the save button when you are done editing or cancel if you want to cancel the edit.
 
+![SwipePosition](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/SwipePosition.png)
+
+![EditPosition1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/EditPosition1.png)
+
+![EditPosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/EditPosition1.png)
+
 ##### How To Delete a Position
 
 Find the Position to delete and swipe left on the positions banner. Tap the DELETE option to delete that current Position. Tap the Yes option to confirm the deletion of the officer or No to cancel the deletion.
+
+![SwipePosition](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/SwipePosition.png)
+
+![DeletePosition1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/DeletePosition1.png)
+
+![DeletePosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/DeletePosition2.png)
+
+#### Rotation Positions Page
+
+After selecting A rotation the user will land on the Rotation Positions Page. This page allows the user to assign currently working officers to a position.
+
+![RotationPositionsPage1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/RotationPositionsPage1.png)
+
+![RotationPositionsPage2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/RotationPositionsPage1.png)
+
+##### How To Assign An Officer To a Position 
+
+Tap underneath the positions name and select the officer you would like to assign to the position.
+
+![AssignPosition1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/AssignPosition1.png)
+
+![AssignPosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/AssignPosition2.png)
+
+![AssignPosition3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/AssignPosition3.png)
+
+Note - Only officers that are currently working and are not in a position will be selectable.
+
+##### How To Clear a Position that is No Longer Filled
+
+Tap the name of the Position and confirm that you would like to clear the position.
+
+![ClearPosition1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/ClearPosition1.png)
+
+![ClearPosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/ClearPosition2.png)
 
 ### Checklist Page
 
