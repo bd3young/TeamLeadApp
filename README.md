@@ -29,6 +29,10 @@ This page allows the user to add, edit, delete, place on extra hours, and search
 
 Tap the ADD button that is in the top right of the screen. After completing all of the information tap the save button to save the officer. If you dont want to save the officer tap the cancel button to cancel the action.
 
+![AddOfficer1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/AddOfficer1.png)
+
+![AddOfficer2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/AddOfficer2.png)
+
 Note - All portions of the Add Officer form must be filled out to be able to save. Also the Admin checkbox is used for Officers that don't regularly work in a rotation but can be added to it by putting them on extra hours. this check ox defaults to unchecked.
 
 #### How To Edit An Officer
