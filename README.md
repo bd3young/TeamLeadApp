@@ -20,7 +20,7 @@
       -  [How To Clear a Position That Is No Longer Filled](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-clear-a-position-that-is-no-longer-filled)
       -  [How to Navigate to the Previous Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-navigate-to-the-previous-rotation)
       -  [How to Navigate to the Next Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-navigate-to-the-next-rotation)
-5. [Checklist Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#shift-page)
+5. [Checklist Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#checklist-page)
 6. [Shift Page](https://github.com/bd3young/TeamLeadApp?tab=readme-ov-file#shift-page)
 
 # TeamLead
