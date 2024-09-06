@@ -23,6 +23,8 @@ An Application used to automate the creation of shift sheets and make creating r
 
 This page allows the user to add, edit, delete, place on extra hours, and search officers. The top right hand corner of the page displays the total number of officers.
 
+![OfficersPage](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/OfficersPage.png)
+
 #### How To Add An Officer
 
 Tap the ADD button that is in the top right of the screen. After completing all of the information tap the save button to save the officer. If you dont want to save the officer tap the cancel button to cancel the action.
