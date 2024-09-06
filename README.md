@@ -1,6 +1,7 @@
 ![TeamLeadAppIcon](https://github.com/user-attachments/assets/757c0612-179d-400a-9439-5d000411fca0)
 
 1. [Officers Page.](#OfficersPage)
+2. [Shift Page.](#shiftpage)
 
 # TeamLead
 
@@ -242,6 +243,7 @@ Tap on the time entry to the right of the checkbox. Enter your desired time and 
 
 Note - Tasks will automatically have a completion time of 1200am.
 
+<a name="shiftpage"></a>
 ### Shift page
 
 This page creates lists of currently working Officers. The top right corner of the page will display the number of Officers in the lists. You can use the search bar to filter officers by their shift as well as a LIVE filter. The LIVE filter will contain only officers that are currently working.
