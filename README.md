@@ -14,7 +14,7 @@
    -  [Positions List Page](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#positions-list-page)
       -  [How To Add a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-add-a-position)
       -  [How To Edit a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-edit-a-position)
-      -  [How To Edit a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-delete-a-position)
+      -  [How To Delete a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-delete-a-position)
    -  [Rotation Positions Page](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#rotation-positions-page)
       -  [How To Assign an Officer To a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-assign-an-officer-to-a-position)
       -  [How To Clear a Position That Is No Longer Filled](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#how-to-clear-a-position-that-is-no-longer-filled)
