@@ -209,17 +209,29 @@ Tap the name of the Position and confirm that you would like to clear the positi
 
 ##### [How to Navigate to the Previous Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
+Tap on the Prev Button in the top right hand of the screen and you will navigate to the previous rotation.
+
+Note - The previous button only takes you to the previous rotation that is within 30 minutes of your current rotation. If there is not a rotation within 30 minutes the button will do nothing.
+
 ![PrevRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PrevRotation1.png)
 
 ![PrevRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PrevRotation2.png)
 
 ##### [How to Navigate to the Next Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
+Tap on the Next Button in the top right hand of the screen and you will navigate to the next rotation.
+
+Note - The next button only takes you to the next rotation that is within 30 minutes of your current rotation.If there is not a rotation within 30 minutes the button will do nothing.
+
 ![NextRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/NextRotation1.png)
 
 ![NextRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/NextRotation2.png)
 
 #### [How to Pull a Previous Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
+
+Tap the Pull Button at the top right of the screen and confirm that you would like to pull the previous rotation. After confirming the previous rotations filled positions will get pulled into your current rotation. 
+
+Note - All the filled positions backgrounds will be gray indicating that all of the officers will be in positions for an hour if not moved. Once the officers are rotated their backgrounds will be the color of their gender. 
 
 ![PullRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PullRotation1.png)
 
