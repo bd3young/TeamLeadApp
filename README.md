@@ -59,7 +59,7 @@ This page allows the user to add, edit, delete, place on extra hours, and search
 
 ![OfficersPage](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/OfficersPage.png)
 
-#### How To Add An Officer
+#### [How To Add An Officer](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Tap the ADD button that is in the top right of the screen. After completing all of the information tap the save button to save the officer. If you dont want to save the officer tap the cancel button to cancel the action.
 
@@ -69,7 +69,7 @@ Tap the ADD button that is in the top right of the screen. After completing all 
 
 Note - All portions of the Add Officer form must be filled out to be able to save. Also the Admin checkbox is used for Officers that don't regularly work in a rotation but can be added to it by putting them on extra hours. this check ox defaults to unchecked.
 
-#### How To Edit An Officer
+#### [How To Edit An Officer](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Find the Officer to edit and swipe left on the officers banner. Tap the EDIT option to edit that current Officer. Tap the save button when you are done editing or cancel if you want to cancel the edit. 
 
@@ -79,7 +79,7 @@ Find the Officer to edit and swipe left on the officers banner. Tap the EDIT opt
 
 ![EditOfficer2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/EditOfficer2.png)
 
-#### How To Delete An Officer
+#### [How To Delete An Officer](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Find the Officer to delete and swipe left on the officers banner. Tap the DELETE option to delete that current Officer. Tap the Yes option to confirm the deletion of the officer or No to cancel the deletion.
 
@@ -89,7 +89,7 @@ Find the Officer to delete and swipe left on the officers banner. Tap the DELETE
 
 ![DeleteOfficer2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/OfficersPage/DeleteOfficer2.png)
 
-#### How To Put An Officer On Extra Hours
+#### [How To Put An Officer On Extra Hours](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Find the Officer to put on extra hours and swipe left on the officers banner. Tap the EHS option and confirm your selection. Tap how many breaks the Officer will be recieveing. Next enter the time the officer will begin extra hours and end extra hours. The Officer will now be displayed on the Shift page with the proper extra hours begin and end time displayed.
 
@@ -105,13 +105,13 @@ Find the Officer to put on extra hours and swipe left on the officers banner. Ta
 
 Note - The user cannot place an officer on extra hours during their shift. The user can place officers on extra hours before and after their shift. If the officer is off the day you place them on extra hours, the user can place the officer on extra hours at any time.
 
-### Rotations Page
+### [Rotations Page](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 This page allows the user to see all the rotations added in the app. You can search for specific rotations using the search bar. Each rotation will have the time of the rotation and a completion checkbox. After the user completes a rotation they can check the box to indicate it's completion. The top right corner has two buttons. The Positions button takes you to the positions page and the Add button allows you to add rotations. Upon rotations being added they will automatically be populated with the positions from the positions page.
 
 ![RotationsPage](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationsPage.png)
 
-#### How To Add a Rotation
+#### [How To Add a Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Click the Add button in the Top right corner of the page. Select the time of the rotation. After selecting the time of the rotation tap save if you would like to save or cancel if you want to cancel the action.
 
@@ -121,7 +121,7 @@ Click the Add button in the Top right corner of the page. Select the time of the
 
 Note - Rotation times must be in 30 minute increments and must end with a 00 or 30.
 
-#### How to Edit a Rotation
+#### [How to Edit a Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Find the Rotation to edit and swipe left on the Rotations banner. Tap the EDIT option to edit that current Rotation. When you are done editing tap the save button when you are done or cancel if you want to cancel the edit. 
 
@@ -131,7 +131,7 @@ Find the Rotation to edit and swipe left on the Rotations banner. Tap the EDIT o
 
 ![EditRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/EditRotation2.png)
 
-#### How to Delete a Rotation 
+#### [How to Delete a Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents) 
 
 Find the Rotation to delete and swipe left on the Rotations banner. Tap the DELETE option to delete that current Rotation. Tap the Yes option to confirm the deletion of the Rotation or No to cancel the deletion.
 
@@ -141,7 +141,7 @@ Find the Rotation to delete and swipe left on the Rotations banner. Tap the DELE
 
 ![DeleteRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/DeleteRotation2.png)
 
-#### Positions List Page
+#### [Positions List Page](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 This page allows the user to add, edit, and delete positions. The Two officers check box for a position indicates if the positions can have Two officers in it.
 
@@ -151,7 +151,7 @@ Note - When a position is added, edited, or deleted the actions is done for ever
 
 ![PositionsListPage2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/PositionsListPage2.png)
 
-##### How To Add a Position 
+##### [How To Add a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents) 
 
 Tap the ADD button that is in the top right of the screen. After completing all of the information tap the save button to save the position. If you dont want to save the position tap the cancel button to cancel the action.
 
@@ -159,7 +159,7 @@ Tap the ADD button that is in the top right of the screen. After completing all 
 
 ![AddPosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/AddPosition2.png)
 
-##### How To Edit a Position
+##### [How To Edit a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Find the Position to edit and swipe left on the positions banner. Tap the EDIT option to edit that current Position. Tap the save button when you are done editing or cancel if you want to cancel the edit.
 
@@ -169,7 +169,7 @@ Find the Position to edit and swipe left on the positions banner. Tap the EDIT o
 
 ![EditPosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/EditPosition2.png)
 
-##### How To Delete a Position
+##### [How To Delete a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Find the Position to delete and swipe left on the positions banner. Tap the DELETE option to delete that current Position. Tap the Yes option to confirm the deletion of the officer or No to cancel the deletion.
 
@@ -179,7 +179,7 @@ Find the Position to delete and swipe left on the positions banner. Tap the DELE
 
 ![DeletePosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/PositionsListPage/DeletePosition2.png)
 
-#### Rotation Positions Page
+#### [Rotation Positions Page](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 After selecting A rotation the user will land on the Rotation Positions Page. This page allows the user to assign currently working officers to a position.
 
@@ -187,7 +187,7 @@ After selecting A rotation the user will land on the Rotation Positions Page. Th
 
 ![RotationPositionsPage2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/RotationPositionsPage2.png)
 
-##### How To Assign An Officer To a Position 
+##### [How To Assign An Officer To a Position](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents) 
 
 Tap underneath the positions name and select the officer you would like to assign to the position.
 
@@ -199,7 +199,7 @@ Tap underneath the positions name and select the officer you would like to assig
 
 Note - Only officers that are currently working and are not in a position will be selectable.
 
-##### How To Clear a Position that is No Longer Filled
+##### [How To Clear a Position that is No Longer Filled](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Tap the name of the Position and confirm that you would like to clear the position.
 
@@ -207,19 +207,19 @@ Tap the name of the Position and confirm that you would like to clear the positi
 
 ![ClearPosition2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/ClearPosition2.png)
 
-##### How to Navigate to the Previous Rotation
+##### [How to Navigate to the Previous Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 ![PrevRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PrevRotation1.png)
 
 ![PrevRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PrevRotation2.png)
 
-##### How to Navigate to the Next Rotation
+##### [How to Navigate to the Next Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 ![NextRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/NextRotation1.png)
 
 ![NextRotation2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/NextRotation2.png)
 
-#### How to Pull a Previous Rotation
+#### [How to Pull a Previous Rotation](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 ![PullRotation1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PullRotation1.png)
 
@@ -227,13 +227,13 @@ Tap the name of the Position and confirm that you would like to clear the positi
 
 ![PullRotation3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/RotationsPage/RotationPositionsPage/PullRotation3.png)
 
-### Checklist Page
+### [Checklist Page](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 This page alows the user to add, edit, and delete tasks.
 
 ![ChecklistPage](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/ChecklistPage.png)
 
-#### How To Add a Task
+#### [How To Add a Task](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Tap the ADD button that is in the top right of the screen. After completing all of the information tap the save button to save the task. If you dont want to save the task tap the cancel button to cancel the action.
 
@@ -241,7 +241,7 @@ Tap the ADD button that is in the top right of the screen. After completing all 
 
 ![AddTask2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/AddTask2.png)
 
-#### How To Edit a Task
+#### [How To Edit a Task](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Find the Task to edit and swipe left on the Tasks banner. Tap the EDIT option to edit that current Task. Tap the save button when you are done editing or cancel if you want to cancel the edit.
 
@@ -251,7 +251,7 @@ Find the Task to edit and swipe left on the Tasks banner. Tap the EDIT option to
 
 ![EditTask2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/EditTask2.png)
 
-#### How to Delete a Task
+#### [How to Delete a Task](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Find the Task to delete and swipe left on the Tasks banner. Tap the DELETE option to delete that current Task. Tap the Yes option to confirm the deletion of the Task or No to cancel the deletion.
 
@@ -261,7 +261,7 @@ Find the Task to delete and swipe left on the Tasks banner. Tap the DELETE optio
 
 ![DeleteTask2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/DeleteTask2.png)
 
-#### How To Complete a Task
+#### [How To Complete a Task](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Tap on the checkbox next to the Task name that you would like to complete.
 
@@ -269,7 +269,7 @@ Tap on the checkbox next to the Task name that you would like to complete.
 
 ![CompleteTask2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ChecklistPage/CompleteTask2.png)
 
-#### How To Add a Completion Time To a Task
+#### [How To Add a Completion Time To a Task](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Tap on the time entry to the right of the checkbox. Enter your desired time and tap ok to save. Tap cancel if you want to cancel.
 
@@ -281,13 +281,13 @@ Tap on the time entry to the right of the checkbox. Enter your desired time and 
 
 Note - Tasks will automatically have a completion time of 1200am.
 
-### Shift page
+### [Shift page](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 This page creates lists of currently working Officers. The top right corner of the page will display the number of Officers in the lists. You can use the search bar to filter officers by their shift as well as a LIVE filter. The LIVE filter will contain only officers that are currently working.
 
 ![ShiftPage](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/ShiftPage.png)
 
-#### How to Filter Shifts
+#### [How to Filter Shifts](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 ![ShiftPageSearch1](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/ShiftPageSearch1.png)
 
@@ -295,7 +295,7 @@ This page creates lists of currently working Officers. The top right corner of t
 
 ![ShiftPageSearch3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/ShiftPageSearch3.png)
 
-#### How To Give An Officer a Break/Lunch
+#### [How To Give An Officer a Break/Lunch](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Tap on one of the three checkboxes next to the Officers name that you would like to give the Break/Lunch.
 
@@ -303,7 +303,7 @@ Tap on one of the three checkboxes next to the Officers name that you would like
 
 ![BreakCheck2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/BreakCheck2.png)
 
-#### How To Type Notes On An Officer
+#### [How To Type Notes On An Officer](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Tap on the line next to the Officers shift times. Type the notes you want to take. Tap the check mark on the keyboard to save your notes.
 
@@ -313,7 +313,7 @@ Tap on the line next to the Officers shift times. Type the notes you want to tak
 
 ![Notes3](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/Notes3.png)
 
-#### How To Put An Officer On Leave
+#### [How To Put An Officer On Leave](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Find the Officer to put on leave and swipe left on the Officers banner. Tap the LV option and confirm that you would like to put the officer on leave.
 
@@ -335,7 +335,7 @@ Tap the day option to place the officer on leave for their entire shift. This op
 
 ![LvOfficerDay2](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/LvOfficerDay2.png)
 
-#### How To Put An Officer On Extra Hours
+#### [How To Put An Officer On Extra Hours](https://github.com/bd3young/TeamLeadApp/blob/master/README.md#table-of-contents)
 
 Find the Officer to put on extra hours and swipe left on the officers banner. Tap the EHS option and confirm your selection. Next enter the time the officer will begin extra hours and end extra hours. The Officer will now be displayed on the Shift page with the inputted extra hours begin and end hours displayed.
 
@@ -348,14 +348,3 @@ Find the Officer to put on extra hours and swipe left on the officers banner. Ta
 ![EhsOfficer4](TeamLeadApp/TeamLeadApp.Android/Resources/Screenshots/ShiftPage/EhsOfficer4.png)
 
 Note - The user cannot place an officer on extra hours during their shift. The user can place officers on extra hours before and after their shift. If the officer is off the day you place them on extra hours, the user can place the officer on extra hours at any time.
-
-
-
-
-
-
-
-
-
-
-
